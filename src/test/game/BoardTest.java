@@ -5,9 +5,11 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static test.game.Board.player1Move;
 
 public class BoardTest {
+
+    public final String playerOne = "X";
+    public final String playerTwo = "O";
 
     @Test
     public void createThreeByThreeBoard() {
@@ -20,18 +22,18 @@ public class BoardTest {
     @Test
     public void playerOneMoveIsUpdatedOnBoard() {
         Board board = new Board();
-        ArrayList grid = board.updateMove(0, "X");
+        ArrayList grid = board.updateMove(0, playerOne);
 
-        assertEquals(player1Move, grid.get(0));
+        assertEquals(playerOne, grid.get(0));
         assertEquals(9, grid.size());
     }
 
     @Test
     public void playerTwoMoveIsUpdatedOnBoard() {
         Board board = new Board();
-        ArrayList grid = board.updateMove(0, "O");
+        ArrayList grid = board.updateMove(0, playerTwo);
 
-        assertEquals("O", grid.get(0));
+        assertEquals(playerTwo, grid.get(0));
         assertEquals(9, grid.size());
     }
 }

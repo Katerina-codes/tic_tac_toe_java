@@ -5,7 +5,6 @@ import java.util.Arrays;
 
 public class Board {
 
-    public final static String player1Move = "X";
     private ArrayList board;
 
     public Board() {
