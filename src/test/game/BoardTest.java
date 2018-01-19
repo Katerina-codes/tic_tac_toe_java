@@ -15,4 +15,13 @@ public class BoardTest {
 
         assertEquals(9, grid.size());
     }
+
+    @Test
+    public void moveIsUpdatedOnBoard() {
+        Board board = new Board();
+        ArrayList grid = board.updateMove(0);
+
+        assertEquals("X", grid.get(0));
+        assertEquals(9, grid.size());
+    }
 }
