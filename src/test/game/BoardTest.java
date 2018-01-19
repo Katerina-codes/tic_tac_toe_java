@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
+import static test.game.Board.player1Move;
 
 public class BoardTest {
 
@@ -17,11 +18,11 @@ public class BoardTest {
     }
 
     @Test
-    public void moveIsUpdatedOnBoard() {
+    public void playerOneMoveIsUpdatedOnBoard() {
         Board board = new Board();
         ArrayList grid = board.updateMove(0);
 
-        assertEquals("X", grid.get(0));
+        assertEquals(player1Move, grid.get(0));
         assertEquals(9, grid.size());
     }
 }

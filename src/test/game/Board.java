@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class Board {
 
+    public final static String player1Move = "X";
     private ArrayList board;
 
     public Board() {
@@ -19,7 +20,7 @@ public class Board {
     }
 
     public ArrayList updateMove(int move) {
-        board.set(move, "X");
+        board.set(move, player1Move);
         return board;
     }
 }
