@@ -19,8 +19,8 @@ public class Board {
         return threeByThree;
     }
 
-    public ArrayList updateMove(int move) {
-        board.set(move, player1Move);
+    public ArrayList updateMove(int move, String playerType) {
+        board.set(move, playerType);
         return board;
     }
 }
