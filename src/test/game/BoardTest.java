@@ -1,5 +1,6 @@
 package test.game;
 
+import main.game.Board;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -7,9 +8,6 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 
 public class BoardTest {
-
-    public final String playerOne = "X";
-    public final String playerTwo = "O";
 
     @Test
     public void createThreeByThreeBoard() {
@@ -20,20 +18,10 @@ public class BoardTest {
     }
 
     @Test
-    public void playerOneMoveIsUpdatedOnBoard() {
+    public void canMakeMoveOnABoard() {
         Board board = new Board();
-        ArrayList grid = board.updateMove(0, playerOne);
+        ArrayList grid = board.updateMove(0, "X");
 
-        assertEquals(playerOne, grid.get(0));
-        assertEquals(9, grid.size());
-    }
-
-    @Test
-    public void playerTwoMoveIsUpdatedOnBoard() {
-        Board board = new Board();
-        ArrayList grid = board.updateMove(0, playerTwo);
-
-        assertEquals(playerTwo, grid.get(0));
-        assertEquals(9, grid.size());
+        assertEquals("X", grid.get(0));
     }
 }
