@@ -13,11 +13,9 @@ public class Board {
         this.board = createGrid();
     }
 
-    public ArrayList createGrid() {
-        String[] boardSpaces = new String[]{"1", "2", "3", "4", "5", "6", "7", "8", "9"};
-        ArrayList<String> threeByThree = new ArrayList<>(9);
-        threeByThree.addAll(asList(boardSpaces));
-        return threeByThree;
+    public List<String> createGrid() {
+        List<String> boardSpaces = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
+        return boardSpaces;
     }
 
     public List updateMove(int move, String playerType) {

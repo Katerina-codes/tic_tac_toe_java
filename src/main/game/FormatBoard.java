@@ -5,14 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FormatBoard {
-
-    public List<List> displayBoard(ArrayList board) {
-//        List<Integer> firstRow = board.subList(0, 3);
-////        List<Integer> secondRow = board.subList(3, 6);
-////        List<Integer> thirdRow = board.subList(6, 9);
-////        List rows = Arrays.asList(new List[]{firstRow, secondRow, thirdRow});
-////        rows = Arrays.asList(new List[]{firstRow, secondRow, thirdRow});
-////        System.out.println(rows);
+    public String displayBoard(ArrayList board) {
         return null;
     }
 
@@ -26,15 +19,5 @@ public class FormatBoard {
 //            result = sb.toString();
 //        }
 //        return result;
-//    }
-
-
-//    public List<Integer> createRows(List<Integer> board, int boardSize) {
-//        int size = board.size();
-//        int rowSize = board / boardSize;
-//        List<Integer> firstRow = board.subList(rowSize);
-//
-//
-//
 //    }
 }
