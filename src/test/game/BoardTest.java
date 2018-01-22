@@ -8,6 +8,7 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class BoardTest {
 
@@ -45,4 +46,11 @@ public class BoardTest {
         assertFalse(board.isMoveUnique(grid, 0));
     }
 
+    @Test
+    public void boardHasNoAvailableMovesLeft() {
+        Board board = new Board();
+        List<String> grid = asList("X", "O", "X", "O", "X", "O", "X", "O", "X");
+
+        assertFalse(board.hasAvailableMoves(grid));
+    }
 }

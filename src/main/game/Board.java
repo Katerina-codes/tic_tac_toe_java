@@ -36,10 +36,16 @@ public class Board {
     }
 
     public boolean isMoveUnique(List<String> grid, int move) {
-        if (grid.get(move).equals("X") || (grid.get(move).equals("O"))) {
-            return false;
-        } else {
-            return true;
+        return !grid.get(move).equals("X") && (!grid.get(move).equals("O"));
+    }
+
+    public boolean hasAvailableMoves(List<String> grid) {
+        int count = 0;
+        for (int i = 0; i < grid.size(); i++) {
+            if (grid.get(i).equals("X") || grid.get(i).equals("O")) {
+                count += 1;
+            }
         }
+        return count != 9;
     }
 }
