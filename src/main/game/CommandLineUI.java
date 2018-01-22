@@ -1,9 +1,16 @@
 package main.game;
 
+import java.io.PrintStream;
 import java.util.List;
 
 public class CommandLineUI {
-    public String displayBoard(List<List<String>> rows) {
+
+    private final PrintStream output;
+
+    public CommandLineUI(PrintStream output) {
+        this.output = output;
+    }
+    public void displayBoard(List<List<String>> rows) {
         StringBuilder sb = new StringBuilder();
         String result = null;
         for (int index = 0; index <= rows.size() - 1; index++) {
@@ -12,7 +19,7 @@ public class CommandLineUI {
             sb.append("\n");
             result = sb.toString();
         }
-        return formatBoard(result);
+        output.println(formatBoard(result));
     }
 
     private String formatBoard(String result) {
@@ -21,5 +28,9 @@ public class CommandLineUI {
                 .replace("[", "")
                 .replace("]", "")
                 .trim();
+    }
+
+    public void askForMove() {
+        output.println("Place your mark! Pick a move from 1 - 9:");
     }
 }
