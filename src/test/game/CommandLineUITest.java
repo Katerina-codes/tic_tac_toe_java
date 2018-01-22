@@ -1,6 +1,7 @@
 package test.game;
 
 import main.game.CommandLineUI;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -15,12 +16,20 @@ import static org.junit.Assert.assertTrue;
 
 public class CommandLineUITest {
 
+    private ByteArrayOutputStream output;
+    private ByteArrayInputStream input;
+    private CommandLineUI inputOutput;
+
+    @Before
+    public void setUp() {
+        output = new ByteArrayOutputStream();
+        input = new ByteArrayInputStream("".getBytes());
+        inputOutput = new CommandLineUI(new PrintStream(output), input);
+    }
+
     @Test
     public void boardIsDisplayed() {
         List<List<String>> rows = asList(asList("1", "2", "3"), asList("4", "5", "6"), asList("7", "8", "9"));
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        InputStream input = new ByteArrayInputStream("".getBytes());
-        CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
         inputOutput.displayBoard(rows);
 
@@ -31,10 +40,6 @@ public class CommandLineUITest {
 
     @Test
     public void askPlayerForMove() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        InputStream input = new ByteArrayInputStream("".getBytes());
-        CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
-
         inputOutput.askForMove();
 
         assertTrue(output.toString().contains("Place your mark! Pick a move from 1 - 9:"));
@@ -42,7 +47,6 @@ public class CommandLineUITest {
 
     @Test
     public void getPlayerMove() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
