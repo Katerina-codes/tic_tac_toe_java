@@ -14,8 +14,7 @@ public class Board {
     }
 
     public List<String> createGrid() {
-        List<String> boardSpaces = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
-        return boardSpaces;
+        return asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
     }
 
     public List updateMove(int move, String playerType) {
@@ -33,5 +32,13 @@ public class Board {
         }
 
         return rows;
+    }
+
+    public boolean isMoveUnique(List<String> grid, int move) {
+        if (grid.get(move).equals("X") || (grid.get(move).equals("O"))) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

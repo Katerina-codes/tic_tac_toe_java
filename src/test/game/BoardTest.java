@@ -7,6 +7,8 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class BoardTest {
 
@@ -34,5 +36,13 @@ public class BoardTest {
         assertEquals(asList("1", "2", "3"), rows.get(0));
         assertEquals(asList("4", "5", "6"), rows.get(1));
         assertEquals(asList("7", "8", "9"), rows.get(2));
+    }
+
+    @Test
+    public void playersCantEnterSameMove() {
+        Board board = new Board();
+        List<String> grid = asList("X", "2", "3", "4", "5", "6", "7", "8", "9");
+
+        assertFalse(board.isMoveUnique(grid, 0));
     }
 }
