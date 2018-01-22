@@ -23,7 +23,7 @@ public class BoardTest {
     @Test
     public void canMakeMoveOnABoard() {
         Board board = new Board();
-        List grid = board.updateMove(0, "X");
+        List grid = board.updateMove("0", "X");
 
         assertEquals("X", grid.get(0));
     }
@@ -45,4 +45,5 @@ public class BoardTest {
 
         assertFalse(board.isMoveUnique(grid, 0));
     }
+
 }

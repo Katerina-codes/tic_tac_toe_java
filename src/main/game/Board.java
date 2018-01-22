@@ -17,8 +17,9 @@ public class Board {
         return asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
     }
 
-    public List updateMove(int move, String playerType) {
-        board.set(move, playerType);
+    public List updateMove(String move, String playerType) {
+        int convertedMove = Integer.parseInt(String.valueOf(move));
+        board.set(convertedMove, playerType);
         return board;
     }
 
