@@ -17,7 +17,9 @@ public class Game {
         inputOutput.displayBoard(rows);
         inputOutput.askForMove();
         String move = inputOutput.getPlayerMove();
-        board.updateMove(move, "1");
+        board.updateMove(move, "X");
+        List<List<String>> newBoard = board.getRows();
+        inputOutput.displayBoard(newBoard);
     }
 
 }

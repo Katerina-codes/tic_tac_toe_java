@@ -22,7 +22,7 @@ public class BoardTest {
     @Test
     public void canMakeMoveOnABoard() {
         Board board = new Board();
-        List grid = board.updateMove("0", "X");
+        List grid = board.updateMove("1", "X");
 
         assertEquals("X", grid.get(0));
     }
