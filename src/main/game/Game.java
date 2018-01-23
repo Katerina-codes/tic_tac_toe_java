@@ -19,16 +19,24 @@ public class Game {
         List<String> board = this.board.createGrid();
         Player player = new Player(inputOutput);
 
-        while (this.board.hasAvailableMoves(board)) {
-            List<List<String>> currentBoard = this.board.getRows();
+        displayBoard();
 
-            inputOutput.displayBoard(currentBoard);
-            inputOutput.askForMove();
-            String playerOneMove = player.playMove(this.board, grid);
-            this.board.updateMove(playerOneMove, "X");
+        while (this.board.hasAvailableMoves(board)) {
+            playMove(grid, player);
+            displayBoard();
         }
-        List<List<String>> finalBoard = this.board.getRows();
-        inputOutput.displayBoard(finalBoard);
+        displayBoard();
+    }
+
+    private void displayBoard() {
+        List<List<String>> activeBoard = this.board.getRows();
+        inputOutput.displayBoard(activeBoard);
+    }
+
+    private void playMove(List grid, Player player) {
+        inputOutput.askForMove();
+        String playerOneMove = player.playMove(this.board, grid);
+        this.board.updateMove(playerOneMove, "X");
     }
 
 }
