@@ -7,7 +7,7 @@ import static java.util.Arrays.asList;
 
 public class Board {
 
-    private List<String> board;
+    public List<String> board;
 
     public Board(List<String> board) {
         this.board = board;
