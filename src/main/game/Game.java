@@ -13,13 +13,14 @@ public class Game {
     }
 
     public void runGame() {
-        List<List<String>> rows = board.getRows();
-        inputOutput.displayBoard(rows);
-        inputOutput.askForMove();
-        String move = inputOutput.getPlayerMove();
-        board.updateMove(move, "X");
-        List<List<String>> newBoard = board.getRows();
-        inputOutput.displayBoard(newBoard);
+        List<String> currentBoard = board.createGrid();
+        while (board.hasAvailableMoves(currentBoard)) {
+            List<List<String>> rows = board.getRows();
+            inputOutput.displayBoard(rows);
+            inputOutput.askForMove();
+            String move = inputOutput.getPlayerMove();
+            board.updateMove(move, "X");
+        }
     }
 
 }
