@@ -9,12 +9,12 @@ public class Board {
 
     private List<String> board;
 
-    public Board() {
-        this.board = createGrid();
+    public Board(List<String> board) {
+        this.board = board;
     }
 
     public List<String> createGrid() {
-        return asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
+        return board;
     }
 
     public List updateMove(String move, String playerType) {

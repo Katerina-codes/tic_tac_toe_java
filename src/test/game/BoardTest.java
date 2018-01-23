@@ -13,7 +13,7 @@ public class BoardTest {
 
     @Test
     public void createThreeByThreeBoard() {
-        Board board = new Board();
+        Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
         List grid = board.createGrid();
 
         assertEquals(9, grid.size());
@@ -21,7 +21,7 @@ public class BoardTest {
 
     @Test
     public void canMakeMoveOnABoard() {
-        Board board = new Board();
+        Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
         List grid = board.updateMove("1", "X");
 
         assertEquals("X", grid.get(0));
@@ -29,7 +29,7 @@ public class BoardTest {
 
     @Test
     public void canReturnRows() {
-        Board board = new Board();
+        Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
         List<List<String>> rows = board.getRows();
 
         assertEquals(asList("1", "2", "3"), rows.get(0));
@@ -39,7 +39,7 @@ public class BoardTest {
 
     @Test
     public void playersCantEnterSameMove() {
-        Board board = new Board();
+        Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
         List<String> grid = asList("X", "2", "3", "4", "5", "6", "7", "8", "9");
 
         assertFalse(board.isMoveUnique(grid, 0));
@@ -47,7 +47,7 @@ public class BoardTest {
 
     @Test
     public void boardHasNoAvailableMovesLeft() {
-        Board board = new Board();
+        Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
         List<String> grid = asList("X", "O", "X", "O", "X", "O", "X", "O", "X");
 
         assertFalse(board.hasAvailableMoves(grid));
