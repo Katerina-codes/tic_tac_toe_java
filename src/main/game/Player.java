@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Player {
 
-    private final CommandLineUI inputOutput;
+    private final UI inputOutput;
 
-    public Player(CommandLineUI inputOutput) {
+    public Player(UI inputOutput) {
         this.inputOutput = inputOutput;
     }
 
