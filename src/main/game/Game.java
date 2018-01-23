@@ -16,15 +16,17 @@ public class Game {
 
     public void runGame() {
         List grid = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
-        List<String> currentBoard = board.createGrid();
-        while (board.hasAvailableMoves(currentBoard)) {
-            List<List<String>> rows = board.getRows();
+        List<String> board = this.board.createGrid();
+        while (this.board.hasAvailableMoves(board)) {
+            List<List<String>> currentBoard = this.board.getRows();
 
-            inputOutput.displayBoard(rows);
+            inputOutput.displayBoard(currentBoard);
             inputOutput.askForMove();
-            String playerOneMove = inputOutput.getPlayerMove(board, grid);
-            board.updateMove(playerOneMove, "X");
+            String playerOneMove = inputOutput.getPlayerMove(this.board, grid);
+            this.board.updateMove(playerOneMove, "X");
         }
+        List<List<String>> finalBoard = this.board.getRows();
+        inputOutput.displayBoard(finalBoard);
     }
 
 }
