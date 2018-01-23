@@ -42,7 +42,7 @@ public class BoardTest {
         Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
         List<String> grid = asList("X", "2", "3", "4", "5", "6", "7", "8", "9");
 
-        assertFalse(board.isMoveUnique(grid, 0));
+        assertFalse(board.isMoveUnique(grid, 1));
     }
 
     @Test

@@ -36,7 +36,7 @@ public class Board {
     }
 
     public boolean isMoveUnique(List<String> grid, int move) {
-        return !grid.get(move).equals("X") && (!grid.get(move).equals("O"));
+        return !grid.get(move - 1).equals("X") && (!grid.get(move - 1).equals("O"));
     }
 
     public boolean hasAvailableMoves(List<String> grid) {
