@@ -98,4 +98,12 @@ public class BoardTest {
 
         assertTrue(board.diagonalWin(playerMark));
     }
+
+    @Test
+    public void checkIfPlayerHasWon() {
+        Board board = new Board(asList( "X", "O", "3", "O", "X", "6", "7", "8", "X"));
+        String playerMark = "X";
+
+        assertTrue(board.playerHasWon(playerMark));
+    }
 }

@@ -117,4 +117,16 @@ public class Board {
 
         return false;
     }
+
+    public boolean playerHasWon(String playerMark) {
+        if (horizontalWin(playerMark)) {
+            return true;
+        } else if (columnWin(playerMark)) {
+            return true;
+        } else if (diagonalWin(playerMark)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
