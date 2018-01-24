@@ -72,4 +72,12 @@ public class BoardTest {
 
         assertTrue(board.horizontalWin(playerMark));
     }
+
+    @Test
+    public void canScoreVerticalWin() {
+        Board board = new Board(asList("X", "O", "3", "X", "O", "X", "X", "O", "9"));
+        String playerMark = "X";
+
+        assertTrue(board.columnWin(playerMark));
+    }
 }

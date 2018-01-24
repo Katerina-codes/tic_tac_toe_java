@@ -85,4 +85,15 @@ public class Board {
         }
         return rows;
     }
+
+    public boolean columnWin(String playerMark) {
+        List<List<String>> columns = getColumns();
+
+        for (List<String> column : columns) {
+            if (isWin(playerMark, column)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
