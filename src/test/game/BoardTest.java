@@ -90,4 +90,12 @@ public class BoardTest {
 
         assertTrue(board.columnWin(playerMark));
     }
+
+    @Test
+    public void canScoreDiagonalWin() {
+        Board board = new Board(asList( "X", "O", "3", "O", "X", "6", "7", "8", "X"));
+        String playerMark = "X";
+
+        assertTrue(board.diagonalWin(playerMark));
+    }
 }

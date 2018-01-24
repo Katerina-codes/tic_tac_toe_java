@@ -105,4 +105,16 @@ public class Board {
         diagonals.add(diagonalTwo);
         return diagonals;
     }
+
+    public boolean diagonalWin(String playerMark) {
+        List<List<String>> diagonals = getDiagonals();
+
+        for (List<String> diagonal : diagonals) {
+            if (isWin(playerMark, diagonal)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
