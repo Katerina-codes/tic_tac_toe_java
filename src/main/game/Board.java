@@ -74,4 +74,15 @@ public class Board {
         }
         return false;
     }
+
+    public List<List<String>> getColumns() {
+        List<List<String>> rows = new ArrayList<>();
+        int boardSize = 3;
+
+        for (int i = 0; i < boardSize; i++) {
+            List<String> row = asList(board.get(i), board.get(i + 3), board.get(i + 6));
+            rows.add(row);
+        }
+        return rows;
+    }
 }

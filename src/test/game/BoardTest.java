@@ -1,6 +1,7 @@
 package test.game;
 
 import main.game.Board;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -36,6 +37,16 @@ public class BoardTest {
         assertEquals(asList("1", "2", "3"), rows.get(0));
         assertEquals(asList("4", "5", "6"), rows.get(1));
         assertEquals(asList("7", "8", "9"), rows.get(2));
+    }
+
+    @Test
+    public void canReturnColumns() {
+        Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
+        List<List<String>> rows = board.getColumns();
+
+        assertEquals(asList("1", "4", "7"), rows.get(0));
+        assertEquals(asList("2", "5", "8"), rows.get(1));
+        assertEquals(asList("3", "6", "9"), rows.get(2));
     }
 
     @Test
