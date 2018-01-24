@@ -22,12 +22,12 @@ public class Game {
 
         displayBoard();
 
-        while (this.board.hasAvailableMoves(board)) {
+        while (!this.board.gameIsOver()) {
 
             playMove(playerOne, grid, "X");
             displayBoard();
 
-            if (this.board.playerHasWon("X") || this.board.playerHasWon("O") || !this.board.hasAvailableMoves(board)) {
+            if (this.board.gameIsOver()) {
                 return;
             } else {
                 playMove(playerTwo, grid, "O");
