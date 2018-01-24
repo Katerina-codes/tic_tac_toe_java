@@ -129,4 +129,8 @@ public class Board {
             return false;
         }
     }
+
+    public boolean gameIsOver() {
+        return playerHasWon("X") || playerHasWon("O") || !hasAvailableMoves(board);
+    }
 }

@@ -106,4 +106,11 @@ public class BoardTest {
 
         assertTrue(board.playerHasWon(playerMark));
     }
+
+    @Test
+    public void gameIsOverAndXWins() {
+        Board board = new Board(asList( "X", "O", "3", "O", "X", "6", "7", "8", "X"));
+
+        assertTrue(board.gameIsOver());
+    }
 }
