@@ -50,6 +50,16 @@ public class BoardTest {
     }
 
     @Test
+    public void canReturnDiagonals() {
+        Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
+        List<List<String>> diagonals = board.getDiagonals();
+
+        assertEquals(asList("1", "5", "9"), diagonals.get(0));
+        assertEquals(asList("9", "5", "1"), diagonals.get(1));
+    }
+
+
+    @Test
     public void playersCantEnterSameMove() {
         Board board = new Board(asList("X", "2", "3", "4", "5", "6", "7", "8", "9"));
         List<String> grid = board.board;

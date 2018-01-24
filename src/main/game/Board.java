@@ -96,4 +96,13 @@ public class Board {
         }
         return false;
     }
+
+    public List<List<String>> getDiagonals() {
+        List<List<String>> diagonals = new ArrayList<>();
+        List<String> diagonalOne = asList(board.get(0), board.get(4), board.get(8));
+        List<String> diagonalTwo = asList(board.get(8), board.get(4), board.get(0));
+        diagonals.add(diagonalOne);
+        diagonals.add(diagonalTwo);
+        return diagonals;
+    }
 }
