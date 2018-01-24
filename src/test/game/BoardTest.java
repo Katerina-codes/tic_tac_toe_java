@@ -8,6 +8,7 @@ import java.util.List;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class BoardTest {
 
@@ -51,5 +52,13 @@ public class BoardTest {
         List<String> grid = board.board;
 
         assertFalse(board.hasAvailableMoves(grid));
+    }
+
+    @Test
+    public void canScoreAHorizontalWin() {
+        Board board = new Board(asList("X", "X", "X", "4", "5", "O", "O", "8", "9"));
+        String playerMark = "X";
+
+        assertTrue(board.horizontalWin(playerMark));
     }
 }

@@ -48,4 +48,23 @@ public class Board {
         }
         return count != 9;
     }
+
+    public boolean horizontalWin(String playerMark) {
+        List<List<String>> rows = getRows();
+
+        for (List<String> row : rows) {
+            int markCounter = 0;
+
+            for (String mark : row) {
+                if (mark == playerMark) {
+                    markCounter++;
+                }
+            }
+            if (markCounter == 3) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
