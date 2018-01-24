@@ -21,4 +21,5 @@ public class GameTest {
         assertTrue(inputOutput.askForMoveWasCalled());
         assertTrue(inputOutput.getPlayerMoveWasCalled());
     }
+
 }
