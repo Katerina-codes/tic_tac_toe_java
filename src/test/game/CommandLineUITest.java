@@ -53,7 +53,7 @@ public class CommandLineUITest {
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
         Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
-        List<String> grid = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
+        List<String> grid = board.board;
 
         assertEquals("1", inputOutput.getPlayerMove(board, grid));
     }
@@ -65,7 +65,7 @@ public class CommandLineUITest {
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
         Board board = new Board(asList("X", "2", "3", "4", "5", "6", "7", "8", "9"));
-        List<String> grid = asList("X", "2", "3", "4", "5", "6", "7", "8", "9");
+        List<String> grid = board.board;
 
         assertEquals("2", inputOutput.getPlayerMove(board, grid));
         assertTrue(output.toString().contains("This move is taken. Place another one:"));
