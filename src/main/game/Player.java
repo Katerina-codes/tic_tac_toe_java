@@ -1,7 +1,5 @@
 package main.game;
 
-import java.util.List;
-
 public class Player {
 
     private final UI inputOutput;
@@ -10,7 +8,7 @@ public class Player {
         this.inputOutput = inputOutput;
     }
 
-    public String playMove(Board board, List<String> grid) {
-        return inputOutput.getPlayerMove(board, grid);
+    public String getPlayerMove(Board board) {
+        return inputOutput.getPlayerMove(board);
     }
 }

@@ -13,6 +13,10 @@ public class Board {
         this.board = board;
     }
 
+    public Board() {
+        this.board = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
+    }
+
     public List updateMove(String move, String playerType) {
         int convertedMove = Integer.parseInt(String.valueOf(move)) - 1;
         board.set(convertedMove, playerType);
@@ -31,14 +35,14 @@ public class Board {
         return rows;
     }
 
-    public boolean isMoveUnique(List<String> grid, int move) {
-        return !grid.get(move - 1).equals("X") && (!grid.get(move - 1).equals("O"));
+    public boolean isMoveAvailable(int move) {
+        return !(this.board.get(move - 1).equals("X")) && (!(this.board.get(move - 1).equals("O")));
     }
 
-    public boolean hasAvailableMoves(List<String> grid) {
+    public boolean hasAvailableMoves() {
         int count = 0;
-        for (int i = 0; i < grid.size(); i++) {
-            if (grid.get(i).equals("X") || grid.get(i).equals("O")) {
+        for (int i = 0; i < this.board.size(); i++) {
+            if (this.board.get(i).equals("X") || this.board.get(i).equals("O")) {
                 count += 1;
             }
         }
@@ -119,6 +123,6 @@ public class Board {
     }
 
     public boolean gameIsOver() {
-        return playerHasWon("X") || playerHasWon("O") || !hasAvailableMoves(board);
+        return playerHasWon("X") || playerHasWon("O") || !hasAvailableMoves();
     }
 }

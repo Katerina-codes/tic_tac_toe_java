@@ -21,7 +21,7 @@ public class FakeCommandLineUI implements UI {
     }
 
     @Override
-    public String getPlayerMove(Board board, List<String> grid) {
+    public String getPlayerMove(Board board) {
         this.getPlayerMoveWasCalled = true;
         List moves = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
         int rnd = new Random().nextInt(moves.size());

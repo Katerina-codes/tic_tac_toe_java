@@ -49,19 +49,24 @@ public class BoardTest {
 
 
     @Test
-    public void playersCantEnterSameMove() {
+    public void playersCantEnterSameMoveWhenMoveIsX() {
         Board board = new Board(asList("X", "2", "3", "4", "5", "6", "7", "8", "9"));
-        List<String> grid = board.board;
 
-        assertFalse(board.isMoveUnique(grid, 1));
+        assertFalse(board.isMoveAvailable(1));
+    }
+
+    @Test
+    public void playersCantEnterSameMoveWhenMoveIsO() {
+        Board board = new Board(asList("O", "2", "3", "4", "5", "6", "7", "8", "9"));
+
+        assertFalse(board.isMoveAvailable(1));
     }
 
     @Test
     public void boardHasNoAvailableMovesLeft() {
         Board board = new Board(asList("X", "O", "X", "O", "X", "O", "X", "O", "X"));
-        List<String> grid = board.board;
 
-        assertFalse(board.hasAvailableMoves(grid));
+        assertFalse(board.hasAvailableMoves());
     }
 
     @Test
