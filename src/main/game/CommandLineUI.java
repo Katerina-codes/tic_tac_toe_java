@@ -17,14 +17,15 @@ public class CommandLineUI implements UI {
         output.println("Place your mark! Pick a move from 1 - 9:");
     }
 
-    public String getPlayerMove(Board board, List<String> grid) {
+    public String getValidMove(Board board) {
         String move = getMove();
 
         int convertedMove = Integer.parseInt(move);
 
-        while (!board.isMoveUnique(grid, convertedMove)) {
+        while (!board.isMoveAvailable(convertedMove)) {
             move = getValidMove();
             convertedMove = Integer.parseInt(move);
+
         }
         return move;
     }

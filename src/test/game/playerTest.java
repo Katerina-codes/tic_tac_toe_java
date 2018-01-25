@@ -22,10 +22,9 @@ public class playerTest {
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
         Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
-        List<String> grid = board.board;
 
         Player player = new Player(inputOutput);
 
-        assertEquals("1", player.playMove(board, grid));
+        assertEquals("1", player.getPlayerMove(board));
     }
 }

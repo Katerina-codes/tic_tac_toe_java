@@ -2,8 +2,6 @@ package main.game;
 
 import java.util.List;
 
-import static java.util.Arrays.asList;
-
 public class Game {
 
     private final UI inputOutput;
@@ -15,7 +13,6 @@ public class Game {
     }
 
     public void runGame() {
-        List grid = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
         Player playerOne = new Player(inputOutput);
         Player playerTwo = new Player(inputOutput);
 
@@ -24,7 +21,7 @@ public class Game {
         String winner = null;
         while (!this.board.gameIsOver()) {
 
-            playMove(playerOne, grid, "X");
+            playMove(playerOne, "X");
             displayBoard();
 
             if (this.board.gameIsOver()) {
@@ -32,7 +29,7 @@ public class Game {
                 inputOutput.announceWinner(winner);
                 return;
             } else {
-                playMove(playerTwo, grid, "O");
+                playMove(playerTwo, "O");
                 winner = "O";
                 displayBoard();
             }
@@ -46,11 +43,10 @@ public class Game {
         inputOutput.displayBoard(activeBoard);
     }
 
-    private String playMove(Player player, List grid, String mark) {
+    private void playMove(Player player, String mark) {
         inputOutput.askForMove();
-        String playerMove = player.playMove(this.board, grid);
+        String playerMove = player.getPlayerMove(this.board);
         this.board.updateMove(playerMove, mark);
-        return playerMove;
     }
 
 }
