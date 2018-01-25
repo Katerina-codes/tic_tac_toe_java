@@ -115,15 +115,7 @@ public class Board {
     }
 
     public boolean playerHasWon(String playerMark) {
-        if (horizontalWin(playerMark)) {
-            return true;
-        } else if (columnWin(playerMark)) {
-            return true;
-        } else if (diagonalWin(playerMark)) {
-            return true;
-        } else {
-            return false;
-        }
+        return horizontalWin(playerMark) || columnWin(playerMark) || diagonalWin(playerMark);
     }
 
     public boolean gameIsOver() {
