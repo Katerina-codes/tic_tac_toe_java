@@ -64,4 +64,7 @@ public class CommandLineUI implements UI {
                 .trim();
     }
 
+    public void announceWinner(String winner) {
+        output.format("%s won!", winner);
+    }
 }

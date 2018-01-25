@@ -11,6 +11,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static java.util.Arrays.asList;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -27,6 +29,7 @@ public class GameTest {
         assertTrue(inputOutput.displayBoardWasCalled());
         assertTrue(inputOutput.askForMoveWasCalled());
         assertTrue(inputOutput.getPlayerMoveWasCalled());
+        assertTrue(inputOutput.announceWinnerWasCalled());
     }
 
     @Test
@@ -40,6 +43,7 @@ public class GameTest {
         game.runGame();
 
         assertEquals(board.board, asList("X", "X", "X", "O", "O", "6", "7", "8", "9"));
+        assertThat(output.toString(), containsString("X won!"));
     }
 
 }

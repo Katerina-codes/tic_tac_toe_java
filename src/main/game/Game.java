@@ -22,19 +22,25 @@ public class Game {
 
         displayBoard();
 
+        String winner = null;
         while (!this.board.gameIsOver()) {
 
             playMove(playerOne, grid, "X");
             displayBoard();
 
             if (this.board.gameIsOver()) {
+                winner = "X";
+                inputOutput.announceWinner(winner);
                 return;
             } else {
                 playMove(playerTwo, grid, "O");
+                winner = "O";
+
                 displayBoard();
             }
         }
         displayBoard();
+        inputOutput.announceWinner(winner);
     }
 
     private void displayBoard() {

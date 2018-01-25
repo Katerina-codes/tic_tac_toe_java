@@ -12,7 +12,9 @@ import java.io.PrintStream;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class CommandLineUITest {
@@ -69,5 +71,12 @@ public class CommandLineUITest {
 
         assertEquals("2", inputOutput.getPlayerMove(board, grid));
         assertTrue(output.toString().contains("This move is taken. Place another one:"));
+    }
+
+    @Test
+    public void displaysXHasWon() {
+        inputOutput.announceWinner("X");
+
+        assertThat(output.toString(), containsString("X won!"));
     }
 }
