@@ -4,7 +4,6 @@ import main.game.Board;
 import main.game.CommandLineUI;
 import main.game.Game;
 import main.game.UI;
-import org.hamcrest.core.StringContains;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -12,8 +11,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static java.util.Arrays.asList;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.StringContains.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
