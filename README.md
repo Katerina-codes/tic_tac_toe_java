@@ -1,15 +1,15 @@
-### Tic Tac Toe
+# Tic Tac Toe
 
 Tic Tac Toe is a game where two players, each with a mark X or O compete to see who will be first to get three of their marks in a row.
 Marks can be placed vertically, horizontally or diagonally.
 
-# Rules
+## Rules
 Player X always goes first then the players take alternate moves and play until the game has been won or there is tie.
 
-# Game Modes
+## Game Modes
 There is one game mode: human vs human.
 
-# Get the game
+## Get the game
 Currently the program and test are run in IntelliJ.
 
 Download the repository by clicking the green button above and selecting 'Download ZIP'.
