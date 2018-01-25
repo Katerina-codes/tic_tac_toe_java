@@ -3,7 +3,6 @@ package test.game;
 import main.game.Board;
 import main.game.CommandLineUI;
 import main.game.Player;
-import main.game.UI;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;

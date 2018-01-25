@@ -1,15 +1,12 @@
 package test.game;
 
 import main.game.Board;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class BoardTest {
 
@@ -85,7 +82,7 @@ public class BoardTest {
 
     @Test
     public void canScoreDiagonalWin() {
-        Board board = new Board(asList( "X", "O", "3", "O", "X", "6", "7", "8", "X"));
+        Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
         String playerMark = "X";
 
         assertTrue(board.diagonalWin(playerMark));
@@ -93,7 +90,7 @@ public class BoardTest {
 
     @Test
     public void checkIfPlayerHasWon() {
-        Board board = new Board(asList( "X", "O", "3", "O", "X", "6", "7", "8", "X"));
+        Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
         String playerMark = "X";
 
         assertTrue(board.playerHasWon(playerMark));
@@ -101,7 +98,7 @@ public class BoardTest {
 
     @Test
     public void gameIsOverAndXWins() {
-        Board board = new Board(asList( "X", "O", "3", "O", "X", "6", "7", "8", "X"));
+        Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
 
         assertTrue(board.gameIsOver());
     }
