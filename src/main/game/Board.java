@@ -13,10 +13,6 @@ public class Board {
         this.board = board;
     }
 
-    public List<String> createGrid() {
-        return board;
-    }
-
     public List updateMove(String move, String playerType) {
         int convertedMove = Integer.parseInt(String.valueOf(move)) - 1;
         board.set(convertedMove, playerType);

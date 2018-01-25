@@ -16,7 +16,6 @@ public class Game {
 
     public void runGame() {
         List grid = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
-        List<String> board = this.board.createGrid();
         Player playerOne = new Player(inputOutput);
         Player playerTwo = new Player(inputOutput);
 
@@ -35,7 +34,6 @@ public class Game {
             } else {
                 playMove(playerTwo, grid, "O");
                 winner = "O";
-
                 displayBoard();
             }
         }
