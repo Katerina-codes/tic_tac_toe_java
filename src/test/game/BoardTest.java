@@ -86,12 +86,21 @@ public class BoardTest {
     }
 
     @Test
-    public void canScoreDiagonalWin() {
+    public void canScoreFirstDiagonalWin() {
         Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
         String playerMark = "X";
 
         assertTrue(board.diagonalWin(playerMark));
     }
+
+    @Test
+    public void canScoreSecondDiagonalWin() {
+        Board board = new Board(asList("O", "O", "X", "4", "X", "6", "X", "8", "9"));
+        String playerMark = "X";
+
+        assertTrue(board.diagonalWin(playerMark));
+    }
+
 
     @Test
     public void checkIfPlayerHasWon() {
