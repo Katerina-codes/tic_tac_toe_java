@@ -22,12 +22,16 @@ public class CommandLineUI implements UI {
 
         int convertedMove = Integer.parseInt(move);
 
-        while (!board.isMoveAvailable(convertedMove)) {
+        while (moveIsNotAvailable(board, convertedMove)) {
             move = getValidMove();
             convertedMove = Integer.parseInt(move);
 
         }
         return move;
+    }
+
+    private boolean moveIsNotAvailable(Board board, int convertedMove) {
+        return !board.isMoveAvailable(convertedMove);
     }
 
     private String getValidMove() {
