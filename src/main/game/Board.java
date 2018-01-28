@@ -39,14 +39,6 @@ public class Board {
         return moveIsTakenByX(move) && moveIsTakenByO(move);
     }
 
-    private boolean moveIsTakenByO(int move) {
-        return !this.board.get(move - 1).equals("O");
-    }
-
-    private boolean moveIsTakenByX(int move) {
-        return !this.board.get(move - 1).equals("X");
-    }
-
     public boolean hasAvailableMoves() {
         int count = 0;
 
@@ -67,20 +59,6 @@ public class Board {
             }
         }
 
-        return false;
-    }
-
-    private boolean isWin(String playerMark, List<String> row) {
-        int markCounter = 0;
-
-        for (String mark : row) {
-            if (mark == playerMark) {
-                markCounter++;
-            }
-        }
-        if (markCounter == 3) {
-            return true;
-        }
         return false;
     }
 
@@ -137,5 +115,27 @@ public class Board {
 
     public boolean gameIsOver() {
         return playerHasWon("X") || playerHasWon("O") || !hasAvailableMoves();
+    }
+
+    private boolean moveIsTakenByO(int move) {
+        return !this.board.get(move - 1).equals("O");
+    }
+
+    private boolean moveIsTakenByX(int move) {
+        return !this.board.get(move - 1).equals("X");
+    }
+
+    private boolean isWin(String playerMark, List<String> row) {
+        int markCounter = 0;
+
+        for (String mark : row) {
+            if (mark == playerMark) {
+                markCounter++;
+            }
+        }
+        if (markCounter == 3) {
+            return true;
+        }
+        return false;
     }
 }
