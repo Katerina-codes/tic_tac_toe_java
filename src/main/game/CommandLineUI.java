@@ -30,6 +30,22 @@ public class CommandLineUI implements UI {
         return move;
     }
 
+    public void displayBoard(List<List<String>> rows) {
+        StringBuilder sb = new StringBuilder();
+        String formattedRows = null;
+        for (int index = 0; index <= rows.size() - 1; index++) {
+            List<String> row = rows.get(index);
+            sb.append(row);
+            sb.append("\n");
+            formattedRows = sb.toString();
+        }
+        output.println(formatBoard(formattedRows));
+    }
+
+    public void announceWinner(String winner) {
+        output.format("%s won!", winner);
+    }
+
     private boolean moveIsNotAvailable(Board board, int convertedMove) {
         return !board.isMoveAvailable(convertedMove);
     }
@@ -49,27 +65,11 @@ public class CommandLineUI implements UI {
         return move;
     }
 
-    public void displayBoard(List<List<String>> rows) {
-        StringBuilder sb = new StringBuilder();
-        String formattedRows = null;
-        for (int index = 0; index <= rows.size() - 1; index++) {
-            List<String> row = rows.get(index);
-            sb.append(row);
-            sb.append("\n");
-            formattedRows = sb.toString();
-        }
-        output.println(formatBoard(formattedRows));
-    }
-
     private String formatBoard(String formattedRows) {
         return formattedRows
                 .replace(",", "")
                 .replace("[", "")
                 .replace("]", "")
                 .trim();
-    }
-
-    public void announceWinner(String winner) {
-        output.format("%s won!", winner);
     }
 }
