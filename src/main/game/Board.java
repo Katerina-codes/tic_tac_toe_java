@@ -129,7 +129,7 @@ public class Board {
         int markCounter = 0;
 
         for (String mark : row) {
-            if (mark == playerMark) {
+            if (mark.equals(playerMark)) {
                 markCounter++;
             }
         }

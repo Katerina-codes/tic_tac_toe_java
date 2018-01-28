@@ -19,7 +19,7 @@ public class Game {
         displayBoard();
 
         String winner = null;
-        while (!this.board.gameIsOver()) {
+        while (gameIsNotOver()) {
 
             playMove(playerOne, "X");
             displayBoard();
@@ -36,6 +36,10 @@ public class Game {
         }
         displayBoard();
         inputOutput.announceWinner(winner);
+    }
+
+    private boolean gameIsNotOver() {
+        return !this.board.gameIsOver();
     }
 
     private void displayBoard() {
