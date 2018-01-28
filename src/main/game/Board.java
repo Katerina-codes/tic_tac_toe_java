@@ -36,7 +36,15 @@ public class Board {
     }
 
     public boolean isMoveAvailable(int move) {
-        return !(this.board.get(move - 1).equals("X")) && (!(this.board.get(move - 1).equals("O")));
+        return moveIsTakenByX(move) && moveIsTakenByO(move);
+    }
+
+    private boolean moveIsTakenByO(int move) {
+        return !this.board.get(move - 1).equals("O");
+    }
+
+    private boolean moveIsTakenByX(int move) {
+        return !this.board.get(move - 1).equals("X");
     }
 
     public boolean hasAvailableMoves() {
