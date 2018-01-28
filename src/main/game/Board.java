@@ -41,8 +41,9 @@ public class Board {
 
     public boolean hasAvailableMoves() {
         int count = 0;
-        for (int i = 0; i < this.board.size(); i++) {
-            if (this.board.get(i).equals("X") || this.board.get(i).equals("O")) {
+
+        for (String space : this.board) {
+            if (space.equals("X") || space.equals("O")) {
                 count += 1;
             }
         }
