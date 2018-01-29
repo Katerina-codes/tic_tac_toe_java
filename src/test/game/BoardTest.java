@@ -131,4 +131,11 @@ public class BoardTest {
 
         assertEquals(playerOne, board.announceResult());
     }
+
+    @Test
+    public void findWinner() {
+        Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
+
+        assertEquals("X", board.findWinner());
+    }
 }
