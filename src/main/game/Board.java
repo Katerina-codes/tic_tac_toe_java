@@ -150,20 +150,16 @@ public class Board {
     }
 
     public String announceResult() {
-        if (findWinner().equals("X")) {
-            return PLAYER_ONE_MARK;
-        } else if (findWinner().equals("O")) {
-            return PLAYER_TWO_MARK;
-        } else {
-            return "Tie";
-        }
+        return findWinner();
     }
 
-    public String findWinner() {
-        if (playerHasWon("X")) {
-            return "X";
+    private String findWinner() {
+        if (gameIsTied()) {
+            return "Tie";
+        } else if (playerHasWon("X")) {
+            return PLAYER_ONE_MARK;
         } else {
-            return "O";
+            return PLAYER_TWO_MARK;
         }
     }
 }

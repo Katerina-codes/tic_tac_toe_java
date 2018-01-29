@@ -118,13 +118,6 @@ public class BoardTest {
     }
 
     @Test
-    public void scoresATie() {
-        Board board = new Board(asList("O", "X", "X", "X", "O", "O", "X", "O", "X"));
-
-        assertTrue(board.gameIsTied());
-    }
-
-    @Test
     public void boardAnnouncesResultOfPlayerOneWin() {
         Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
         String playerOne = "X";
@@ -133,9 +126,9 @@ public class BoardTest {
     }
 
     @Test
-    public void findWinner() {
-        Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
+    public void scoresATie() {
+        Board board = new Board(asList("O", "X", "X", "X", "O", "O", "X", "O", "X"));
 
-        assertEquals("X", board.findWinner());
+        assertEquals("Tie", board.announceResult());
     }
 }
