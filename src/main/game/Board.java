@@ -7,6 +7,8 @@ import static java.util.Arrays.asList;
 
 public class Board {
 
+    private static final String PLAYER_TWO_MARK = "O";
+    private final String PLAYER_ONE_MARK = "X";
     public List<String> board;
 
     public Board(List<String> board) {
@@ -43,7 +45,7 @@ public class Board {
         int count = 0;
 
         for (String space : this.board) {
-            if (space.equals("X") || space.equals("O")) {
+            if (space.equals(PLAYER_ONE_MARK) || space.equals(PLAYER_TWO_MARK)) {
                 count += 1;
             }
         }
@@ -114,15 +116,15 @@ public class Board {
     }
 
     public boolean gameIsOver() {
-        return playerHasWon("X") || playerHasWon("O") || !hasAvailableMoves();
+        return playerHasWon(PLAYER_ONE_MARK) || playerHasWon(PLAYER_TWO_MARK) || !hasAvailableMoves();
     }
 
     private boolean moveIsTakenByO(int move) {
-        return !this.board.get(move - 1).equals("O");
+        return !this.board.get(move - 1).equals(PLAYER_TWO_MARK);
     }
 
     private boolean moveIsTakenByX(int move) {
-        return !this.board.get(move - 1).equals("X");
+        return !this.board.get(move - 1).equals(PLAYER_ONE_MARK);
     }
 
     private boolean isWin(String playerMark, List<String> row) {
@@ -144,14 +146,14 @@ public class Board {
     }
 
     private boolean neitherPlayerHasWon() {
-        return !playerHasWon("X") && !playerHasWon("O");
+        return !playerHasWon(PLAYER_ONE_MARK) && !playerHasWon(PLAYER_TWO_MARK);
     }
 
     public String announceResult() {
-        if (playerHasWon("X")) {
-            return "X";
-        } else if (playerHasWon("O")) {
-            return "O";
+        if (playerHasWon(PLAYER_ONE_MARK)) {
+            return PLAYER_ONE_MARK;
+        } else if (playerHasWon(PLAYER_TWO_MARK)) {
+            return PLAYER_TWO_MARK;
         } else {
             return "Tie";
         }
