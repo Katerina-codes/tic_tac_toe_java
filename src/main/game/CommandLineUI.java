@@ -43,7 +43,11 @@ public class CommandLineUI implements UI {
     }
 
     public void announceWinner(String winner) {
-        output.format("%s won!", winner);
+        if (winner.equals("Tie")) {
+            output.println("It's a tie!");
+        } else {
+            output.format("%s won!", winner);
+        }
     }
 
     private boolean moveIsNotAvailable(Board board, int convertedMove) {
