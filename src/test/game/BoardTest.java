@@ -123,4 +123,12 @@ public class BoardTest {
 
         assertTrue(board.gameIsTied());
     }
+
+    @Test
+    public void boardAnnouncesResultOfPlayerOneWin() {
+        Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
+        String playerOne = "X";
+
+        assertEquals(playerOne, board.announceResult());
+    }
 }

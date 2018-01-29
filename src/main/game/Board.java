@@ -146,4 +146,14 @@ public class Board {
     private boolean neitherPlayerHasWon() {
         return !playerHasWon("X") && !playerHasWon("O");
     }
+
+    public String announceResult() {
+        if (playerHasWon("X")) {
+            return "X";
+        } else if (playerHasWon("O")) {
+            return "O";
+        } else {
+            return "Tie";
+        }
+    }
 }
