@@ -8,6 +8,11 @@ public class Player {
         this.inputOutput = inputOutput;
     }
 
+    public void playMove(String mark, Board board) {
+        String playerMove = getMove(board);
+        board.updateMove(playerMove, mark);
+    }
+
     public String getMove(Board board) {
         inputOutput.askForMove();
         return inputOutput.getValidMove(board);

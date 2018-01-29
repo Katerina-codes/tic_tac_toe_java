@@ -20,7 +20,7 @@ public class Game {
         String winner = null;
         while (gameIsNotOver()) {
 
-            playMove(player, "X");
+            player.playMove("X", board);
             displayBoard();
 
             if (this.board.gameIsOver()) {
@@ -28,7 +28,7 @@ public class Game {
                 inputOutput.announceWinner(winner);
                 return;
             } else {
-                playMove(player, "O");
+                player.playMove("O", board);
                 winner = "O";
                 displayBoard();
             }
@@ -44,11 +44,6 @@ public class Game {
     private void displayBoard() {
         List<List<String>> activeBoard = this.board.getRows();
         inputOutput.displayBoard(activeBoard);
-    }
-
-    private void playMove(Player player, String mark) {
-        String playerMove = player.getMove(board);
-        this.board.updateMove(playerMove, mark);
     }
 
 }
