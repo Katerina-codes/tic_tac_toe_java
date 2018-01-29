@@ -25,7 +25,6 @@ public class Game {
             displayBoard();
             switchPlayer(playerOne, playerTwo);
         }
-        switchPlayer(playerOne, playerTwo);
         String result = board.announceResult();
         inputOutput.announceWinner(result);
     }
