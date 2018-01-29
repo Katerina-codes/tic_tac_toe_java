@@ -26,7 +26,8 @@ public class Game {
             switchPlayer(playerOne, playerTwo);
         }
         switchPlayer(playerOne, playerTwo);
-        inputOutput.announceWinner(currentPlayer.getMark());
+        String result = board.announceResult();
+        inputOutput.announceWinner(result);
     }
 
     private void switchPlayer(Player playerOne, Player playerTwo) {
