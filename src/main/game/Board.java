@@ -140,6 +140,10 @@ public class Board {
     }
 
     public boolean gameIsTied() {
+        return neitherPlayerHasWon();
+    }
+
+    private boolean neitherPlayerHasWon() {
         return !playerHasWon("X") && !playerHasWon("O");
     }
 }
