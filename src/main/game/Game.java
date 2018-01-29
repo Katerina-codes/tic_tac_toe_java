@@ -6,6 +6,7 @@ public class Game {
 
     private final UI inputOutput;
     private final Board board;
+    private Player currentPlayer;
 
     public Game(UI inputOutput, Board board) {
         this.inputOutput = inputOutput;
@@ -13,28 +14,27 @@ public class Game {
     }
 
     public void runGame() {
-        Player player = new Player(inputOutput);
+        Player playerOne = new Player(inputOutput, "X");
+        Player playerTwo = new Player(inputOutput, "O");
 
         displayBoard();
 
-        String winner = null;
+        currentPlayer = playerOne;
         while (gameIsNotOver()) {
-
-            player.playMove("X", board);
+            currentPlayer.playMove(board);
             displayBoard();
-
-            if (this.board.gameIsOver()) {
-                winner = "X";
-                inputOutput.announceWinner(winner);
-                return;
-            } else {
-                player.playMove("O", board);
-                winner = "O";
-                displayBoard();
-            }
+            switchPlayer(playerOne, playerTwo);
         }
-        displayBoard();
-        inputOutput.announceWinner(winner);
+        switchPlayer(playerOne, playerTwo);
+        inputOutput.announceWinner(currentPlayer.getMark());
+    }
+
+    private void switchPlayer(Player playerOne, Player playerTwo) {
+        if (currentPlayer == playerOne) {
+            currentPlayer = playerTwo;
+        } else {
+            currentPlayer = playerOne;
+        }
     }
 
     private boolean gameIsNotOver() {

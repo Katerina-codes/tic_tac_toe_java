@@ -22,7 +22,7 @@ public class playerTest {
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
         Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
 
-        Player player = new Player(inputOutput);
+        Player player = new Player(inputOutput, "X");
 
         assertEquals("1", player.getMove(board));
     }
