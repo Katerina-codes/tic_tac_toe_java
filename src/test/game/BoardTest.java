@@ -116,4 +116,11 @@ public class BoardTest {
 
         assertTrue(board.gameIsOver());
     }
+
+    @Test
+    public void scoresATie() {
+        Board board = new Board(asList("O", "X", "X", "X", "O", "O", "X", "O", "X"));
+
+        assertTrue(board.gameIsTied());
+    }
 }

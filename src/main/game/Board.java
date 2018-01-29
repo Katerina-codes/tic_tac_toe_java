@@ -138,4 +138,8 @@ public class Board {
         }
         return false;
     }
+
+    public boolean gameIsTied() {
+        return !playerHasWon("X") && !playerHasWon("O");
+    }
 }
