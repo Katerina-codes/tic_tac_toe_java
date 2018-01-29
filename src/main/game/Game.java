@@ -13,15 +13,14 @@ public class Game {
     }
 
     public void runGame() {
-        Player playerOne = new Player(inputOutput);
-        Player playerTwo = new Player(inputOutput);
+        Player player = new Player(inputOutput);
 
         displayBoard();
 
         String winner = null;
         while (gameIsNotOver()) {
 
-            playMove(playerOne, "X");
+            playMove(player, "X");
             displayBoard();
 
             if (this.board.gameIsOver()) {
@@ -29,7 +28,7 @@ public class Game {
                 inputOutput.announceWinner(winner);
                 return;
             } else {
-                playMove(playerTwo, "O");
+                playMove(player, "O");
                 winner = "O";
                 displayBoard();
             }
@@ -48,9 +47,13 @@ public class Game {
     }
 
     private void playMove(Player player, String mark) {
-        inputOutput.askForMove();
-        String playerMove = player.getPlayerMove(this.board);
+        String playerMove = getMove(player, board);
         this.board.updateMove(playerMove, mark);
+    }
+
+    private String getMove(Player player, Board board) {
+        inputOutput.askForMove();
+        return player.getPlayerMove(board);
     }
 
 }
