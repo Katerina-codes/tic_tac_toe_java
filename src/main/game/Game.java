@@ -47,13 +47,8 @@ public class Game {
     }
 
     private void playMove(Player player, String mark) {
-        String playerMove = getMove(player, board);
+        String playerMove = player.getMove(board);
         this.board.updateMove(playerMove, mark);
-    }
-
-    private String getMove(Player player, Board board) {
-        inputOutput.askForMove();
-        return player.getPlayerMove(board);
     }
 
 }

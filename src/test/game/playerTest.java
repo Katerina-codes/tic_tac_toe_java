@@ -24,6 +24,6 @@ public class playerTest {
 
         Player player = new Player(inputOutput);
 
-        assertEquals("1", player.getPlayerMove(board));
+        assertEquals("1", player.getMove(board));
     }
 }
