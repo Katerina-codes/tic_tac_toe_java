@@ -7,7 +7,7 @@ import static java.util.Arrays.asList;
 
 public class Board {
 
-    private static final String PLAYER_TWO_MARK = "O";
+    private final String PLAYER_TWO_MARK = "O";
     private final String PLAYER_ONE_MARK = "X";
     public List<String> grid;
 
