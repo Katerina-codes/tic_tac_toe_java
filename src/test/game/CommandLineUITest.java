@@ -78,8 +78,8 @@ public class CommandLineUITest {
 
     @Test
     public void canHandleATie() {
-       inputOutput.announceWinner("Tie");
+        inputOutput.announceWinner("Tie");
 
-   assertThat(output.toString(), containsString("It's a tie!"));
+        assertThat(output.toString(), containsString("It's a tie!"));
     }
 }

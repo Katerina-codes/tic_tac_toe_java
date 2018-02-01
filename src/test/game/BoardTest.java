@@ -1,7 +1,6 @@
 package test.game;
 
 import main.game.Board;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
