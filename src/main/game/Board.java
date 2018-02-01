@@ -145,7 +145,7 @@ public class Board {
         return !playerHasWon(PLAYER_ONE_MARK) && !playerHasWon(PLAYER_TWO_MARK);
     }
 
-    public String announceResult() {
+    public String findResult() {
         return findWinner();
     }
 
