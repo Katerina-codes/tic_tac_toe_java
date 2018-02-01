@@ -44,7 +44,7 @@ public class BoardTest {
         List<List<String>> diagonals = board.getDiagonals();
 
         assertEquals(asList("1", "5", "9"), diagonals.get(0));
-        assertEquals(asList("9", "5", "1"), diagonals.get(1));
+        assertEquals(asList("3", "5", "7"), diagonals.get(1));
     }
 
 
