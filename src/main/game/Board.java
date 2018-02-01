@@ -107,6 +107,16 @@ public class Board {
         return false;
     }
 
+    public String findWinner() {
+        if (gameIsTied()) {
+            return "Tie";
+        } else if (playerHasWon("X")) {
+            return PLAYER_ONE_MARK;
+        } else {
+            return PLAYER_TWO_MARK;
+        }
+    }
+
     public boolean playerHasWon(String playerMark) {
         return horizontalWin(playerMark) || columnWin(playerMark) || diagonalWin(playerMark);
     }
@@ -137,21 +147,11 @@ public class Board {
         return false;
     }
 
-    public boolean gameIsTied() {
+    private boolean gameIsTied() {
         return neitherPlayerHasWon();
     }
 
     private boolean neitherPlayerHasWon() {
         return !playerHasWon(PLAYER_ONE_MARK) && !playerHasWon(PLAYER_TWO_MARK);
-    }
-
-    public String findWinner() {
-        if (gameIsTied()) {
-            return "Tie";
-        } else if (playerHasWon("X")) {
-            return PLAYER_ONE_MARK;
-        } else {
-            return PLAYER_TWO_MARK;
-        }
     }
 }
