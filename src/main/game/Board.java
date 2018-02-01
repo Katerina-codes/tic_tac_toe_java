@@ -38,7 +38,7 @@ public class Board {
     }
 
     public boolean isMoveAvailable(int move) {
-        return moveIsTakenByX(move) && moveIsTakenByO(move);
+        return isMoveTaken(move);
     }
 
     public boolean hasAvailableMoves() {
@@ -125,12 +125,8 @@ public class Board {
         return playerHasWon(PLAYER_ONE_MARK) || playerHasWon(PLAYER_TWO_MARK) || !hasAvailableMoves();
     }
 
-    private boolean moveIsTakenByO(int move) {
-        return !this.grid.get(move - 1).equals(PLAYER_TWO_MARK);
-    }
-
-    private boolean moveIsTakenByX(int move) {
-        return !this.grid.get(move - 1).equals(PLAYER_ONE_MARK);
+    private boolean isMoveTaken(int move) {
+        return !this.grid.get(move - 1).equals(PLAYER_TWO_MARK) && !this.grid.get(move - 1).equals(PLAYER_ONE_MARK);
     }
 
     private boolean isWin(String playerMark, List<String> row) {
@@ -141,10 +137,7 @@ public class Board {
                 markCounter++;
             }
         }
-        if (markCounter == 3) {
-            return true;
-        }
-        return false;
+        return markCounter == 3;
     }
 
     private boolean gameIsTied() {
