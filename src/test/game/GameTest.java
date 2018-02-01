@@ -42,7 +42,7 @@ public class GameTest {
 
         game.runGame();
 
-        assertEquals(board.board, asList("X", "X", "X", "O", "O", "6", "7", "8", "9"));
+        assertEquals(board.grid, asList("X", "X", "X", "O", "O", "6", "7", "8", "9"));
         assertThat(output.toString(), containsString("X won!"));
     }
 

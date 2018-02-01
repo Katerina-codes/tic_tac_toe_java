@@ -19,8 +19,4 @@ public class Player {
         inputOutput.askForMove();
         return inputOutput.getValidMove(board);
     }
-
-    public String getMark() {
-        return mark;
-    }
 }

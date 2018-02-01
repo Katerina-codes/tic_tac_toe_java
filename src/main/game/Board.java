@@ -7,22 +7,22 @@ import static java.util.Arrays.asList;
 
 public class Board {
 
-    private static final String PLAYER_TWO_MARK = "O";
+    private final String PLAYER_TWO_MARK = "O";
     private final String PLAYER_ONE_MARK = "X";
-    public List<String> board;
+    public List<String> grid;
 
-    public Board(List<String> board) {
-        this.board = board;
+    public Board(List<String> grid) {
+        this.grid = grid;
     }
 
     public Board() {
-        this.board = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
+        this.grid = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
     }
 
     public List updateMove(String move, String playerType) {
         int convertedMove = Integer.parseInt(String.valueOf(move)) - 1;
-        this.board.set(convertedMove, playerType);
-        return this.board;
+        this.grid.set(convertedMove, playerType);
+        return this.grid;
     }
 
     public List<List<String>> getRows() {
@@ -30,7 +30,7 @@ public class Board {
         int boardSize = 3;
 
         for (int i = 0; i < boardSize * boardSize; i += 3) {
-            List<String> row = asList(board.get(i), board.get(i + 1), board.get(i + 2));
+            List<String> row = asList(grid.get(i), grid.get(i + 1), grid.get(i + 2));
             rows.add(row);
         }
 
@@ -38,13 +38,13 @@ public class Board {
     }
 
     public boolean isMoveAvailable(int move) {
-        return moveIsTakenByX(move) && moveIsTakenByO(move);
+        return isMoveTaken(move);
     }
 
     public boolean hasAvailableMoves() {
         int count = 0;
 
-        for (String space : this.board) {
+        for (String space : this.grid) {
             if (space.equals(PLAYER_ONE_MARK) || space.equals(PLAYER_TWO_MARK)) {
                 count += 1;
             }
@@ -69,7 +69,7 @@ public class Board {
         int boardSize = 3;
 
         for (int i = 0; i < boardSize; i++) {
-            List<String> row = asList(board.get(i), board.get(i + 3), board.get(i + 6));
+            List<String> row = asList(grid.get(i), grid.get(i + 3), grid.get(i + 6));
             rows.add(row);
         }
         return rows;
@@ -88,14 +88,10 @@ public class Board {
 
     public List<List<String>> getDiagonals() {
         List<List<String>> diagonals = new ArrayList<>();
-        List<String> diagonalOne = asList(board.get(0), board.get(4), board.get(8));
-        List<String> diagonalTwo = asList(board.get(8), board.get(4), board.get(0));
-        List<String> diagonalThree = asList(board.get(2), board.get(4), board.get(6));
-        List<String> diagonalFour = asList(board.get(6), board.get(4), board.get(2));
+        List<String> diagonalOne = asList(grid.get(0), grid.get(4), grid.get(8));
+        List<String> diagonalTwo = asList(grid.get(2), grid.get(4), grid.get(6));
         diagonals.add(diagonalOne);
         diagonals.add(diagonalTwo);
-        diagonals.add(diagonalThree);
-        diagonals.add(diagonalFour);
         return diagonals;
     }
 
@@ -111,6 +107,16 @@ public class Board {
         return false;
     }
 
+    public String findWinner() {
+        if (gameIsTied()) {
+            return "Tie";
+        } else if (playerHasWon("X")) {
+            return PLAYER_ONE_MARK;
+        } else {
+            return PLAYER_TWO_MARK;
+        }
+    }
+
     public boolean playerHasWon(String playerMark) {
         return horizontalWin(playerMark) || columnWin(playerMark) || diagonalWin(playerMark);
     }
@@ -119,12 +125,8 @@ public class Board {
         return playerHasWon(PLAYER_ONE_MARK) || playerHasWon(PLAYER_TWO_MARK) || !hasAvailableMoves();
     }
 
-    private boolean moveIsTakenByO(int move) {
-        return !this.board.get(move - 1).equals(PLAYER_TWO_MARK);
-    }
-
-    private boolean moveIsTakenByX(int move) {
-        return !this.board.get(move - 1).equals(PLAYER_ONE_MARK);
+    private boolean isMoveTaken(int move) {
+        return !this.grid.get(move - 1).equals(PLAYER_TWO_MARK) && !this.grid.get(move - 1).equals(PLAYER_ONE_MARK);
     }
 
     private boolean isWin(String playerMark, List<String> row) {
@@ -135,31 +137,14 @@ public class Board {
                 markCounter++;
             }
         }
-        if (markCounter == 3) {
-            return true;
-        }
-        return false;
+        return markCounter == 3;
     }
 
-    public boolean gameIsTied() {
+    private boolean gameIsTied() {
         return neitherPlayerHasWon();
     }
 
     private boolean neitherPlayerHasWon() {
         return !playerHasWon(PLAYER_ONE_MARK) && !playerHasWon(PLAYER_TWO_MARK);
-    }
-
-    public String announceResult() {
-        return findWinner();
-    }
-
-    private String findWinner() {
-        if (gameIsTied()) {
-            return "Tie";
-        } else if (playerHasWon("X")) {
-            return PLAYER_ONE_MARK;
-        } else {
-            return PLAYER_TWO_MARK;
-        }
     }
 }
