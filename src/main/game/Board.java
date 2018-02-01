@@ -145,11 +145,7 @@ public class Board {
         return !playerHasWon(PLAYER_ONE_MARK) && !playerHasWon(PLAYER_TWO_MARK);
     }
 
-    public String findResult() {
-        return findWinner();
-    }
-
-    private String findWinner() {
+    public String findWinner() {
         if (gameIsTied()) {
             return "Tie";
         } else if (playerHasWon("X")) {

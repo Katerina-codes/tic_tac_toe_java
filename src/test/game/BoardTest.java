@@ -122,13 +122,13 @@ public class BoardTest {
         Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
         String playerOne = "X";
 
-        assertEquals(playerOne, board.findResult());
+        assertEquals(playerOne, board.findWinner());
     }
 
     @Test
     public void scoresATie() {
         Board board = new Board(asList("O", "X", "X", "X", "O", "O", "X", "O", "X"));
 
-        assertEquals("Tie", board.findResult());
+        assertEquals("Tie", board.findWinner());
     }
 }
