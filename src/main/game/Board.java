@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static main.game.PlayerTypes.PLAYER_ONE_MARK;
+import static main.game.PlayerTypes.PLAYER_TWO_MARK;
 import static main.game.Result.TIE;
 
 public class Board {
 
     public static final int ROW_COUNT = 3;
-    private final String PLAYER_TWO_MARK = "O";
-    private final String PLAYER_ONE_MARK = "X";
     public List<String> grid;
 
     public Board(List<String> grid) {
@@ -46,7 +46,7 @@ public class Board {
         int count = 0;
 
         for (String space : this.grid) {
-            if (space.equals(PLAYER_ONE_MARK) || space.equals(PLAYER_TWO_MARK)) {
+            if (space.equals(PLAYER_ONE_MARK.getPlayer()) || space.equals(PLAYER_TWO_MARK.getPlayer())) {
                 count += 1;
             }
         }
@@ -110,7 +110,7 @@ public class Board {
     public Result findWinner() {
         if (gameIsTied()) {
             return TIE;
-        } else if (playerHasWon(PLAYER_ONE_MARK)) {
+        } else if (playerHasWon(PLAYER_ONE_MARK.getPlayer())) {
             return Result.PLAYER_ONE;
         } else {
             return Result.PLAYER_TWO;
@@ -122,11 +122,11 @@ public class Board {
     }
 
     public boolean gameIsOver() {
-        return playerHasWon(PLAYER_ONE_MARK) || playerHasWon(PLAYER_TWO_MARK) || !hasAvailableMoves();
+        return playerHasWon(PLAYER_ONE_MARK.getPlayer()) || playerHasWon(PLAYER_TWO_MARK.getPlayer()) || !hasAvailableMoves();
     }
 
     private boolean isMoveTaken(int move) {
-        return !this.grid.get(move - 1).equals(PLAYER_TWO_MARK) && !this.grid.get(move - 1).equals(PLAYER_ONE_MARK);
+        return !this.grid.get(move - 1).equals(PLAYER_TWO_MARK.getPlayer()) && !this.grid.get(move - 1).equals(PLAYER_ONE_MARK.getPlayer());
     }
 
     private boolean isWin(String playerMark, List<String> row) {
@@ -141,7 +141,7 @@ public class Board {
     }
 
     private boolean gameIsTied() {
-        return !playerHasWon(PLAYER_ONE_MARK) && !playerHasWon(PLAYER_TWO_MARK);
+        return !playerHasWon(PLAYER_ONE_MARK.getPlayer()) && !playerHasWon(PLAYER_TWO_MARK.getPlayer());
     }
 
 }
