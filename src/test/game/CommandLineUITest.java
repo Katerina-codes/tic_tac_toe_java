@@ -2,6 +2,7 @@ package test.game;
 
 import main.game.Board;
 import main.game.CommandLineUI;
+import main.game.Result;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,8 +40,7 @@ public class CommandLineUITest {
                 "7 8 9"));
     }
 
-    @Test
-    public void askPlayerForMove() {
+    @Test public void askPlayerForMove() {
         inputOutput.askForMove();
 
         assertTrue(output.toString().contains("Place your mark! Pick a move from 1 - 9:"));
@@ -71,14 +71,14 @@ public class CommandLineUITest {
 
     @Test
     public void displaysXHasWon() {
-        inputOutput.announceWinner("X");
+        inputOutput.announceWinner(Result.PLAYER_ONE);
 
         assertThat(output.toString(), containsString("X won!"));
     }
 
     @Test
     public void canHandleATie() {
-        inputOutput.announceWinner("Tie");
+        inputOutput.announceWinner(Result.TIE);
 
         assertThat(output.toString(), containsString("It's a tie!"));
     }

@@ -42,11 +42,11 @@ public class CommandLineUI implements UI {
         output.println(formatBoard(formattedRows));
     }
 
-    public void announceWinner(String winner) {
-        if (winner.equals("Tie")) {
+    public void announceWinner(Result result) {
+        if (result.equals(Result.TIE)) {
             output.println("It's a tie!");
         } else {
-            output.format("%s won!", winner);
+            output.format("%s won!", result.getResult());
         }
     }
 

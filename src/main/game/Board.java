@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static main.game.Result.TIE;
 
 public class Board {
 
@@ -106,13 +107,13 @@ public class Board {
         return false;
     }
 
-    public String findWinner() {
+    public Result findWinner() {
         if (gameIsTied()) {
-            return "Tie";
-        } else if (playerHasWon("X")) {
-            return PLAYER_ONE_MARK;
+            return TIE;
+        } else if (playerHasWon(PLAYER_ONE_MARK)) {
+            return Result.PLAYER_ONE;
         } else {
-            return PLAYER_TWO_MARK;
+            return Result.PLAYER_TWO;
         }
     }
 

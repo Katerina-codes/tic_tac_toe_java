@@ -1,6 +1,7 @@
 package test.game;
 
 import main.game.Board;
+import main.game.Result;
 import main.game.UI;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class FakeCommandLineUI implements UI {
     }
 
     @Override
-    public void announceWinner(String winner) {
+    public void announceWinner(Result winner) {
         this.announceWinnerWasCalled = true;
     }
 
