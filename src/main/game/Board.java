@@ -7,6 +7,7 @@ import static java.util.Arrays.asList;
 
 public class Board {
 
+    public static final int ROW_COUNT = 3;
     private final String PLAYER_TWO_MARK = "O";
     private final String PLAYER_ONE_MARK = "X";
     public List<String> grid;
@@ -27,9 +28,8 @@ public class Board {
 
     public List<List<String>> getRows() {
         List<List<String>> rows = new ArrayList<>();
-        int boardSize = 3;
 
-        for (int i = 0; i < boardSize * boardSize; i += 3) {
+        for (int i = 0; i < ROW_COUNT * ROW_COUNT; i += 3) {
             List<String> row = asList(grid.get(i), grid.get(i + 1), grid.get(i + 2));
             rows.add(row);
         }
@@ -49,7 +49,7 @@ public class Board {
                 count += 1;
             }
         }
-        return count != 9;
+        return count != grid.size();
     }
 
     public boolean horizontalWin(String playerMark) {
@@ -66,9 +66,8 @@ public class Board {
 
     public List<List<String>> getColumns() {
         List<List<String>> rows = new ArrayList<>();
-        int boardSize = 3;
 
-        for (int i = 0; i < boardSize; i++) {
+        for (int i = 0; i < ROW_COUNT; i++) {
             List<String> row = asList(grid.get(i), grid.get(i + 3), grid.get(i + 6));
             rows.add(row);
         }
@@ -141,10 +140,7 @@ public class Board {
     }
 
     private boolean gameIsTied() {
-        return neitherPlayerHasWon();
-    }
-
-    private boolean neitherPlayerHasWon() {
         return !playerHasWon(PLAYER_ONE_MARK) && !playerHasWon(PLAYER_TWO_MARK);
     }
+
 }
