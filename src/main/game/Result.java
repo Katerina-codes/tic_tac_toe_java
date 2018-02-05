@@ -1,8 +1,8 @@
 package main.game;
 
 public enum Result {
-    PLAYER_ONE("X"),
-    PLAYER_TWO("O"),
+    PLAYER_ONE_WIN("X"),
+    PLAYER_TWO_WIN("O"),
     TIE("Tie");
 
     private final String result;

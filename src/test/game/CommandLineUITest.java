@@ -71,7 +71,7 @@ public class CommandLineUITest {
 
     @Test
     public void displaysXHasWon() {
-        inputOutput.announceWinner(Result.PLAYER_ONE);
+        inputOutput.announceWinner(Result.PLAYER_ONE_WIN);
 
         assertThat(output.toString(), containsString("X won!"));
     }

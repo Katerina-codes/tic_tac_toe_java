@@ -111,9 +111,9 @@ public class Board {
         if (gameIsTied()) {
             return TIE;
         } else if (playerHasWon(PLAYER_ONE_MARK.getPlayer())) {
-            return Result.PLAYER_ONE;
+            return Result.PLAYER_ONE_WIN;
         } else {
-            return Result.PLAYER_TWO;
+            return Result.PLAYER_TWO_WIN;
         }
     }
 
