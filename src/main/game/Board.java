@@ -56,13 +56,8 @@ public class Board {
     public boolean horizontalWin(String playerMark) {
         List<List<String>> rows = getRows();
 
-        for (List<String> row : rows) {
-            if (isWin(playerMark, row)) {
-                return true;
-            }
-        }
+        return findWin(playerMark, rows);
 
-        return false;
     }
 
     public List<List<String>> getColumns() {
@@ -78,6 +73,10 @@ public class Board {
     public boolean columnWin(String playerMark) {
         List<List<String>> columns = getColumns();
 
+        return findWin(playerMark, columns);
+    }
+
+    private boolean findWin(String playerMark, List<List<String>> columns) {
         for (List<String> column : columns) {
             if (isWin(playerMark, column)) {
                 return true;
@@ -98,13 +97,8 @@ public class Board {
     public boolean diagonalWin(String playerMark) {
         List<List<String>> diagonals = getDiagonals();
 
-        for (List<String> diagonal : diagonals) {
-            if (isWin(playerMark, diagonal)) {
-                return true;
-            }
-        }
+        return findWin(playerMark, diagonals);
 
-        return false;
     }
 
     public Result findWinner() {
