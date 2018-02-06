@@ -76,9 +76,9 @@ public class Board {
         return findWin(playerMark, columns);
     }
 
-    private boolean findWin(String playerMark, List<List<String>> columns) {
-        for (List<String> column : columns) {
-            if (isWin(playerMark, column)) {
+    private boolean findWin(String playerMark, List<List<String>> rows) {
+        for (List<String> line : rows) {
+            if (win(playerMark, line)) {
                 return true;
             }
         }
@@ -123,7 +123,7 @@ public class Board {
         return !this.grid.get(move - 1).equals(PLAYER_TWO_MARK.getPlayer()) && !this.grid.get(move - 1).equals(PLAYER_ONE_MARK.getPlayer());
     }
 
-    private boolean isWin(String playerMark, List<String> row) {
+    private boolean win(String playerMark, List<String> row) {
         int markCounter = 0;
 
         for (String mark : row) {
