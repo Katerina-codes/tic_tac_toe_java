@@ -9,5 +9,5 @@ public interface UI {
 
     void displayBoard(List<List<String>> rows);
 
-    void announceWinner(String winner);
+    void announceWinner(Result winner);
 }
