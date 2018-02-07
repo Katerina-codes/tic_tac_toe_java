@@ -5,6 +5,7 @@ import main.game.Computer;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Random;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertTrue;
@@ -15,9 +16,9 @@ public class ComputerTest {
     public void playsARandomMove() {
         Computer computer = new Computer();
         Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
-        List<Integer> possibleMoves = asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+        List<String> possibleMoves = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
 
-        int move = computer.playMove(board);
+        String move = computer.move(board);
 
         assertTrue(possibleMoves.contains(move));
     }

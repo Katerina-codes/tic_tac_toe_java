@@ -138,12 +138,11 @@ public class Board {
         return !playerHasWon(PLAYER_ONE_MARK.getPlayer()) && !playerHasWon(PLAYER_TWO_MARK.getPlayer());
     }
 
-    public List<Integer> getAvailableMoves() {
-        List<Integer> availableMoves = new ArrayList<>();
+    public List<String> getAvailableMoves() {
+        List<String> availableMoves = new ArrayList<>();
         for (String space : this.grid) {
             if (!space.equals(PLAYER_ONE_MARK.getPlayer()) || !space.equals(PLAYER_TWO_MARK.getPlayer())) {
-                int convertedSpace = Integer.parseInt(space);
-                availableMoves.add(convertedSpace);
+                availableMoves.add(space);
             }
         }
         return availableMoves;

@@ -1,6 +1,6 @@
 package main.game;
 
-public class HumanPlayer {
+public class HumanPlayer implements Player {
 
     private final UI inputOutput;
     private final String mark;
