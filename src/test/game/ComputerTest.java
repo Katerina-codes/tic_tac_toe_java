@@ -17,11 +17,9 @@ public class ComputerTest {
         Computer computer = new Computer();
         Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
         List<Integer> possibleMoves = asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-        Random random = new Random();
-        int randomMove = random.nextInt(possibleMoves.size());
 
-        computer.playMove(board);
+        int move = computer.playMove(board);
 
-        assertTrue(possibleMoves.contains(randomMove));
+        assertTrue(possibleMoves.contains(move));
     }
 }

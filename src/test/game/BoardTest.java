@@ -3,6 +3,7 @@ package test.game;
 import main.game.Board;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -50,6 +51,13 @@ public class BoardTest {
         assertEquals(asList("3", "5", "7"), diagonals.get(1));
     }
 
+    @Test
+    public void returnsListOfAvailableMoves() {
+        Board board = new Board(emptyBoard);
+        List<Integer> possibleMoves = asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+        assertEquals(possibleMoves, board.getAvailableMoves());
+    }
 
     @Test
     public void playersCantEnterSameMoveWhenMoveIsX() {
