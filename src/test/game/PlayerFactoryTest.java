@@ -1,9 +1,6 @@
 package test.game;
 
-import main.game.HumanPlayer;
-import main.game.Player;
-import main.game.PlayerFactory;
-import main.game.UI;
+import main.game.*;
 import org.junit.Test;
 
 import java.util.List;
@@ -23,4 +20,14 @@ public class PlayerFactoryTest {
         assertTrue(players.get(1) instanceof HumanPlayer);
     }
 
+    @Test
+    public void createsOneHumanAndOneComputerPlayer() {
+        UI ui = new FakeCommandLineUI();
+        PlayerFactory playerTypes = new PlayerFactory(ui);
+
+        List<Player> players = playerTypes.getPlayerTypes("2");
+
+        assertTrue(players.get(0) instanceof HumanPlayer);
+        assertTrue(players.get(1) instanceof Computer);
+    }
 }

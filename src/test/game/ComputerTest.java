@@ -5,7 +5,6 @@ import main.game.Computer;
 import org.junit.Test;
 
 import java.util.List;
-import java.util.Random;
 
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertTrue;
