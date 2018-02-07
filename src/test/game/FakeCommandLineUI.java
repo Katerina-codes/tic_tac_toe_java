@@ -15,6 +15,13 @@ public class FakeCommandLineUI implements UI {
     public boolean getPlayerMoveWasCalled = false;
     private boolean displayBoardWasCalled = false;
     private boolean announceWinnerWasCalled = false;
+    private boolean getGameModeWasCalled = false;
+
+    @Override
+    public String getGameMode() {
+        this.getGameModeWasCalled = true;
+        return "1";
+    }
 
     @Override
     public void askForMove() {
@@ -27,6 +34,10 @@ public class FakeCommandLineUI implements UI {
         List moves = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
         int rnd = new Random().nextInt(moves.size());
         return (String) moves.get(rnd);
+    }
+
+    public boolean getGameModeWasCalled() {
+        return getGameModeWasCalled;
     }
 
     @Override

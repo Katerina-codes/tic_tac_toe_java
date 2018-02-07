@@ -30,6 +30,15 @@ public class CommandLineUITest {
     }
 
     @Test
+    public void getsGameModeChoiceFromPlayer() {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        InputStream input = new ByteArrayInputStream("1".getBytes());
+        CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
+
+       assertEquals("1", inputOutput.getGameMode());
+    }
+
+    @Test
     public void boardIsDisplayed() {
         List<List<String>> rows = asList(asList("1", "2", "3"), asList("4", "5", "6"), asList("7", "8", "9"));
 
