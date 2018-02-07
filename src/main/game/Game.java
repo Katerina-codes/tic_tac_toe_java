@@ -14,8 +14,9 @@ public class Game {
     }
 
     public void runGame() {
+        String gameMode = inputOutput.getGameMode();
         PlayerFactory playerTypes = new PlayerFactory(inputOutput);
-        List<Player> players = playerTypes.getPlayerTypes("1");
+        List<Player> players = playerTypes.getPlayerTypes(gameMode);
 
         Player playerOne = players.get(0);
         Player playerTwo = players.get(1);

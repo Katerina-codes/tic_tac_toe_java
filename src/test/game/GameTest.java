@@ -26,6 +26,7 @@ public class GameTest {
 
         game.runGame();
 
+        assertTrue(inputOutput.getGameModeWasCalled());
         assertTrue(inputOutput.displayBoardWasCalled());
         assertTrue(inputOutput.askForMoveWasCalled());
         assertTrue(inputOutput.getPlayerMoveWasCalled());
@@ -35,7 +36,7 @@ public class GameTest {
     @Test
     public void playsTheGame() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        ByteArrayInputStream input = new ByteArrayInputStream("1\n4\n2\n5\n3".getBytes());
+        ByteArrayInputStream input = new ByteArrayInputStream("1\n1\n4\n2\n5\n3".getBytes());
         UI inputOutput = new CommandLineUI(new PrintStream(output), input);
         Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
         Game game = new Game(inputOutput, board);

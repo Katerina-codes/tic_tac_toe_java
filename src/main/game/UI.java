@@ -3,6 +3,8 @@ package main.game;
 import java.util.List;
 
 public interface UI {
+    String getGameMode();
+
     void askForMove();
 
     String getValidMove(Board board);
