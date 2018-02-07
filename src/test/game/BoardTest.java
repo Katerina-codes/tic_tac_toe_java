@@ -58,6 +58,14 @@ public class BoardTest {
     }
 
     @Test
+    public void returnsAListOfOneMove() {
+        Board board = new Board(asList("1", "O", "X", "O", "X", "O", "X", "O", "X"));
+        List<String> possibleMoves = asList("1");
+
+        assertEquals(possibleMoves, board.getAvailableMoves());
+    }
+
+    @Test
     public void playersCantEnterSameMoveWhenMoveIsX() {
         Board board = new Board(asList("X", "2", "3", "4", "5", "6", "7", "8", "9"));
 
