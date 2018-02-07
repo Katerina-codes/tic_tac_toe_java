@@ -40,7 +40,8 @@ public class CommandLineUITest {
                 "7 8 9"));
     }
 
-    @Test public void askPlayerForMove() {
+    @Test
+    public void askPlayerForMove() {
         inputOutput.askForMove();
 
         assertTrue(output.toString().contains("Place your mark! Pick a move from 1 - 9:"));

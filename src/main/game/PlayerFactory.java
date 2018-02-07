@@ -18,8 +18,8 @@ public class PlayerFactory {
         this.playerTwo = PLAYER_TWO_MARK.getPlayer();
     }
 
-    public List<Player> getPlayerTypes(String gameMode) {
-        Player[] humanVsHuman = { new Player(ui, playerOne), new Player(ui, playerTwo)};
+    public List<HumanPlayer> getPlayerTypes(String gameMode) {
+        HumanPlayer[] humanVsHuman = {new HumanPlayer(ui, playerOne), new HumanPlayer(ui, playerTwo)};
         return Arrays.asList(humanVsHuman);
     }
 }

@@ -6,7 +6,7 @@ public class Game {
 
     private final UI inputOutput;
     private final Board board;
-    private Player currentPlayer;
+    private HumanPlayer currentPlayer;
 
     public Game(UI inputOutput, Board board) {
         this.inputOutput = inputOutput;
@@ -14,8 +14,8 @@ public class Game {
     }
 
     public void runGame() {
-        Player playerOne = new Player(inputOutput, "X");
-        Player playerTwo = new Player(inputOutput, "O");
+        HumanPlayer playerOne = new HumanPlayer(inputOutput, "X");
+        HumanPlayer playerTwo = new HumanPlayer(inputOutput, "O");
 
         displayBoard();
 
@@ -29,7 +29,7 @@ public class Game {
         inputOutput.announceWinner(result);
     }
 
-    private void switchPlayer(Player playerOne, Player playerTwo) {
+    private void switchPlayer(HumanPlayer playerOne, HumanPlayer playerTwo) {
         if (currentPlayer == playerOne) {
             currentPlayer = playerTwo;
         } else {

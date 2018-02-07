@@ -1,11 +1,11 @@
 package main.game;
 
-public class Player {
+public class HumanPlayer {
 
     private final UI inputOutput;
     private final String mark;
 
-    public Player(UI inputOutput, String mark) {
+    public HumanPlayer(UI inputOutput, String mark) {
         this.inputOutput = inputOutput;
         this.mark = mark;
     }
