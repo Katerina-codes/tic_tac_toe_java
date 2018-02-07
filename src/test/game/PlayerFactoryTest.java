@@ -1,6 +1,7 @@
 package test.game;
 
 import main.game.HumanPlayer;
+import main.game.Player;
 import main.game.PlayerFactory;
 import main.game.UI;
 import org.junit.Test;
@@ -16,9 +17,10 @@ public class PlayerFactoryTest {
         UI ui = new FakeCommandLineUI();
         PlayerFactory playerTypes = new PlayerFactory(ui);
 
-        List<HumanPlayer> players = playerTypes.getPlayerTypes("1");
+        List<Player> players = playerTypes.getPlayerTypes("1");
 
         assertTrue(players.get(0) instanceof HumanPlayer);
         assertTrue(players.get(1) instanceof HumanPlayer);
     }
+
 }
