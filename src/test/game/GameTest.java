@@ -26,6 +26,7 @@ public class GameTest {
 
         game.runGame();
 
+        assertTrue(inputOutput.askForGameModeWasCalled());
         assertTrue(inputOutput.getGameModeWasCalled());
         assertTrue(inputOutput.displayBoardWasCalled());
         assertTrue(inputOutput.askForMoveWasCalled());

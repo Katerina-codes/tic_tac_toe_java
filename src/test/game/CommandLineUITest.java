@@ -30,12 +30,19 @@ public class CommandLineUITest {
     }
 
     @Test
+    public void asksUserForGameMode() {
+        inputOutput.askForGameMode();
+
+        assertTrue(output.toString().contains("Enter '1' for Human vs Human\nEnter '2' for Human vs Computer"));
+    }
+
+    @Test
     public void getsGameModeChoiceFromPlayer() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
-       assertEquals("1", inputOutput.getGameMode());
+        assertEquals("1", inputOutput.getGameMode());
     }
 
     @Test

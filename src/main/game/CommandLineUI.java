@@ -13,6 +13,10 @@ public class CommandLineUI implements UI {
         this.input = new BufferedReader(new InputStreamReader(input));
     }
 
+    public void askForGameMode() {
+        output.println("Enter '1' for Human vs Human\nEnter '2' for Human vs Computer");
+    }
+
     public String getGameMode() {
         String gameMode = "";
         try {
@@ -87,4 +91,5 @@ public class CommandLineUI implements UI {
                 .replace("]", "")
                 .trim();
     }
+
 }
