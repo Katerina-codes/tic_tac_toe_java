@@ -83,7 +83,7 @@ public class Board {
         return false;
     }
 
-    public List<Line> getDiagonalsLines() {
+    public List<Line> getDiagonalLines() {
         List<Line> diagonals = new ArrayList<>();
         Line diagonalOne = new Line(grid.get(0), grid.get(4), grid.get(8));
         Line diagonalTwo = new Line(grid.get(2), grid.get(4), grid.get(6));
@@ -131,7 +131,7 @@ public class Board {
 
     private List<Line> lines() {
         List<Line> lines = new ArrayList<>();
-        lines.addAll(getDiagonalsLines());
+        lines.addAll(getDiagonalLines());
         lines.addAll(getColumnLines());
         lines.addAll(getRowLines());
         return lines;

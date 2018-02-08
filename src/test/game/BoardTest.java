@@ -45,7 +45,7 @@ public class BoardTest {
     @Test
     public void canReturnDiagonals() {
         Board board = new Board(emptyBoard);
-        List<Line> diagonals = board.getDiagonalsLines();
+        List<Line> diagonals = board.getDiagonalLines();
 
         assertEquals(new Line("1", "5", "9"), diagonals.get(0));
         assertEquals(new Line("3", "5", "7"), diagonals.get(1));
