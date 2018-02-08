@@ -2,6 +2,7 @@ package main.game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static java.util.Arrays.asList;
 
@@ -22,4 +23,11 @@ public class Line {
         }
         return markCounter == spaces.size();
     }
+
+    @Override
+    public boolean equals(Object line) {
+        Line otherLine = (Line) line;
+        return this.spaces.equals(otherLine.spaces);
+    }
+
 }

@@ -1,6 +1,7 @@
 package test.game;
 
 import main.game.Board;
+import main.game.Line;
 import org.junit.Test;
 
 import java.util.List;
@@ -24,30 +25,30 @@ public class BoardTest {
     @Test
     public void canReturnRows() {
         Board board = new Board(emptyBoard);
-        List<List<String>> rows = board.getRows();
-
-        assertEquals(asList("1", "2", "3"), rows.get(0));
-        assertEquals(asList("4", "5", "6"), rows.get(1));
-        assertEquals(asList("7", "8", "9"), rows.get(2));
+        List<Line> rows = board.getRowLines();
+        assertEquals(new Line("1", "2", "3"), rows.get(0));
+        assertEquals(new Line("4", "5", "6"), rows.get(1));
+        assertEquals(new Line("7", "8", "9"), rows.get(2));
     }
+
 
     @Test
     public void canReturnColumns() {
         Board board = new Board(emptyBoard);
-        List<List<String>> rows = board.getColumns();
+        List<Line> rows = board.getColumnLines();
 
-        assertEquals(asList("1", "4", "7"), rows.get(0));
-        assertEquals(asList("2", "5", "8"), rows.get(1));
-        assertEquals(asList("3", "6", "9"), rows.get(2));
+        assertEquals(new Line("1", "4", "7"), rows.get(0));
+        assertEquals(new Line("2", "5", "8"), rows.get(1));
+        assertEquals(new Line("3", "6", "9"), rows.get(2));
     }
 
     @Test
     public void canReturnDiagonals() {
         Board board = new Board(emptyBoard);
-        List<List<String>> diagonals = board.getDiagonals();
+        List<Line> diagonals = board.getDiagonalsLines();
 
-        assertEquals(asList("1", "5", "9"), diagonals.get(0));
-        assertEquals(asList("3", "5", "7"), diagonals.get(1));
+        assertEquals(new Line("1", "5", "9"), diagonals.get(0));
+        assertEquals(new Line("3", "5", "7"), diagonals.get(1));
     }
 
     @Test
@@ -90,28 +91,28 @@ public class BoardTest {
     public void canScoreAHorizontalWin() {
         Board board = new Board(asList("X", "X", "X", "4", "5", "O", "O", "8", "9"));
 
-        assertTrue(board.horizontalWin(PLAYER_ONE));
+        assertTrue(board.findWin(PLAYER_ONE));
     }
 
     @Test
     public void canScoreVerticalWin() {
         Board board = new Board(asList("X", "O", "3", "X", "O", "X", "X", "O", "9"));
 
-        assertTrue(board.columnWin(PLAYER_ONE));
+        assertTrue(board.findWin(PLAYER_ONE));
     }
 
     @Test
     public void canScoreFirstDiagonalWin() {
         Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
 
-        assertTrue(board.diagonalWin(PLAYER_ONE));
+        assertTrue(board.findWin(PLAYER_ONE));
     }
 
     @Test
     public void canScoreSecondDiagonalWin() {
         Board board = new Board(asList("O", "O", "X", "4", "X", "6", "X", "8", "9"));
 
-        assertTrue(board.diagonalWin(PLAYER_ONE));
+        assertTrue(board.findWin(PLAYER_ONE));
     }
 
 
