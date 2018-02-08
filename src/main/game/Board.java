@@ -1,6 +1,7 @@
 package main.game;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -38,6 +39,17 @@ public class Board {
         return rows;
     }
 
+    public List<Line> getRowLines() {
+        List<Line> rows = new ArrayList<>();
+
+        for (int i = 0; i < ROW_COUNT * ROW_COUNT; i += 3) {
+            Line line = new Line(grid.get(i), grid.get(i + 1), grid.get(i + 2));
+            rows.add(line);
+        }
+
+        return rows;
+    }
+
     public boolean isMoveAvailable(int move) {
         return isMoveTaken(move);
     }
@@ -70,6 +82,16 @@ public class Board {
         return rows;
     }
 
+    public List<Line> getColumnLines() {
+        List<Line> columns = new ArrayList<>();
+
+        for (int i = 0; i < ROW_COUNT; i++) {
+            Line line = new Line(grid.get(i), grid.get(i + 3), grid.get(i + 6));
+            columns.add(line);
+        }
+        return columns;
+    }
+
     public boolean columnWin(String playerMark) {
         List<List<String>> columns = getColumns();
 
@@ -77,8 +99,8 @@ public class Board {
     }
 
     private boolean findWin(String playerMark, List<List<String>> rows) {
-        for (List<String> line : rows) {
-            if (win(playerMark, line)) {
+        for (Line line : lines()) {
+            if (line.hasWinner(playerMark)) {
                 return true;
             }
         }
@@ -92,6 +114,23 @@ public class Board {
         diagonals.add(diagonalOne);
         diagonals.add(diagonalTwo);
         return diagonals;
+    }
+
+    public List<Line> getDiagonalsLines() {
+        List<Line> diagonals = new ArrayList<>();
+        Line diagonalOne = new Line(grid.get(0), grid.get(4), grid.get(8));
+        Line diagonalTwo = new Line(grid.get(2), grid.get(4), grid.get(6));
+        diagonals.add(diagonalOne);
+        diagonals.add(diagonalTwo);
+        return diagonals;
+    }
+
+    public List<Line> lines() {
+        List<Line> lines = new ArrayList<>();
+        lines.addAll(getDiagonalsLines());
+        lines.addAll(getColumnLines());
+        lines.addAll(getRowLines());
+        return lines;
     }
 
     public boolean diagonalWin(String playerMark) {
