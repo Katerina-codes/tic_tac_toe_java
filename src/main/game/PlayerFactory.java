@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static main.game.PlayerTypes.PLAYER_ONE_MARK;
-import static main.game.PlayerTypes.PLAYER_TWO_MARK;
+import static main.game.PlayerTypes.O_MARK;
+import static main.game.PlayerTypes.X_MARK;
 
 public class PlayerFactory {
 
@@ -16,8 +16,8 @@ public class PlayerFactory {
 
     public PlayerFactory(UI ui) {
         this.ui = ui;
-        this.playerOne = PLAYER_ONE_MARK.getPlayer();
-        this.playerTwo = PLAYER_TWO_MARK.getPlayer();
+        this.playerOne = X_MARK.getPlayer();
+        this.playerTwo = O_MARK.getPlayer();
     }
 
     public List<Player> getPlayerTypes(String players) {

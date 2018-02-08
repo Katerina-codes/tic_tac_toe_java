@@ -1,8 +1,8 @@
 package main.game;
 
 public enum PlayerTypes {
-    PLAYER_ONE_MARK("X"),
-    PLAYER_TWO_MARK("O");
+    X_MARK("X"),
+    O_MARK("O");
 
     private final String playerType;
 
