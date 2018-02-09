@@ -11,10 +11,23 @@ import static java.util.Arrays.asList;
 
 public class FakeCommandLineUI implements UI {
 
-    public boolean askForMoveWasCalled = false;
-    public boolean getPlayerMoveWasCalled = false;
+    private boolean askForMoveWasCalled = false;
+    private boolean getPlayerMoveWasCalled = false;
     private boolean displayBoardWasCalled = false;
     private boolean announceWinnerWasCalled = false;
+    private boolean getGameModeWasCalled = false;
+    private boolean askForGameModeWasCalled = false;
+
+    @Override
+    public void askForGameMode() {
+        this.askForGameModeWasCalled = true;
+    }
+
+    @Override
+    public String getGameMode() {
+        this.getGameModeWasCalled = true;
+        return "1";
+    }
 
     @Override
     public void askForMove() {
@@ -29,6 +42,10 @@ public class FakeCommandLineUI implements UI {
         return (String) moves.get(rnd);
     }
 
+    public boolean getGameModeWasCalled() {
+        return getGameModeWasCalled;
+    }
+
     @Override
     public void displayBoard(List<List<String>> rows) {
         this.displayBoardWasCalled = true;
@@ -37,6 +54,10 @@ public class FakeCommandLineUI implements UI {
     @Override
     public void announceWinner(Result winner) {
         this.announceWinnerWasCalled = true;
+    }
+
+    public boolean askForGameModeWasCalled() {
+        return askForGameModeWasCalled;
     }
 
     public boolean askForMoveWasCalled() {

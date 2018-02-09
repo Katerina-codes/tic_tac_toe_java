@@ -13,6 +13,21 @@ public class CommandLineUI implements UI {
         this.input = new BufferedReader(new InputStreamReader(input));
     }
 
+    public void askForGameMode() {
+        output.println("Enter '1' for Human vs Human\nEnter '2' for Human vs Computer");
+    }
+
+    public String getGameMode() {
+        String gameMode = "";
+        try {
+            gameMode = input.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Nothing was entered.");
+        }
+        return gameMode;
+    }
+
     public void askForMove() {
         output.println("Place your mark! Pick a move from 1 - 9:");
     }
@@ -76,4 +91,5 @@ public class CommandLineUI implements UI {
                 .replace("]", "")
                 .trim();
     }
+
 }

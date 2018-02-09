@@ -30,6 +30,22 @@ public class CommandLineUITest {
     }
 
     @Test
+    public void asksUserForGameMode() {
+        inputOutput.askForGameMode();
+
+        assertTrue(output.toString().contains("Enter '1' for Human vs Human\nEnter '2' for Human vs Computer"));
+    }
+
+    @Test
+    public void getsGameModeChoiceFromPlayer() {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        InputStream input = new ByteArrayInputStream("1".getBytes());
+        CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
+
+        assertEquals("1", inputOutput.getGameMode());
+    }
+
+    @Test
     public void boardIsDisplayed() {
         List<List<String>> rows = asList(asList("1", "2", "3"), asList("4", "5", "6"), asList("7", "8", "9"));
 
@@ -40,7 +56,8 @@ public class CommandLineUITest {
                 "7 8 9"));
     }
 
-    @Test public void askPlayerForMove() {
+    @Test
+    public void askPlayerForMove() {
         inputOutput.askForMove();
 
         assertTrue(output.toString().contains("Place your mark! Pick a move from 1 - 9:"));

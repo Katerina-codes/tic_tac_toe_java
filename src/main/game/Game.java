@@ -14,8 +14,13 @@ public class Game {
     }
 
     public void runGame() {
-        Player playerOne = new Player(inputOutput, "X");
-        Player playerTwo = new Player(inputOutput, "O");
+        inputOutput.askForGameMode();
+        String gameMode = inputOutput.getGameMode();
+        PlayerFactory playerTypes = new PlayerFactory(inputOutput);
+        List<Player> players = playerTypes.getPlayerTypes(gameMode);
+
+        Player playerOne = players.get(0);
+        Player playerTwo = players.get(1);
 
         displayBoard();
 

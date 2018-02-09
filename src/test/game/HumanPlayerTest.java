@@ -2,7 +2,7 @@ package test.game;
 
 import main.game.Board;
 import main.game.CommandLineUI;
-import main.game.Player;
+import main.game.HumanPlayer;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -13,7 +13,7 @@ import java.io.PrintStream;
 import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
-public class playerTest {
+public class HumanPlayerTest {
 
     @Test
     public void playMove() {
@@ -22,7 +22,7 @@ public class playerTest {
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
         Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
 
-        Player player = new Player(inputOutput, "X");
+        HumanPlayer player = new HumanPlayer(inputOutput, "X");
 
         assertEquals("1", player.getMove(board));
     }
