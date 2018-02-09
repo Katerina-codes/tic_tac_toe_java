@@ -25,7 +25,7 @@ public class BoardTest {
     @Test
     public void canReturnRows() {
         Board board = new Board(emptyBoard);
-        List<Line> rows = board.getRowLines();
+        List<Line> rows = board.rowLines();
         assertEquals(new Line("1", "2", "3"), rows.get(0));
         assertEquals(new Line("4", "5", "6"), rows.get(1));
         assertEquals(new Line("7", "8", "9"), rows.get(2));
@@ -35,7 +35,7 @@ public class BoardTest {
     @Test
     public void canReturnColumns() {
         Board board = new Board(emptyBoard);
-        List<Line> rows = board.getColumnLines();
+        List<Line> rows = board.columnLines();
 
         assertEquals(new Line("1", "4", "7"), rows.get(0));
         assertEquals(new Line("2", "5", "8"), rows.get(1));
@@ -45,7 +45,7 @@ public class BoardTest {
     @Test
     public void canReturnDiagonals() {
         Board board = new Board(emptyBoard);
-        List<Line> diagonals = board.getDiagonalLines();
+        List<Line> diagonals = board.diagonalLines();
 
         assertEquals(new Line("1", "5", "9"), diagonals.get(0));
         assertEquals(new Line("3", "5", "7"), diagonals.get(1));
@@ -55,7 +55,7 @@ public class BoardTest {
     public void returnsListOfAvailableMoves() {
         Board board = new Board(emptyBoard);
 
-        assertEquals(emptyBoard, board.getAvailableMoves());
+        assertEquals(emptyBoard, board.availableMoves());
     }
 
     @Test
@@ -63,7 +63,7 @@ public class BoardTest {
         Board board = new Board(asList("1", "O", "X", "O", "X", "O", "X", "O", "X"));
         List<String> possibleMoves = asList("1");
 
-        assertEquals(possibleMoves, board.getAvailableMoves());
+        assertEquals(possibleMoves, board.availableMoves());
     }
 
     @Test

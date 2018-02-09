@@ -47,7 +47,7 @@ public class Game {
     }
 
     private void displayBoard() {
-        List<List<String>> activeBoard = this.board.getRows();
+        List<List<String>> activeBoard = this.board.rows();
         inputOutput.displayBoard(activeBoard);
     }
 

@@ -27,7 +27,7 @@ public class Board {
         return this.grid;
     }
 
-    public List<List<String>> getRows() {
+    public List<List<String>> rows() {
         List<List<String>> rows = new ArrayList<>();
 
         for (int i = 0; i < ROW_COUNT * ROW_COUNT; i += 3) {
@@ -38,7 +38,7 @@ public class Board {
         return rows;
     }
 
-    public List<Line> getRowLines() {
+    public List<Line> rowLines() {
         List<Line> rows = new ArrayList<>();
 
         for (int i = 0; i < ROW_COUNT * ROW_COUNT; i += 3) {
@@ -64,7 +64,7 @@ public class Board {
         return count != grid.size();
     }
 
-    public List<Line> getColumnLines() {
+    public List<Line> columnLines() {
         List<Line> columns = new ArrayList<>();
 
         for (int i = 0; i < ROW_COUNT; i++) {
@@ -83,7 +83,7 @@ public class Board {
         return false;
     }
 
-    public List<Line> getDiagonalLines() {
+    public List<Line> diagonalLines() {
         List<Line> diagonals = new ArrayList<>();
         Line diagonalOne = new Line(grid.get(0), grid.get(4), grid.get(8));
         Line diagonalTwo = new Line(grid.get(2), grid.get(4), grid.get(6));
@@ -92,7 +92,7 @@ public class Board {
         return diagonals;
     }
 
-    public List<String> getAvailableMoves() {
+    public List<String> availableMoves() {
         List<String> availableMoves = new ArrayList<>();
         for (String space : this.grid) {
             if (!space.equals(X_MARK.getPlayer()) && !space.equals(O_MARK.getPlayer())) {
@@ -131,9 +131,9 @@ public class Board {
 
     private List<Line> lines() {
         List<Line> lines = new ArrayList<>();
-        lines.addAll(getDiagonalLines());
-        lines.addAll(getColumnLines());
-        lines.addAll(getRowLines());
+        lines.addAll(diagonalLines());
+        lines.addAll(columnLines());
+        lines.addAll(rowLines());
         return lines;
     }
 

@@ -11,7 +11,7 @@ public class Computer implements Player {
     }
 
     public String move(Board board) {
-        List<String> possibleMoves = board.getAvailableMoves();
+        List<String> possibleMoves = board.availableMoves();
         return possibleMoves.get(0);
     }
 }
