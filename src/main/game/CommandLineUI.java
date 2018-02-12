@@ -23,7 +23,7 @@ public class CommandLineUI implements UI {
             gameMode = input.readLine();
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Nothing was entered.");
+            output.println("Nothing was entered.");
         }
         return gameMode;
     }
@@ -79,7 +79,7 @@ public class CommandLineUI implements UI {
         try {
             move = input.readLine();
         } catch (IOException e) {
-            System.out.println("Nothing was entered.");
+            output.println("Nothing was entered.");
         }
         return move;
     }
