@@ -1,6 +1,7 @@
 package test.game;
 
 import main.game.*;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
@@ -9,11 +10,17 @@ import static junit.framework.TestCase.assertTrue;
 
 public class PlayerFactoryTest {
 
+    private PlayerFactory playerTypes;
+    private FakeCommandLineUI ui;
+
+    @Before
+   public void setUp() {
+       ui = new FakeCommandLineUI();
+       playerTypes = new PlayerFactory(ui);
+   }
+
     @Test
     public void createsTwoHumanPlayers() {
-        UI ui = new FakeCommandLineUI();
-        PlayerFactory playerTypes = new PlayerFactory(ui);
-
         List<Player> players = playerTypes.getPlayerTypes("1");
 
         assertTrue(players.get(0) instanceof HumanPlayer);
@@ -22,9 +29,6 @@ public class PlayerFactoryTest {
 
     @Test
     public void createsOneHumanAndOneComputerPlayer() {
-        UI ui = new FakeCommandLineUI();
-        PlayerFactory playerTypes = new PlayerFactory(ui);
-
         List<Player> players = playerTypes.getPlayerTypes("2");
 
         assertTrue(players.get(0) instanceof HumanPlayer);
@@ -33,9 +37,6 @@ public class PlayerFactoryTest {
 
     @Test
     public void createsComputerPlayerAsPlayerOne() {
-        UI ui = new FakeCommandLineUI();
-        PlayerFactory playerTypes = new PlayerFactory(ui);
-
         List<Player> players = playerTypes.getPlayerTypes("3");
 
         assertTrue(players.get(0) instanceof Computer);
