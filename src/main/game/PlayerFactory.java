@@ -24,11 +24,14 @@ public class PlayerFactory {
         Player[] humanVsHuman = {new HumanPlayer(ui, playerOne), new HumanPlayer(ui, playerTwo)};
         Player[] humanVsComputer = {new HumanPlayer(ui, playerOne), new Computer()};
 
-        Map<String, List<Player>> playerTypes = new HashMap<>();
-        playerTypes.put("1", Arrays.asList(humanVsHuman));
-        playerTypes.put("2", Arrays.asList(humanVsComputer));
-
-        return playerTypes.get(players);
+        switch (players) {
+            case "1":
+                return Arrays.asList(humanVsHuman);
+            case "2":
+                return Arrays.asList(humanVsComputer);
+            default:
+                throw new RuntimeException("Unsupported player type");
+        }
     }
 
 }
