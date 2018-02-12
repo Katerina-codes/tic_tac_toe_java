@@ -30,4 +30,15 @@ public class PlayerFactoryTest {
         assertTrue(players.get(0) instanceof HumanPlayer);
         assertTrue(players.get(1) instanceof Computer);
     }
+
+    @Test
+    public void createsComputerPlayerAsPlayerOne() {
+        UI ui = new FakeCommandLineUI();
+        PlayerFactory playerTypes = new PlayerFactory(ui);
+
+        List<Player> players = playerTypes.getPlayerTypes("3");
+
+        assertTrue(players.get(0) instanceof Computer);
+        assertTrue(players.get(1) instanceof HumanPlayer);
+    }
 }
