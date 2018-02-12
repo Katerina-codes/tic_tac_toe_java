@@ -1,12 +1,10 @@
 package main.game;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import static main.game.PlayerTypes.O_MARK;
-import static main.game.PlayerTypes.X_MARK;
+import static main.game.Marks.O;
+import static main.game.Marks.X;
 
 public class PlayerFactory {
 
@@ -16,8 +14,8 @@ public class PlayerFactory {
 
     public PlayerFactory(UI ui) {
         this.ui = ui;
-        this.playerOne = X_MARK.getPlayer();
-        this.playerTwo = O_MARK.getPlayer();
+        this.playerOne = X.getMark();
+        this.playerTwo = O.getMark();
     }
 
     public List<Player> getPlayerTypes(String players) {

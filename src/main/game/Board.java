@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static main.game.PlayerTypes.O_MARK;
-import static main.game.PlayerTypes.X_MARK;
+import static main.game.Marks.O;
+import static main.game.Marks.X;
 import static main.game.Result.TIE;
 
 public class Board {
@@ -105,7 +105,7 @@ public class Board {
     public Result findWinner() {
         if (gameIsTied()) {
             return TIE;
-        } else if (playerHasWon(X_MARK.getPlayer())) {
+        } else if (playerHasWon(X.getMark())) {
             return Result.PLAYER_ONE_WIN;
         } else {
             return Result.PLAYER_TWO_WIN;
@@ -117,19 +117,19 @@ public class Board {
     }
 
     public boolean gameIsOver() {
-        return playerHasWon(X_MARK.getPlayer()) || playerHasWon(O_MARK.getPlayer()) || !hasAvailableMoves();
+        return playerHasWon(X.getMark()) || playerHasWon(O.getMark()) || !hasAvailableMoves();
     }
 
     private boolean spaceIsTaken(String space) {
-        return space.equals(X_MARK.getPlayer()) || space.equals(O_MARK.getPlayer());
+        return space.equals(X.getMark()) || space.equals(O.getMark());
     }
 
     private boolean isMoveTaken(int move) {
-        return !this.grid.get(move - 1).equals(O_MARK.getPlayer()) && !this.grid.get(move - 1).equals(X_MARK.getPlayer());
+        return !this.grid.get(move - 1).equals(O.getMark()) && !this.grid.get(move - 1).equals(X.getMark());
     }
 
     private boolean gameIsTied() {
-        return !playerHasWon(X_MARK.getPlayer()) && !playerHasWon(O_MARK.getPlayer());
+        return !playerHasWon(X.getMark()) && !playerHasWon(O.getMark());
     }
 
     private List<Line> lines() {
