@@ -95,7 +95,7 @@ public class Board {
     public List<String> availableMoves() {
         List<String> availableMoves = new ArrayList<>();
         for (String space : this.grid) {
-            if (!space.equals(X_MARK.getPlayer()) && !space.equals(O_MARK.getPlayer())) {
+            if (!spaceIsTaken(space)) {
                 availableMoves.add(space);
             }
         }
