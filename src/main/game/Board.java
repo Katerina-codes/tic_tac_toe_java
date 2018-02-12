@@ -57,7 +57,7 @@ public class Board {
         int count = 0;
 
         for (String space : this.grid) {
-            if (space.equals(X_MARK.getPlayer()) || space.equals(O_MARK.getPlayer())) {
+            if (spaceIsTaken(space)) {
                 count += 1;
             }
         }
@@ -102,7 +102,6 @@ public class Board {
         return availableMoves;
     }
 
-
     public Result findWinner() {
         if (gameIsTied()) {
             return TIE;
@@ -119,6 +118,10 @@ public class Board {
 
     public boolean gameIsOver() {
         return playerHasWon(X_MARK.getPlayer()) || playerHasWon(O_MARK.getPlayer()) || !hasAvailableMoves();
+    }
+
+    private boolean spaceIsTaken(String space) {
+        return space.equals(X_MARK.getPlayer()) || space.equals(O_MARK.getPlayer());
     }
 
     private boolean isMoveTaken(int move) {
