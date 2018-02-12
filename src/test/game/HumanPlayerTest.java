@@ -19,10 +19,10 @@ public class HumanPlayerTest {
     public void playMove() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         InputStream input = new ByteArrayInputStream("1".getBytes());
-        CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
+        CommandLineUI ui = new CommandLineUI(new PrintStream(output), input);
         Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
 
-        HumanPlayer player = new HumanPlayer(inputOutput, "X");
+        HumanPlayer player = new HumanPlayer(ui, "X");
 
         assertEquals("1", player.getMove(board));
     }

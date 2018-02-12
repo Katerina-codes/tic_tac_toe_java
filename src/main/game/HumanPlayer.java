@@ -2,11 +2,11 @@ package main.game;
 
 public class HumanPlayer implements Player {
 
-    private final UI inputOutput;
+    private final UI ui;
     private final String mark;
 
-    public HumanPlayer(UI inputOutput, String mark) {
-        this.inputOutput = inputOutput;
+    public HumanPlayer(UI ui, String mark) {
+        this.ui = ui;
         this.mark = mark;
     }
 
@@ -16,7 +16,7 @@ public class HumanPlayer implements Player {
     }
 
     public String getMove(Board board) {
-        inputOutput.askForMove();
-        return inputOutput.getValidMove(board);
+        ui.askForMove();
+        return ui.getValidMove(board);
     }
 }
