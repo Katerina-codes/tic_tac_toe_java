@@ -13,7 +13,7 @@ public class ComputerTest {
 
     @Test
     public void playsARandomMove() {
-        Computer computer = new Computer();
+        Computer computer = new Computer("O");
         Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
         List<String> possibleMoves = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
 

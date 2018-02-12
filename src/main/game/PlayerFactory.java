@@ -22,7 +22,7 @@ public class PlayerFactory {
 
     public List<Player> getPlayerTypes(String players) {
         Player[] humanVsHuman = {new HumanPlayer(ui, playerOne), new HumanPlayer(ui, playerTwo)};
-        Player[] humanVsComputer = {new HumanPlayer(ui, playerOne), new Computer()};
+        Player[] humanVsComputer = {new HumanPlayer(ui, playerOne), new Computer(playerTwo)};
 
         switch (players) {
             case "1":

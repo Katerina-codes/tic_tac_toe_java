@@ -2,12 +2,17 @@ package main.game;
 
 import java.util.List;
 
-import static main.game.PlayerTypes.O_MARK;
-
 public class Computer implements Player {
+
+    private final String mark;
+
+    public Computer(String mark) {
+        this.mark = mark;
+    }
+
     public void playMove(Board board) {
         String playerMove = move(board);
-        board.updateMove(playerMove, O_MARK.getPlayer());
+        board.updateMove(playerMove, mark);
     }
 
     public String move(Board board) {
