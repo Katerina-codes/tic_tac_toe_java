@@ -26,20 +26,19 @@ public class BoardTest {
     public void canReturnRows() {
         Board board = new Board(emptyBoard);
         List<Line> rows = board.rowLines();
-        assertEquals(new Line("1", "2", "3"), rows.get(0));
-        assertEquals(new Line("4", "5", "6"), rows.get(1));
-        assertEquals(new Line("7", "8", "9"), rows.get(2));
+        assertEquals(createNewLine("1", "2", "3"), rows.get(0));
+        assertEquals(createNewLine("4", "5", "6"), rows.get(1));
+        assertEquals(createNewLine("7", "8", "9"), rows.get(2));
     }
-
 
     @Test
     public void canReturnColumns() {
         Board board = new Board(emptyBoard);
         List<Line> rows = board.columnLines();
 
-        assertEquals(new Line("1", "4", "7"), rows.get(0));
-        assertEquals(new Line("2", "5", "8"), rows.get(1));
-        assertEquals(new Line("3", "6", "9"), rows.get(2));
+        assertEquals(createNewLine("1", "4", "7"), rows.get(0));
+        assertEquals(createNewLine("2", "5", "8"), rows.get(1));
+        assertEquals(createNewLine("3", "6", "9"), rows.get(2));
     }
 
     @Test
@@ -47,8 +46,8 @@ public class BoardTest {
         Board board = new Board(emptyBoard);
         List<Line> diagonals = board.diagonalLines();
 
-        assertEquals(new Line("1", "5", "9"), diagonals.get(0));
-        assertEquals(new Line("3", "5", "7"), diagonals.get(1));
+        assertEquals(createNewLine("1", "5", "9"), diagonals.get(0));
+        assertEquals(createNewLine("3", "5", "7"), diagonals.get(1));
     }
 
     @Test
@@ -143,4 +142,9 @@ public class BoardTest {
 
         assertEquals("Tie", board.findWinner().getResult());
     }
+
+    private Line createNewLine(String spaceOne, String spaceTwo, String spaceThree) {
+        return new Line(spaceOne, spaceTwo, spaceThree);
+    }
 }
+
