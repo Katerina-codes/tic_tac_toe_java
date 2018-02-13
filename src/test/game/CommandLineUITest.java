@@ -33,7 +33,9 @@ public class CommandLineUITest {
     public void asksUserForGameMode() {
         inputOutput.askForGameMode();
 
-        assertTrue(output.toString().contains("Enter '1' for Human vs Human\nEnter '2' for Human vs Computer"));
+        assertTrue(output.toString().contains("Enter '1' for Human vs Human\n" +
+                "Enter '2' for Human vs Computer\n" +
+                "Enter '3' for Computer vs Human"));
     }
 
     @Test
