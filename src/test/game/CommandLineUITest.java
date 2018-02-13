@@ -2,6 +2,7 @@ package test.game;
 
 import main.game.Board;
 import main.game.CommandLineUI;
+import main.game.Marks;
 import main.game.Result;
 import org.junit.Before;
 import org.junit.Test;
@@ -60,9 +61,9 @@ public class CommandLineUITest {
 
     @Test
     public void askPlayerForMove() {
-        inputOutput.askForMove();
+        inputOutput.askForMove(Marks.X.toString());
 
-        assertTrue(output.toString().contains("Place your mark! Pick a move from 1 - 9:"));
+        assertTrue(output.toString().contains("Player X place your mark! Pick a move from 1 - 9:"));
     }
 
     @Test

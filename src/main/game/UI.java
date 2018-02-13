@@ -7,7 +7,7 @@ public interface UI {
 
     String getGameMode();
 
-    void askForMove();
+    void askForMove(String playerMark);
 
     String getValidMove(Board board);
 

@@ -30,7 +30,7 @@ public class FakeCommandLineUI implements UI {
     }
 
     @Override
-    public void askForMove() {
+    public void askForMove(String playerMark) {
         this.askForMoveWasCalled = true;
     }
 

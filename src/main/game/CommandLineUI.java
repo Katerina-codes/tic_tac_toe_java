@@ -30,8 +30,8 @@ public class CommandLineUI implements UI {
         return gameMode;
     }
 
-    public void askForMove() {
-        output.println("Place your mark! Pick a move from 1 - 9:");
+    public void askForMove(String playerMark) {
+        output.format("\nPlayer %s place your mark! Pick a move from 1 - 9:\n\n", playerMark);
     }
 
     public String getValidMove(Board board) {
@@ -93,5 +93,4 @@ public class CommandLineUI implements UI {
                 .replace("]", "")
                 .trim();
     }
-
 }

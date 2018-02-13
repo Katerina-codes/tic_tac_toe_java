@@ -4,34 +4,35 @@ import java.util.List;
 
 public class Game {
 
-    private final UI inputOutput;
+    private final UI ui;
     private final Board board;
     private Player currentPlayer;
 
-    public Game(UI inputOutput, Board board) {
-        this.inputOutput = inputOutput;
+    public Game(UI ui, Board board) {
+        this.ui = ui;
         this.board = board;
     }
 
     public void runGame() {
-        inputOutput.askForGameMode();
-        String gameMode = inputOutput.getGameMode();
-        PlayerFactory playerTypes = new PlayerFactory(inputOutput);
+        ui.askForGameMode();
+        String gameMode = ui.getGameMode();
+        PlayerFactory playerTypes = new PlayerFactory(ui);
         List<Player> players = playerTypes.getPlayerTypes(gameMode);
 
         Player playerOne = players.get(0);
         Player playerTwo = players.get(1);
 
+        currentPlayer = playerOne;
         displayBoard();
 
-        currentPlayer = playerOne;
         while (gameIsNotOver()) {
+            ui.askForMove(currentPlayer.getMark());
             currentPlayer.playMove(board);
             displayBoard();
             switchPlayer(playerOne, playerTwo);
         }
         Result result = board.findWinner();
-        inputOutput.announceWinner(result);
+        ui.announceWinner(result);
     }
 
     private void switchPlayer(Player playerOne, Player playerTwo) {
@@ -48,7 +49,7 @@ public class Game {
 
     private void displayBoard() {
         List<List<String>> activeBoard = this.board.rows();
-        inputOutput.displayBoard(activeBoard);
+        ui.displayBoard(activeBoard);
     }
 
 }

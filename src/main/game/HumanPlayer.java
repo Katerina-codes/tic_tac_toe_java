@@ -15,8 +15,11 @@ public class HumanPlayer implements Player {
         board.updateMove(playerMove, this.mark);
     }
 
+    public String getMark() {
+        return mark;
+    }
+
     public String getMove(Board board) {
-        ui.askForMove();
         return ui.getValidMove(board);
     }
 }

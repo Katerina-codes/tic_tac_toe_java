@@ -15,6 +15,10 @@ public class Computer implements Player {
         board.updateMove(playerMove, mark);
     }
 
+    public String getMark() {
+        return mark;
+    }
+
     public String move(Board board) {
         List<String> possibleMoves = board.availableMoves();
         return possibleMoves.get(0);
