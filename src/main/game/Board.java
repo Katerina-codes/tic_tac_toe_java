@@ -58,7 +58,7 @@ public class Board {
 
         for (String space : this.grid) {
             if (spaceIsTaken(space)) {
-                count += 1;
+                count++;
             }
         }
         return count != grid.size();
