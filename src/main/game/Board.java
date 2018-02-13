@@ -105,7 +105,7 @@ public class Board {
     public Result findWinner() {
         if (gameIsTied()) {
             return TIE;
-        } else if (playerHasWon(X.getMark())) {
+        } else if (playerHasWon(X.toString())) {
             return Result.PLAYER_ONE_WIN;
         } else {
             return Result.PLAYER_TWO_WIN;
@@ -117,19 +117,19 @@ public class Board {
     }
 
     public boolean gameIsOver() {
-        return playerHasWon(X.getMark()) || playerHasWon(O.getMark()) || !hasAvailableMoves();
+        return playerHasWon(X.toString()) || playerHasWon(O.toString()) || !hasAvailableMoves();
     }
 
     private boolean spaceIsTaken(String space) {
-        return space.equals(X.getMark()) || space.equals(O.getMark());
+        return space.equals(X.toString()) || space.equals(O.toString());
     }
 
     private boolean isMoveTaken(int move) {
-        return !this.grid.get(move - 1).equals(O.getMark()) && !this.grid.get(move - 1).equals(X.getMark());
+        return !this.grid.get(move - 1).equals(O.toString()) && !this.grid.get(move - 1).equals(X.toString());
     }
 
     private boolean gameIsTied() {
-        return !playerHasWon(X.getMark()) && !playerHasWon(O.getMark());
+        return !playerHasWon(X.toString()) && !playerHasWon(O.toString());
     }
 
     private List<Line> lines() {

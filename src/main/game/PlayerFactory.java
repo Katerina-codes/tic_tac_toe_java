@@ -14,8 +14,8 @@ public class PlayerFactory {
 
     public PlayerFactory(UI ui) {
         this.ui = ui;
-        this.playerOne = X.getMark();
-        this.playerTwo = O.getMark();
+        this.playerOne = X.toString();
+        this.playerTwo = O.toString();
     }
 
     public List<Player> getPlayerTypes(String players) {
