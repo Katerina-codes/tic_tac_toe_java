@@ -10,7 +10,7 @@ import static main.game.Result.TIE;
 
 public class Board {
 
-    public static final int ROW_COUNT = 3;
+    public final int ROW_COUNT = 3;
     public List<String> grid;
 
     public Board(List<String> grid) {
