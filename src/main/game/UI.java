@@ -7,11 +7,11 @@ public interface UI {
 
     String getGameMode();
 
-    void askForMove(String playerMark);
+    void askForMove(Marks playerMark);
 
     String getValidMove(Board board);
 
-    void displayBoard(List<List<String>> rows);
+    void displayBoard(List<List<Marks>> rows);
 
     void announceWinner(Result winner);
 }

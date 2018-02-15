@@ -9,13 +9,13 @@ import static main.game.Marks.X;
 public class PlayerFactory {
 
     private final UI ui;
-    private final String playerOne;
-    private final String playerTwo;
+    private final Marks playerOne;
+    private final Marks playerTwo;
 
     public PlayerFactory(UI ui) {
         this.ui = ui;
-        this.playerOne = X.toString();
-        this.playerTwo = O.toString();
+        this.playerOne = X;
+        this.playerTwo = O;
     }
 
     public List<Player> getPlayerTypes(String players) {

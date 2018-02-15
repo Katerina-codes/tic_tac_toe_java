@@ -5,17 +5,17 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 public class Line {
-    private List<String> spaces;
+    private List<Marks> spaces;
 
-    public Line(String spaceOne, String spaceTwo, String spaceThree) {
+    public Line(Marks spaceOne, Marks spaceTwo, Marks spaceThree) {
         spaces = asList(spaceOne, spaceTwo, spaceThree);
     }
 
-    public boolean hasWinner(String mark) {
+    public boolean hasWinner(Marks mark) {
         int markCounter = 0;
 
-        for (String space : spaces) {
-            if (space.equals(mark)) {
+        for (Marks space : spaces) {
+            if (space != null && space.equals(mark)) {
                 markCounter++;
             }
         }

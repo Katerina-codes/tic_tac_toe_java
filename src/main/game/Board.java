@@ -11,27 +11,26 @@ import static main.game.Result.TIE;
 public class Board {
 
     public final int ROW_COUNT = 3;
-    public List<String> grid;
+    public List<Marks> grid;
 
-    public Board(List<String> grid) {
+    public Board(List<Marks> grid) {
         this.grid = grid;
     }
 
     public Board() {
-        this.grid = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
+        this.grid = asList(null, null, null, null, null, null, null, null, null);
     }
 
-    public List updateMove(String move, String playerType) {
-        int convertedMove = Integer.parseInt(String.valueOf(move)) - 1;
-        this.grid.set(convertedMove, playerType);
+    public List<Marks> updateMove(int position, Marks marks) {
+        this.grid.set(position - 1, marks);
         return this.grid;
     }
 
-    public List<List<String>> rows() {
-        List<List<String>> rows = new ArrayList<>();
+    public List<List<Marks>> rows() {
+        List<List<Marks>> rows = new ArrayList<>();
 
         for (int i = 0; i < ROW_COUNT * ROW_COUNT; i += 3) {
-            List<String> row = asList(grid.get(i), grid.get(i + 1), grid.get(i + 2));
+            List<Marks> row = asList(grid.get(i), grid.get(i + 1), grid.get(i + 2));
             rows.add(row);
         }
 
@@ -50,13 +49,13 @@ public class Board {
     }
 
     public boolean isMoveAvailable(int move) {
-        return isMoveTaken(move);
+        return this.grid.get(move - 1) == null;
     }
 
     public boolean hasAvailableMoves() {
         int count = 0;
 
-        for (String space : this.grid) {
+        for (Marks space : this.grid) {
             if (spaceIsTaken(space)) {
                 count++;
             }
@@ -74,7 +73,7 @@ public class Board {
         return columns;
     }
 
-    public boolean findWin(String playerMark) {
+    public boolean findWin(Marks playerMark) {
         for (Line line : lines()) {
             if (line.hasWinner(playerMark)) {
                 return true;
@@ -92,44 +91,45 @@ public class Board {
         return diagonals;
     }
 
-    public List<String> availableMoves() {
-        List<String> availableMoves = new ArrayList<>();
-        for (String space : this.grid) {
-            if (!spaceIsTaken(space)) {
-                availableMoves.add(space);
+    public List<Integer> availableMoves() {
+        List<Integer> availableMoves = new ArrayList<>();
+        for (int i = 0; i < this.grid.size(); i++) {
+            if (this.grid.get(i) == null) {
+                availableMoves.add(i);
             }
         }
+
         return availableMoves;
     }
 
     public Result findWinner() {
         if (gameIsTied()) {
             return TIE;
-        } else if (playerHasWon(X.toString())) {
+        } else if (playerHasWon(X)) {
             return Result.PLAYER_ONE_WIN;
         } else {
             return Result.PLAYER_TWO_WIN;
         }
     }
 
-    public boolean playerHasWon(String playerMark) {
-        return findWin(playerMark);
+    public boolean playerHasWon(Marks mark) {
+        return findWin(mark);
     }
 
     public boolean gameIsOver() {
-        return playerHasWon(X.toString()) || playerHasWon(O.toString()) || !hasAvailableMoves();
+        return playerHasWon(X) || playerHasWon(O) || !hasAvailableMoves();
     }
 
-    private boolean spaceIsTaken(String space) {
-        return space.equals(X.toString()) || space.equals(O.toString());
+    public Marks valueAt(int position) {
+        return this.grid.get(position);
     }
 
-    private boolean isMoveTaken(int move) {
-        return !this.grid.get(move - 1).equals(O.toString()) && !this.grid.get(move - 1).equals(X.toString());
+    private boolean spaceIsTaken(Marks space) {
+        return space.equals(X) || space.equals(O);
     }
 
     private boolean gameIsTied() {
-        return !playerHasWon(X.toString()) && !playerHasWon(O.toString());
+        return !playerHasWon(X) && !playerHasWon(O);
     }
 
     private List<Line> lines() {
@@ -139,5 +139,4 @@ public class Board {
         lines.addAll(rowLines());
         return lines;
     }
-
 }

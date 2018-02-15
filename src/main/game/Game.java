@@ -48,7 +48,7 @@ public class Game {
     }
 
     private void displayBoard() {
-        List<List<String>> activeBoard = this.board.rows();
+        List<List<Marks>> activeBoard = this.board.rows();
         ui.displayBoard(activeBoard);
     }
 

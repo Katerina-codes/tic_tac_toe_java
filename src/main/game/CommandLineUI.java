@@ -30,7 +30,7 @@ public class CommandLineUI implements UI {
         return gameMode;
     }
 
-    public void askForMove(String playerMark) {
+    public void askForMove(Marks playerMark) {
         output.format("\nPlayer %s place your mark! Pick a move from 1 - 9:\n\n", playerMark);
     }
 
@@ -40,18 +40,20 @@ public class CommandLineUI implements UI {
         int convertedMove = Integer.parseInt(move);
 
         while (moveIsNotAvailable(board, convertedMove)) {
+            System.out.println("bo");
             move = getValidMove();
             convertedMove = Integer.parseInt(move);
 
         }
+        System.out.println("rr");
         return move;
     }
 
-    public void displayBoard(List<List<String>> rows) {
+    public void displayBoard(List<List<Marks>> rows) {
         StringBuilder sb = new StringBuilder();
         String formattedRows = null;
         for (int index = 0; index <= rows.size() - 1; index++) {
-            List<String> row = rows.get(index);
+            List<Marks> row = rows.get(index);
             sb.append(row);
             sb.append("\n");
             formattedRows = sb.toString();
