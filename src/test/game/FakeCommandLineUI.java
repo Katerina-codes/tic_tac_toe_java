@@ -6,9 +6,6 @@ import main.game.Result;
 import main.game.UI;
 
 import java.util.List;
-import java.util.Random;
-
-import static java.util.Arrays.asList;
 
 public class FakeCommandLineUI implements UI {
 
