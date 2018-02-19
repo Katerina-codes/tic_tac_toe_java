@@ -38,9 +38,9 @@ public class FakeCommandLineUI implements UI {
     @Override
     public String getValidMove(Board board) {
         this.getPlayerMoveWasCalled = true;
-        List moves = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
-        int randomMove = new Random().nextInt(moves.size());
-        return (String) moves.get(randomMove);
+        List<Integer> moves = board.availableMoves();
+        System.out.println(moves);
+        return moves.get(1).toString();
     }
 
     public boolean getGameModeWasCalled() {
