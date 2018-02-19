@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static main.game.Marks.O;
+import static main.game.Mark.O;
 import static org.junit.Assert.assertTrue;
 
 public class ComputerTest {

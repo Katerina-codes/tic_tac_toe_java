@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static main.game.Marks.*;
+import static main.game.Mark.*;
 import static main.game.Result.TIE;
 
 public class Board {
 
     public final int ROW_COUNT = 3;
-    public List<Marks> grid;
+    public List<Mark> grid;
 
-    public Board(List<Marks> grid) {
+    public Board(List<Mark> grid) {
         this.grid = grid;
     }
 
@@ -20,8 +20,8 @@ public class Board {
         this.grid = asList(EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY);
     }
 
-    public List<Marks> updateMove(int position, Marks marks) {
-        this.grid.set(position - 1, marks);
+    public List<Mark> updateMove(int position, Mark mark) {
+        this.grid.set(position - 1, mark);
         return this.grid;
     }
 
@@ -43,7 +43,7 @@ public class Board {
     public boolean hasAvailableMoves() {
         int count = 0;
 
-        for (Marks space : this.grid) {
+        for (Mark space : this.grid) {
             if (spaceIsTaken(space)) {
                 count++;
             }
@@ -61,7 +61,7 @@ public class Board {
         return columns;
     }
 
-    public boolean findWin(Marks playerMark) {
+    public boolean findWin(Mark playerMark) {
         for (Line line : lines()) {
             if (line.hasWinner(playerMark)) {
                 return true;
@@ -100,7 +100,7 @@ public class Board {
         }
     }
 
-    public boolean playerHasWon(Marks mark) {
+    public boolean playerHasWon(Mark mark) {
         return findWin(mark);
     }
 
@@ -108,11 +108,11 @@ public class Board {
         return playerHasWon(X) || playerHasWon(O) || !hasAvailableMoves();
     }
 
-    public Marks valueAt(int position) {
+    public Mark valueAt(int position) {
         return this.grid.get(position);
     }
 
-    private boolean spaceIsTaken(Marks space) {
+    private boolean spaceIsTaken(Mark space) {
         return space == X || space == O;
     }
 

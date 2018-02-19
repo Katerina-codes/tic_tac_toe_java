@@ -10,7 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-import static main.game.Marks.X;
+import static main.game.Mark.X;
 import static org.junit.Assert.*;
 
 public class HumanPlayerTest {

@@ -5,16 +5,16 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 public class Line {
-    private List<Marks> spaces;
+    private List<Mark> spaces;
 
-    public Line(Marks spaceOne, Marks spaceTwo, Marks spaceThree) {
+    public Line(Mark spaceOne, Mark spaceTwo, Mark spaceThree) {
         spaces = asList(spaceOne, spaceTwo, spaceThree);
     }
 
-    public boolean hasWinner(Marks mark) {
+    public boolean hasWinner(Mark mark) {
         int markCounter = 0;
 
-        for (Marks space : spaces) {
+        for (Mark space : spaces) {
             if (space != null && space.equals(mark)) {
                 markCounter++;
             }

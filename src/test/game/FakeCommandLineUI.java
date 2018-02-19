@@ -1,7 +1,7 @@
 package test.game;
 
 import main.game.Board;
-import main.game.Marks;
+import main.game.Mark;
 import main.game.Result;
 import main.game.UI;
 
@@ -31,7 +31,7 @@ public class FakeCommandLineUI implements UI {
     }
 
     @Override
-    public void askForMove(Marks playerMark) {
+    public void askForMove(Mark playerMark) {
         this.askForMoveWasCalled = true;
     }
 
@@ -48,7 +48,7 @@ public class FakeCommandLineUI implements UI {
     }
 
     @Override
-    public void displayBoard(List<Marks> rows) {
+    public void displayBoard(List<Mark> rows) {
         this.displayBoardWasCalled = true;
     }
 

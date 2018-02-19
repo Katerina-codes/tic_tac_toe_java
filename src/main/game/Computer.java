@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Computer implements Player {
 
-    private final Marks mark;
+    private final Mark mark;
 
-    public Computer(Marks mark) {
+    public Computer(Mark mark) {
         this.mark = mark;
     }
 
@@ -15,7 +15,7 @@ public class Computer implements Player {
         board.updateMove(playerMove, mark);
     }
 
-    public Marks getMark() {
+    public Mark getMark() {
         return mark;
     }
 

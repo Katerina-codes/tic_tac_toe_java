@@ -3,7 +3,7 @@ package test.game;
 import main.game.Line;
 import org.junit.Test;
 
-import static main.game.Marks.X;
+import static main.game.Mark.X;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 

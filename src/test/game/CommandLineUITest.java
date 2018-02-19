@@ -2,7 +2,7 @@ package test.game;
 
 import main.game.Board;
 import main.game.CommandLineUI;
-import main.game.Marks;
+import main.game.Mark;
 import main.game.Result;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,10 +11,9 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.List;
 
 import static java.util.Arrays.asList;
-import static main.game.Marks.EMPTY;
+import static main.game.Mark.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 
@@ -62,7 +61,7 @@ public class CommandLineUITest {
 
     @Test
     public void askPlayerForMove() {
-        inputOutput.askForMove(Marks.X);
+        inputOutput.askForMove(Mark.X);
 
         assertTrue(output.toString().contains("Player X place your mark! Pick a move from 1 - 9:"));
     }
@@ -84,7 +83,7 @@ public class CommandLineUITest {
         InputStream input = new ByteArrayInputStream("1\n2".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
-        Board board = new Board(asList(Marks.X, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
+        Board board = new Board(asList(Mark.X, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
 
         assertEquals("2", inputOutput.getValidMove(board));
         assertTrue(output.toString().contains("This move is taken. Place another one:"));

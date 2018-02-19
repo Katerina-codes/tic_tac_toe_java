@@ -3,14 +3,14 @@ package main.game;
 import java.util.Arrays;
 import java.util.List;
 
-import static main.game.Marks.O;
-import static main.game.Marks.X;
+import static main.game.Mark.O;
+import static main.game.Mark.X;
 
 public class PlayerFactory {
 
     private final UI ui;
-    private final Marks playerOne;
-    private final Marks playerTwo;
+    private final Mark playerOne;
+    private final Mark playerTwo;
 
     public PlayerFactory(UI ui) {
         this.ui = ui;

@@ -8,7 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static java.util.Arrays.asList;
-import static main.game.Marks.EMPTY;
+import static main.game.Mark.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -42,7 +42,7 @@ public class GameTest {
 
         game.runGame();
 
-        assertEquals(board.grid, asList(Marks.X, Marks.X, Marks.X, Marks.O, Marks.O, EMPTY, EMPTY, EMPTY, EMPTY));
+        assertEquals(board.grid, asList(Mark.X, Mark.X, Mark.X, Mark.O, Mark.O, EMPTY, EMPTY, EMPTY, EMPTY));
         assertThat(output.toString(), containsString("X won!"));
     }
 

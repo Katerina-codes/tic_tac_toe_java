@@ -3,9 +3,9 @@ package main.game;
 public class HumanPlayer implements Player {
 
     private final UI ui;
-    private final Marks mark;
+    private final Mark mark;
 
-    public HumanPlayer(UI ui, Marks mark) {
+    public HumanPlayer(UI ui, Mark mark) {
         this.ui = ui;
         this.mark = mark;
     }
@@ -15,7 +15,7 @@ public class HumanPlayer implements Player {
         board.updateMove(playerMove, this.mark);
     }
 
-    public Marks getMark() {
+    public Mark getMark() {
         return mark;
     }
 

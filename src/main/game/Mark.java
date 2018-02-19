@@ -1,6 +1,6 @@
 package main.game;
 
-public enum Marks {
+public enum Mark {
     X,
     O,
     EMPTY

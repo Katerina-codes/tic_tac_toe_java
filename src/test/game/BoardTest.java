@@ -2,14 +2,13 @@ package test.game;
 
 import main.game.Board;
 import main.game.Line;
-import main.game.Marks;
+import main.game.Mark;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static main.game.Marks.*;
+import static main.game.Mark.*;
 import static org.junit.Assert.*;
 
 public class BoardTest {
@@ -17,7 +16,7 @@ public class BoardTest {
     @Test
     public void canMakeMoveOnABoard() {
         Board board = new Board();
-        List<Marks> grid = board.updateMove(1, X);
+        List<Mark> grid = board.updateMove(1, X);
 
         assertEquals(X, grid.get(0));
     }
@@ -143,7 +142,7 @@ public class BoardTest {
         assertEquals("Tie", board.findWinner().getResult());
     }
 
-    private Line createNewLine(Marks spaceOne, Marks spaceTwo, Marks spaceThree) {
+    private Line createNewLine(Mark spaceOne, Mark spaceTwo, Mark spaceThree) {
         return new Line(spaceOne, spaceTwo, spaceThree);
     }
 }
