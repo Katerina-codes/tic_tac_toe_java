@@ -28,7 +28,7 @@ public class Board {
     public List<Line> rowLines() {
         List<Line> rows = new ArrayList<>();
 
-        for (int i = 0; i < ROW_COUNT * ROW_COUNT; i += 3) {
+        for (int i = 0; i < ROW_COUNT * ROW_COUNT; i += ROW_COUNT) {
             Line line = new Line(grid.get(i), grid.get(i + 1), grid.get(i + 2));
             rows.add(line);
         }

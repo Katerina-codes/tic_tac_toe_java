@@ -36,7 +36,6 @@ public class FakeCommandLineUI implements UI {
     public String getValidMove(Board board) {
         this.getPlayerMoveWasCalled = true;
         List<Integer> moves = board.availableMoves();
-        System.out.println(moves);
         return moves.get(1).toString();
     }
 
