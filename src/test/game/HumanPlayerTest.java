@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 import static main.game.Mark.X;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class HumanPlayerTest {
 
