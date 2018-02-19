@@ -59,11 +59,7 @@ public class CommandLineUI implements UI {
                 sb.append(grid.get(i));
             }
 
-            if (i == 2) {
-                sb.append("\n");
-            } else if (i == 5) {
-                sb.append("\n");
-            } else if (i == 8) {
+            if ((i + 1) % 3 == 0) {
                 sb.append("\n");
             }
             formattedRows = sb.toString();
