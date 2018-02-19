@@ -40,25 +40,35 @@ public class CommandLineUI implements UI {
         int convertedMove = Integer.parseInt(move);
 
         while (moveIsNotAvailable(board, convertedMove)) {
-            System.out.println("bo");
             move = getValidMove();
             convertedMove = Integer.parseInt(move);
 
         }
-        System.out.println("rr");
         return move;
     }
 
-    public void displayBoard(List<List<Marks>> rows) {
+    public void displayBoard(List<Marks> grid) {
         StringBuilder sb = new StringBuilder();
         String formattedRows = null;
-        for (int index = 0; index <= rows.size() - 1; index++) {
-            List<Marks> row = rows.get(index);
-            sb.append(row);
-            sb.append("\n");
+
+        for (int i = 0; i < grid.size(); i++) {
+            if (grid.get(i) == null) {
+                sb.append(" ");
+                sb.append(i + 1);
+            } else {
+                sb.append(grid.get(i));
+            }
+
+            if (i == 2) {
+                sb.append("\n");
+            } else if (i == 5) {
+                sb.append("\n");
+            } else if (i == 8) {
+                sb.append("\n");
+            }
             formattedRows = sb.toString();
         }
-        output.println(formatBoard(formattedRows));
+        output.println(formattedRows);
     }
 
     public void announceWinner(Result result) {
@@ -86,13 +96,5 @@ public class CommandLineUI implements UI {
             output.println("Nothing was entered.");
         }
         return move;
-    }
-
-    private String formatBoard(String formattedRows) {
-        return formattedRows
-                .replace(",", "")
-                .replace("[", "")
-                .replace("]", "")
-                .trim();
     }
 }

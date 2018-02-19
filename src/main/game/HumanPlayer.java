@@ -21,7 +21,6 @@ public class HumanPlayer implements Player {
 
     public Integer getMove(Board board) {
         String userMove = ui.getValidMove(board);
-        System.out.println(userMove);
         return Integer.parseInt(String.valueOf(userMove));
     }
 }

@@ -48,7 +48,7 @@ public class FakeCommandLineUI implements UI {
     }
 
     @Override
-    public void displayBoard(List<List<Marks>> rows) {
+    public void displayBoard(List<Marks> rows) {
         this.displayBoardWasCalled = true;
     }
 

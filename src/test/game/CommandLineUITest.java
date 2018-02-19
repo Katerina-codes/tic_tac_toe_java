@@ -52,11 +52,11 @@ public class CommandLineUITest {
     public void boardIsDisplayed() {
         Board board = new Board();
 
-        inputOutput.displayBoard(board.rows());
+        inputOutput.displayBoard(board.grid);
 
-        assertTrue(output.toString().contains("1 2 3\n" +
-                "4 5 6\n" +
-                "7 8 9"));
+        assertTrue(output.toString().contains(" 1 2 3\n" +
+                " 4 5 6\n" +
+                " 7 8 9\n"));
     }
 
     @Test
@@ -83,7 +83,7 @@ public class CommandLineUITest {
         InputStream input = new ByteArrayInputStream("1\n2".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
-        Board board = new Board();
+        Board board = new Board(asList(Marks.X, null, null, null, null, null, null, null, null));
 
         assertEquals("2", inputOutput.getValidMove(board));
         assertTrue(output.toString().contains("This move is taken. Place another one:"));

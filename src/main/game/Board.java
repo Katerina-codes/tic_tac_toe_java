@@ -26,17 +26,6 @@ public class Board {
         return this.grid;
     }
 
-    public List<List<Marks>> rows() {
-        List<List<Marks>> rows = new ArrayList<>();
-
-        for (int i = 0; i < ROW_COUNT * ROW_COUNT; i += 3) {
-            List<Marks> row = asList(grid.get(i), grid.get(i + 1), grid.get(i + 2));
-            rows.add(row);
-        }
-
-        return rows;
-    }
-
     public List<Line> rowLines() {
         List<Line> rows = new ArrayList<>();
 
@@ -125,7 +114,7 @@ public class Board {
     }
 
     private boolean spaceIsTaken(Marks space) {
-        return space.equals(X) || space.equals(O);
+        return space == X || space == O;
     }
 
     private boolean gameIsTied() {

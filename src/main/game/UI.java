@@ -11,7 +11,7 @@ public interface UI {
 
     String getValidMove(Board board);
 
-    void displayBoard(List<List<Marks>> rows);
+    void displayBoard(List<Marks> rows);
 
     void announceWinner(Result winner);
 }
