@@ -9,7 +9,7 @@ import static main.game.Result.TIE;
 
 public class Board {
 
-    private final int ROW_COUNT = 3;
+    private final int ROW_SIZE = 3;
     public List<Mark> grid;
 
     public Board(List<Mark> grid) {
@@ -28,7 +28,7 @@ public class Board {
     public List<Line> rowLines() {
         List<Line> rows = new ArrayList<>();
 
-        for (int i = 0; i < ROW_COUNT * ROW_COUNT; i += ROW_COUNT) {
+        for (int i = 0; i < ROW_SIZE * ROW_SIZE; i += ROW_SIZE) {
             Line line = new Line(grid.get(i), grid.get(i + 1), grid.get(i + 2));
             rows.add(line);
         }
@@ -54,7 +54,7 @@ public class Board {
     public List<Line> columnLines() {
         List<Line> columns = new ArrayList<>();
 
-        for (int i = 0; i < ROW_COUNT; i++) {
+        for (int i = 0; i < ROW_SIZE; i++) {
             Line line = new Line(grid.get(i), grid.get(i + 3), grid.get(i + 6));
             columns.add(line);
         }
