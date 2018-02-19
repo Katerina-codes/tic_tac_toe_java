@@ -9,14 +9,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static main.game.Marks.O;
-import static main.game.Marks.X;
+import static main.game.Marks.*;
 import static org.junit.Assert.*;
 
 public class BoardTest {
-
-    private final List<Marks> emptyBoard = asList(null, null, null, null, null, null, null, null, null);
-//    private final List<String> emptyBoard = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
 
     @Test
     public void canMakeMoveOnABoard() {
@@ -30,9 +26,9 @@ public class BoardTest {
     public void canReturnRows() {
         Board board = new Board();
         List<Line> rows = board.rowLines();
-        assertEquals(createNewLine(null, null, null), rows.get(0));
-        assertEquals(createNewLine(null, null, null), rows.get(1));
-        assertEquals(createNewLine(null, null, null), rows.get(2));
+        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(0));
+        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(1));
+        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(2));
     }
 
     @Test
@@ -40,9 +36,9 @@ public class BoardTest {
         Board board = new Board();
         List<Line> rows = board.columnLines();
 
-        assertEquals(createNewLine(null, null, null), rows.get(0));
-        assertEquals(createNewLine(null, null, null), rows.get(1));
-        assertEquals(createNewLine(null, null, null), rows.get(2));
+        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(0));
+        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(1));
+        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(2));
     }
 
     @Test
@@ -50,8 +46,8 @@ public class BoardTest {
         Board board = new Board();
         List<Line> diagonals = board.diagonalLines();
 
-        assertEquals(createNewLine(null, null, null), diagonals.get(0));
-        assertEquals(createNewLine(null, null, null), diagonals.get(1));
+        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), diagonals.get(0));
+        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), diagonals.get(1));
     }
 
     @Test
@@ -63,7 +59,7 @@ public class BoardTest {
 
     @Test
     public void returnsAListOfOneMove() {
-        Board board = new Board(asList(null, O, X, O, X, O, X, O, X));
+        Board board = new Board(asList(EMPTY, O, X, O, X, O, X, O, X));
         List<Integer> possibleMoves = asList(0);
 
         assertEquals(possibleMoves, board.availableMoves());
@@ -71,14 +67,14 @@ public class BoardTest {
 
     @Test
     public void playersCantEnterSameMoveWhenMoveIsX() {
-        Board board = new Board(asList(X, null, null, null, null, null, null, null, null));
+        Board board = new Board(asList(X, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
 
         assertFalse(board.isMoveAvailable(1));
     }
 
     @Test
     public void playersCantEnterSameMoveWhenMoveIsO() {
-        Board board = new Board(asList(O, null, null, null, null, null, null, null, null));
+        Board board = new Board(asList(O, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
 
         assertFalse(board.isMoveAvailable(1));
     }
@@ -92,28 +88,28 @@ public class BoardTest {
 
     @Test
     public void canScoreAHorizontalWin() {
-        Board board = new Board(asList(X, X, X, null, null, O, O, null, null));
+        Board board = new Board(asList(X, X, X, EMPTY, EMPTY, O, O, EMPTY, EMPTY));
 
         assertTrue(board.findWin(X));
     }
 
     @Test
     public void canScoreVerticalWin() {
-        Board board = new Board(asList(X, O, null, X, O, X, X, O, null));
+        Board board = new Board(asList(X, O, EMPTY, X, O, X, X, O, EMPTY));
 
         assertTrue(board.findWin(X));
     }
 
     @Test
     public void canScoreFirstDiagonalWin() {
-        Board board = new Board(asList(X, O, null, O, X, null, null, null, X));
+        Board board = new Board(asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
         assertTrue(board.findWin(X));
     }
 
     @Test
     public void canScoreSecondDiagonalWin() {
-        Board board = new Board(asList(O, O, X, null, X, null, X, null, null));
+        Board board = new Board(asList(O, O, X, EMPTY, X, EMPTY, X, EMPTY, EMPTY));
 
         assertTrue(board.findWin(X));
     }
@@ -121,21 +117,21 @@ public class BoardTest {
 
     @Test
     public void checkIfPlayerHasWon() {
-        Board board = new Board(asList(X, O, null, O, X, null, null, null, X));
+        Board board = new Board(asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
         assertTrue(board.playerHasWon(X));
     }
 
     @Test
     public void gameIsOverAndXWins() {
-        Board board = new Board(asList(X, O, null, O, X, null, null, null, X));
+        Board board = new Board(asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
         assertTrue(board.gameIsOver());
     }
 
     @Test
     public void boardAnnouncesResultOfPlayerOneWin() {
-        Board board = new Board(asList(X, O, null, O, X, null, null, null, X));
+        Board board = new Board(asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
         assertEquals("X", board.findWinner().getResult());
     }

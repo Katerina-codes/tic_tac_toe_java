@@ -52,7 +52,7 @@ public class CommandLineUI implements UI {
         String formattedRows = null;
 
         for (int i = 0; i < grid.size(); i++) {
-            if (grid.get(i) == null) {
+            if (grid.get(i) == Marks.EMPTY) {
                 sb.append(" ");
                 sb.append(i + 1);
             } else {

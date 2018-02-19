@@ -14,6 +14,7 @@ import java.io.PrintStream;
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static main.game.Marks.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 
@@ -83,7 +84,7 @@ public class CommandLineUITest {
         InputStream input = new ByteArrayInputStream("1\n2".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
-        Board board = new Board(asList(Marks.X, null, null, null, null, null, null, null, null));
+        Board board = new Board(asList(Marks.X, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
 
         assertEquals("2", inputOutput.getValidMove(board));
         assertTrue(output.toString().contains("This move is taken. Place another one:"));

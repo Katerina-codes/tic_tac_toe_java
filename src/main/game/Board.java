@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static java.util.Arrays.asList;
-import static main.game.Marks.O;
-import static main.game.Marks.X;
+import static main.game.Marks.*;
 import static main.game.Result.TIE;
 
 public class Board {
@@ -18,7 +17,7 @@ public class Board {
     }
 
     public Board() {
-        this.grid = asList(null, null, null, null, null, null, null, null, null);
+        this.grid = asList(EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY);
     }
 
     public List<Marks> updateMove(int position, Marks marks) {
@@ -38,7 +37,7 @@ public class Board {
     }
 
     public boolean isMoveAvailable(int move) {
-        return this.grid.get(move - 1) == null;
+        return this.grid.get(move - 1) == EMPTY;
     }
 
     public boolean hasAvailableMoves() {
@@ -83,7 +82,7 @@ public class Board {
     public List<Integer> availableMoves() {
         List<Integer> availableMoves = new ArrayList<>();
         for (int i = 0; i < this.grid.size(); i++) {
-            if (this.grid.get(i) == null) {
+            if (this.grid.get(i) == EMPTY) {
                 availableMoves.add(i);
             }
         }
