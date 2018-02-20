@@ -71,6 +71,15 @@ public class BoardTest {
     }
 
     @Test
+    public void canReturnDiagonalsForAFourByFour() {
+        Board board = new Board(4);
+        List<Line> diagonals = board.diagonalLines();
+
+         assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), diagonals.get(0));
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), diagonals.get(1));
+    }
+
+    @Test
     public void returnsListOfNineAvailableMoves() {
         Board board = new Board();
 
