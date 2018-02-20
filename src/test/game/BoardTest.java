@@ -51,6 +51,17 @@ public class BoardTest {
     }
 
     @Test
+    public void canReturnColumnsForAFourByFour() {
+        Board board = new Board(4);
+        List<Line> rows = board.columnLines();
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(0));
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(1));
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(2));
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(3));
+    }
+
+
+    @Test
     public void canReturnDiagonals() {
         Board board = new Board();
         List<Line> diagonals = board.diagonalLines();

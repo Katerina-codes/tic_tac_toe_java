@@ -71,9 +71,14 @@ public class Board {
     public List<Line> columnLines() {
         List<Line> columns = new ArrayList<>();
 
-        for (int i = 0; i < ROW_SIZE; i++) {
-            Line line = new Line(grid.get(i), grid.get(i + 3), grid.get(i + 6));
-            columns.add(line);
+        for (int i = 0; i < size; i++) {
+            if (size == 3) {
+                Line line = new Line(grid.get(i), grid.get(i + 3), grid.get(i + 6));
+                columns.add(line);
+            } else {
+                Line line = new Line(grid.get(i), grid.get(i + 3), grid.get(i + 6), grid.get(i + 9));
+                columns.add(line);
+            }
         }
         return columns;
     }
