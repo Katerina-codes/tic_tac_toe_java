@@ -16,4 +16,10 @@ public class LineTest {
         assertThat(line.hasWinner(X), is(true));
     }
 
+    @Test
+    public void aLineWithFourElementsCanBeCreated() {
+        Line line = new Line(X, X, X, X);
+
+        assertThat(line.hasWinner(X), is(true));
+    }
 }

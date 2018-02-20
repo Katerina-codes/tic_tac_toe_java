@@ -11,6 +11,10 @@ public class Line {
         spaces = asList(spaceOne, spaceTwo, spaceThree);
     }
 
+    public Line(Mark spaceOne, Mark spaceTwo, Mark spaceThree, Mark spaceFour) {
+        spaces = asList(spaceOne, spaceTwo, spaceThree, spaceFour);
+    }
+
     public boolean hasWinner(Mark mark) {
         int markCounter = 0;
 
