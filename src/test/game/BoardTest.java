@@ -23,11 +23,21 @@ public class BoardTest {
 
     @Test
     public void canReturnRows() {
-        Board board = new Board();
+        Board board = new Board(3);
         List<Line> rows = board.rowLines();
         assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(0));
         assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(1));
         assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(2));
+    }
+
+    @Test
+    public void canReturnRowsForAFourByFour() {
+        Board board = new Board(4);
+        List<Line> rows = board.rowLines();
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(0));
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(1));
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(2));
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(3));
     }
 
     @Test

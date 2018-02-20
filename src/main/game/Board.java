@@ -10,6 +10,7 @@ import static main.game.Result.TIE;
 public class Board {
 
     private final int ROW_SIZE = 3;
+    private int size = 3;
     public List<Mark> grid;
 
     public Board(List<Mark> grid) {
@@ -20,6 +21,19 @@ public class Board {
         this.grid = asList(EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY);
     }
 
+    public Board(int size) {
+        this.size = size;
+        this.grid = createGrid();
+    }
+
+    private List<Mark> createGrid() {
+        List<Mark> spaces = new ArrayList<>();
+        for (int i = 0; i < size * size; i++) {
+            spaces.add(EMPTY);
+        }
+        return spaces;
+    }
+
     public List<Mark> updateMove(int position, Mark mark) {
         this.grid.set(position - 1, mark);
         return this.grid;
@@ -27,12 +41,15 @@ public class Board {
 
     public List<Line> rowLines() {
         List<Line> rows = new ArrayList<>();
-
-        for (int i = 0; i < ROW_SIZE * ROW_SIZE; i += ROW_SIZE) {
-            Line line = new Line(grid.get(i), grid.get(i + 1), grid.get(i + 2));
-            rows.add(line);
+        for (int i = 0; i < size * size; i += size) {
+            if (size == 3) {
+                Line line = new Line(grid.get(i), grid.get(i + 1), grid.get(i + 2));
+                rows.add(line);
+            } else {
+                Line line = new Line(grid.get(i), grid.get(i + 1), grid.get(i + 2), grid.get(i + 3));
+                rows.add(line);
+            }
         }
-
         return rows;
     }
 
