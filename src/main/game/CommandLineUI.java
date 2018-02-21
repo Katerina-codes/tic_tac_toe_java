@@ -13,6 +13,10 @@ public class CommandLineUI implements UI {
         this.input = new BufferedReader(new InputStreamReader(input));
     }
 
+    public void askForBoardSize() {
+       output.println("Please enter '1' for a 3x3 grid\n" +
+               "Please enter '2' for a 4x4 grid:\n");
+    }
     public void askForGameMode() {
         output.println("Enter '1' for Human vs Human\n" +
                 "Enter '2' for Human vs Computer\n" +

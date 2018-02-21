@@ -31,6 +31,14 @@ public class CommandLineUITest {
     }
 
     @Test
+    public void asksUserToChooseBoardSize() {
+       inputOutput.askForBoardSize();
+
+       assertTrue(output.toString().contains("Please enter '1' for a 3x3 grid\n" +
+               "Please enter '2' for a 4x4 grid:\n"));
+    }
+
+    @Test
     public void asksUserForGameMode() {
         inputOutput.askForGameMode();
 
