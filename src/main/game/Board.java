@@ -9,11 +9,11 @@ import static main.game.Result.TIE;
 
 public class Board {
 
-    private final int ROW_SIZE = 3;
     private int size = 3;
     public List<Mark> grid;
 
-    public Board(List<Mark> grid) {
+    public Board(int size, List<Mark> grid) {
+        this.size = size;
         this.grid = grid;
     }
 
@@ -76,7 +76,7 @@ public class Board {
                 Line line = new Line(grid.get(i), grid.get(i + 3), grid.get(i + 6));
                 columns.add(line);
             } else {
-                Line line = new Line(grid.get(i), grid.get(i + 3), grid.get(i + 6), grid.get(i + 9));
+                Line line = new Line(grid.get(i), grid.get(i + 4), grid.get(i + 8), grid.get(i + 12));
                 columns.add(line);
             }
         }

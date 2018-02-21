@@ -19,7 +19,7 @@ public class Line {
         int markCounter = 0;
 
         for (Mark space : spaces) {
-            if (space != null && space.equals(mark)) {
+            if (space != Mark.EMPTY & space.equals(mark)) {
                 markCounter++;
             }
         }

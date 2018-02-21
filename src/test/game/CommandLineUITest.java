@@ -95,7 +95,7 @@ public class CommandLineUITest {
         InputStream input = new ByteArrayInputStream("1\n2".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
-        Board board = new Board(asList(Mark.X, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
+        Board board = new Board(3, asList(Mark.X, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
 
         assertEquals("2", inputOutput.getValidMove(board));
         assertTrue(output.toString().contains("This move is taken. Place another one:"));

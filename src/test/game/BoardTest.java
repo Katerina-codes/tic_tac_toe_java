@@ -9,6 +9,7 @@ import java.util.List;
 
 import static java.util.Arrays.asList;
 import static main.game.Mark.*;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class BoardTest {
@@ -88,57 +89,65 @@ public class BoardTest {
 
     @Test
     public void returnsAListOfOneMove() {
-        Board board = new Board(asList(EMPTY, O, X, O, X, O, X, O, X));
+        Board board = new Board(3, asList(EMPTY, O, X, O, X, O, X, O, X));
         List<Integer> possibleMoves = asList(0);
 
-        assertEquals(possibleMoves, board.availableMoves());
+        assertThat(board.availableMoves(), is(possibleMoves));
     }
 
     @Test
     public void playersCantEnterSameMoveWhenMoveIsX() {
-        Board board = new Board(asList(X, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
+        Board board = new Board(3, asList(X, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
 
         assertFalse(board.isMoveAvailable(1));
     }
 
     @Test
     public void playersCantEnterSameMoveWhenMoveIsO() {
-        Board board = new Board(asList(O, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
+        Board board = new Board(3, asList(O, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
 
         assertFalse(board.isMoveAvailable(1));
     }
 
     @Test
     public void boardHasNoAvailableMovesLeft() {
-        Board board = new Board(asList(X, O, X, O, X, O, X, O, X));
+        Board board = new Board(3, asList(X, O, X, O, X, O, X, O, X));
 
         assertFalse(board.hasAvailableMoves());
     }
 
     @Test
     public void canScoreAHorizontalWin() {
-        Board board = new Board(asList(X, X, X, EMPTY, EMPTY, O, O, EMPTY, EMPTY));
+        Board board = new Board(3, asList(X, X, X, EMPTY, EMPTY, O, O, EMPTY, EMPTY));
 
         assertTrue(board.findWin(X));
     }
 
     @Test
-    public void canScoreVerticalWin() {
-        Board board = new Board(asList(X, O, EMPTY, X, O, X, X, O, EMPTY));
+    public void canScoreVerticalWinOnAThreeByThree() {
+        Board board = new Board(3, asList(X, O, EMPTY, X, O, X, X, O, EMPTY));
 
         assertTrue(board.findWin(X));
     }
+
+    @Test
+    public void canScoreVerticalWinOnAFourByFour() {
+        Board board = new Board(4, asList(O, EMPTY, EMPTY, X, O, O, EMPTY, X, EMPTY, EMPTY, EMPTY, X, EMPTY, EMPTY, EMPTY, X));
+
+        assertTrue(board.findWin(X));
+    }
+
 
     @Test
     public void canScoreFirstDiagonalWin() {
-        Board board = new Board(asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
+        Board board = new Board(3,asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
         assertTrue(board.findWin(X));
     }
 
     @Test
     public void canScoreSecondDiagonalWin() {
-        Board board = new Board(asList(O, O, X, EMPTY, X, EMPTY, X, EMPTY, EMPTY));
+        Board board = new Board(3, asList(O, O, X, EMPTY, X, EMPTY, X, EMPTY, EMPTY));
 
         assertTrue(board.findWin(X));
     }
@@ -146,28 +155,28 @@ public class BoardTest {
 
     @Test
     public void checkIfPlayerHasWon() {
-        Board board = new Board(asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
+        Board board = new Board(3, asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
         assertTrue(board.playerHasWon(X));
     }
 
     @Test
     public void gameIsOverAndXWins() {
-        Board board = new Board(asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
+        Board board = new Board(3, asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
         assertTrue(board.gameIsOver());
     }
 
     @Test
     public void boardAnnouncesResultOfPlayerOneWin() {
-        Board board = new Board(asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
+        Board board = new Board(3, asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
         assertEquals("X", board.findWinner().getResult());
     }
 
     @Test
     public void scoresATie() {
-        Board board = new Board(asList(O, X, X, X, O, O, X, O, X));
+        Board board = new Board(3, asList(O, X, X, X, O, O, X, O, X));
 
         assertEquals("Tie", board.findWinner().getResult());
     }
