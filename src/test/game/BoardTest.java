@@ -16,7 +16,7 @@ public class BoardTest {
 
     @Test
     public void canMakeMoveOnABoard() {
-        Board board = new Board();
+        Board board = new Board(3);
         List<Mark> grid = board.updateMove(1, X);
 
         assertEquals(X, grid.get(0));
@@ -43,7 +43,7 @@ public class BoardTest {
 
     @Test
     public void canReturnColumns() {
-        Board board = new Board();
+        Board board = new Board(3);
         List<Line> rows = board.columnLines();
 
         assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(0));
@@ -64,7 +64,7 @@ public class BoardTest {
 
     @Test
     public void canReturnDiagonals() {
-        Board board = new Board();
+        Board board = new Board(3);
         List<Line> diagonals = board.diagonalLines();
 
         assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), diagonals.get(0));
@@ -82,7 +82,7 @@ public class BoardTest {
 
     @Test
     public void returnsListOfNineAvailableMoves() {
-        Board board = new Board();
+        Board board = new Board(3);
 
         assertEquals(9, board.availableMoves().size());
     }

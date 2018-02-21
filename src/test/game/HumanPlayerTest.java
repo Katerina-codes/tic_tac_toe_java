@@ -20,7 +20,7 @@ public class HumanPlayerTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI ui = new CommandLineUI(new PrintStream(output), input);
-        Board board = new Board();
+        Board board = new Board(3);
         HumanPlayer player = new HumanPlayer(ui, X);
 
         Integer move = player.getMove(board);

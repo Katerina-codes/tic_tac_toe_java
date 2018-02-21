@@ -19,7 +19,7 @@ public class GameTest {
     @Test
     public void runsTheGame() {
         FakeCommandLineUI inputOutput = new FakeCommandLineUI();
-        Board board = new Board();
+        Board board = new Board(3);
         Game game = new Game(inputOutput, board);
 
         game.runGame();
@@ -37,7 +37,7 @@ public class GameTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         ByteArrayInputStream input = new ByteArrayInputStream("1\n1\n4\n2\n5\n3".getBytes());
         UI inputOutput = new CommandLineUI(new PrintStream(output), input);
-        Board board = new Board();
+        Board board = new Board(3);
         Game game = new Game(inputOutput, board);
 
         game.runGame();

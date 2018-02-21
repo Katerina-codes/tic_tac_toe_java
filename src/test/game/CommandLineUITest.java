@@ -58,7 +58,7 @@ public class CommandLineUITest {
 
     @Test
     public void threeByThreeBoardIsDisplayed() {
-        Board board = new Board();
+        Board board = new Board(3);
 
         inputOutput.displayBoard(board.grid);
 
@@ -92,7 +92,7 @@ public class CommandLineUITest {
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
-        Board board = new Board();
+        Board board = new Board(3);
 
         assertEquals("1", inputOutput.getValidMove(board));
     }
