@@ -49,7 +49,7 @@ public class CommandLineUITest {
     }
 
     @Test
-    public void boardIsDisplayed() {
+    public void threeByThreeBoardIsDisplayed() {
         Board board = new Board();
 
         inputOutput.displayBoard(board.grid);
@@ -57,6 +57,18 @@ public class CommandLineUITest {
         assertTrue(output.toString().contains(" 1 2 3\n" +
                 " 4 5 6\n" +
                 " 7 8 9\n"));
+    }
+
+    @Test
+    public void fourByFourBoardIsDisplayed() {
+        Board board = new Board(4);
+
+        inputOutput.displayBoard(board.grid);
+
+        assertTrue(output.toString().contains(" 1 2 3 4\n" +
+                " 5 6 7 8\n" +
+                " 9 10 11 12\n" +
+                " 13 14 15 16\n"));
     }
 
     @Test
