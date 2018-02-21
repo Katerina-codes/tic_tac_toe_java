@@ -3,7 +3,6 @@ package main.game;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Arrays.asList;
 import static main.game.Mark.*;
 import static main.game.Result.TIE;
 
@@ -18,7 +17,7 @@ public class Board {
     }
 
     public Board() {
-        this.grid = asList(EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY);
+        this.grid = createGrid();
     }
 
     public Board(int size) {
