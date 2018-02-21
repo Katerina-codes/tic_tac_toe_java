@@ -23,7 +23,7 @@ public class CommandLineUI implements UI {
                 "Enter '3' for Computer vs Human");
     }
 
-    public String getGameMode() {
+    public String getUserChoice() {
         String gameMode = "";
         try {
             gameMode = input.readLine();

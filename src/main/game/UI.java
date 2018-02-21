@@ -5,7 +5,7 @@ import java.util.List;
 public interface UI {
     void askForGameMode();
 
-    String getGameMode();
+    String getUserChoice();
 
     void askForMove(Mark playerMark);
 

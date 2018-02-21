@@ -22,7 +22,7 @@ public class FakeCommandLineUI implements UI {
     }
 
     @Override
-    public String getGameMode() {
+    public String getUserChoice() {
         this.getGameModeWasCalled = true;
         return "1";
     }

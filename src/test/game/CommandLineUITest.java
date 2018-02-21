@@ -53,7 +53,7 @@ public class CommandLineUITest {
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
-        assertEquals("1", inputOutput.getGameMode());
+        assertEquals("1", inputOutput.getUserChoice());
     }
 
     @Test
