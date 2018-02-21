@@ -68,7 +68,7 @@ public class CommandLineUI implements UI {
                     sb.append("\n");
                 }
             }
-                formattedRows = sb.toString();
+            formattedRows = sb.toString();
         }
         output.println(formattedRows);
     }

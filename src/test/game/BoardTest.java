@@ -76,7 +76,7 @@ public class BoardTest {
         Board board = new Board(4);
         List<Line> diagonals = board.diagonalLines();
 
-         assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), diagonals.get(0));
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), diagonals.get(0));
         assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), diagonals.get(1));
     }
 
@@ -140,7 +140,7 @@ public class BoardTest {
 
     @Test
     public void canScoreFirstDiagonalWin() {
-        Board board = new Board(3,asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
+        Board board = new Board(3, asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
         assertTrue(board.findWin(X));
     }
