@@ -1,13 +1,11 @@
 package test.game;
 
 import main.game.Board;
+import main.game.Mark;
 import main.game.Result;
 import main.game.UI;
 
 import java.util.List;
-import java.util.Random;
-
-import static java.util.Arrays.asList;
 
 public class FakeCommandLineUI implements UI {
 
@@ -24,22 +22,21 @@ public class FakeCommandLineUI implements UI {
     }
 
     @Override
-    public String getGameMode() {
+    public String getUserChoice() {
         this.getGameModeWasCalled = true;
         return "1";
     }
 
     @Override
-    public void askForMove(String playerMark) {
+    public void askForMove(Mark playerMark) {
         this.askForMoveWasCalled = true;
     }
 
     @Override
     public String getValidMove(Board board) {
         this.getPlayerMoveWasCalled = true;
-        List moves = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
-        int rnd = new Random().nextInt(moves.size());
-        return (String) moves.get(rnd);
+        List<Integer> moves = board.availableMoves();
+        return moves.get(1).toString();
     }
 
     public boolean getGameModeWasCalled() {
@@ -47,7 +44,7 @@ public class FakeCommandLineUI implements UI {
     }
 
     @Override
-    public void displayBoard(List<List<String>> rows) {
+    public void displayBoard(List<Mark> rows) {
         this.displayBoardWasCalled = true;
     }
 

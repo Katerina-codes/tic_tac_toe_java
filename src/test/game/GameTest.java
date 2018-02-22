@@ -1,9 +1,6 @@
 package test.game;
 
-import main.game.Board;
-import main.game.CommandLineUI;
-import main.game.Game;
-import main.game.UI;
+import main.game.*;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -11,6 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static java.util.Arrays.asList;
+import static main.game.Mark.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
@@ -21,7 +19,7 @@ public class GameTest {
     @Test
     public void runsTheGame() {
         FakeCommandLineUI inputOutput = new FakeCommandLineUI();
-        Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
+        Board board = new Board(3);
         Game game = new Game(inputOutput, board);
 
         game.runGame();
@@ -39,12 +37,12 @@ public class GameTest {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         ByteArrayInputStream input = new ByteArrayInputStream("1\n1\n4\n2\n5\n3".getBytes());
         UI inputOutput = new CommandLineUI(new PrintStream(output), input);
-        Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
+        Board board = new Board(3);
         Game game = new Game(inputOutput, board);
 
         game.runGame();
 
-        assertEquals(board.grid, asList("X", "X", "X", "O", "O", "6", "7", "8", "9"));
+        assertEquals(board.grid, asList(Mark.X, Mark.X, Mark.X, Mark.O, Mark.O, EMPTY, EMPTY, EMPTY, EMPTY));
         assertThat(output.toString(), containsString("X won!"));
     }
 

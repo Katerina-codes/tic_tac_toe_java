@@ -2,148 +2,222 @@ package test.game;
 
 import main.game.Board;
 import main.game.Line;
+import main.game.Mark;
 import org.junit.Test;
 
 import java.util.List;
 
 import static java.util.Arrays.asList;
+import static main.game.Mark.*;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class BoardTest {
 
-    private final String PLAYER_ONE = "X";
-    private final List<String> emptyBoard = asList("1", "2", "3", "4", "5", "6", "7", "8", "9");
-
     @Test
     public void canMakeMoveOnABoard() {
-        Board board = new Board(emptyBoard);
-        List grid = board.updateMove("1", PLAYER_ONE);
+        Board board = new Board(3);
+        List<Mark> grid = board.updateMove(0, X);
 
-        assertEquals(PLAYER_ONE, grid.get(0));
+        assertEquals(X, grid.get(0));
     }
 
     @Test
     public void canReturnRows() {
-        Board board = new Board(emptyBoard);
+        Board board = new Board(3, asList(X, X, X, O, O, O, X, O, X));
+
         List<Line> rows = board.rowLines();
-        assertEquals(createNewLine("1", "2", "3"), rows.get(0));
-        assertEquals(createNewLine("4", "5", "6"), rows.get(1));
-        assertEquals(createNewLine("7", "8", "9"), rows.get(2));
+
+        assertEquals(createNewLine(X, X, X), rows.get(0));
+        assertEquals(createNewLine(O, O, O), rows.get(1));
+        assertEquals(createNewLine(X, O, X), rows.get(2));
     }
 
     @Test
-    public void canReturnColumns() {
-        Board board = new Board(emptyBoard);
-        List<Line> rows = board.columnLines();
-
-        assertEquals(createNewLine("1", "4", "7"), rows.get(0));
-        assertEquals(createNewLine("2", "5", "8"), rows.get(1));
-        assertEquals(createNewLine("3", "6", "9"), rows.get(2));
+    public void canReturnRowsForAFourByFour() {
+        Board board = new Board(4);
+        List<Line> rows = board.rowLines();
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(0));
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(1));
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(2));
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(3));
     }
 
     @Test
     public void canReturnDiagonals() {
-        Board board = new Board(emptyBoard);
+        Board board = new Board(3);
         List<Line> diagonals = board.diagonalLines();
 
-        assertEquals(createNewLine("1", "5", "9"), diagonals.get(0));
-        assertEquals(createNewLine("3", "5", "7"), diagonals.get(1));
+        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), diagonals.get(0));
+        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), diagonals.get(1));
     }
 
     @Test
-    public void returnsListOfAvailableMoves() {
-        Board board = new Board(emptyBoard);
+    public void canReturnDiagonalsForAFourByFour() {
+        Board board = new Board(4);
+        List<Line> diagonals = board.diagonalLines();
 
-        assertEquals(emptyBoard, board.availableMoves());
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), diagonals.get(0));
+        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), diagonals.get(1));
+    }
+
+    @Test
+    public void returnsListOfNineAvailableMoves() {
+        Board board = new Board(3);
+
+        assertEquals(9, board.availableMoves().size());
     }
 
     @Test
     public void returnsAListOfOneMove() {
-        Board board = new Board(asList("1", "O", "X", "O", "X", "O", "X", "O", "X"));
-        List<String> possibleMoves = asList("1");
+        Board board = new Board(3, asList(EMPTY, O, X, O, X, O, X, O, X));
+        List<Integer> possibleMoves = asList(0);
 
-        assertEquals(possibleMoves, board.availableMoves());
+        assertThat(board.availableMoves(), is(possibleMoves));
     }
 
     @Test
     public void playersCantEnterSameMoveWhenMoveIsX() {
-        Board board = new Board(asList("X", "2", "3", "4", "5", "6", "7", "8", "9"));
+        Board board = new Board(3, asList(X, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
 
         assertFalse(board.isMoveAvailable(1));
     }
 
     @Test
     public void playersCantEnterSameMoveWhenMoveIsO() {
-        Board board = new Board(asList("O", "2", "3", "4", "5", "6", "7", "8", "9"));
+        Board board = new Board(3, asList(O, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
 
         assertFalse(board.isMoveAvailable(1));
     }
 
     @Test
     public void boardHasNoAvailableMovesLeft() {
-        Board board = new Board(asList("X", "O", "X", "O", "X", "O", "X", "O", "X"));
+        Board board = new Board(3, asList(X, O, X, O, X, O, X, O, X));
 
         assertFalse(board.hasAvailableMoves());
     }
 
     @Test
     public void canScoreAHorizontalWin() {
-        Board board = new Board(asList("X", "X", "X", "4", "5", "O", "O", "8", "9"));
+        Board board = new Board(3, asList(
+                X, X, X,
+                EMPTY, EMPTY, EMPTY,
+                EMPTY, EMPTY, EMPTY));
+        Board board2 = new Board(3, asList(
+                EMPTY, EMPTY, EMPTY,
+                X, X, X,
+                EMPTY, EMPTY, EMPTY));
+        Board board3 = new Board(3, asList(
+                EMPTY, EMPTY, EMPTY,
+                EMPTY, EMPTY, EMPTY,
+                X, X, X));
 
-        assertTrue(board.findWin(PLAYER_ONE));
+        assertTrue(board.findWin(X));
+        assertTrue(board2.findWin(X));
+        assertTrue(board3.findWin(X));
     }
 
     @Test
-    public void canScoreVerticalWin() {
-        Board board = new Board(asList("X", "O", "3", "X", "O", "X", "X", "O", "9"));
+    public void canScoreWinForAColumnOnAThreeByThree() {
+        Board board = new Board(3, asList(
+                X, EMPTY, EMPTY,
+                X, EMPTY, EMPTY,
+                X, EMPTY, EMPTY));
+        Board board2 = new Board(3, asList(
+                EMPTY, X, EMPTY,
+                EMPTY, X, EMPTY,
+                EMPTY, X, EMPTY));
+        Board board3 = new Board(3, asList(
+                EMPTY, EMPTY, X,
+                EMPTY, EMPTY, X,
+                EMPTY, EMPTY, X));
 
-        assertTrue(board.findWin(PLAYER_ONE));
+        assertTrue(board.findWin(X));
+        assertTrue(board2.findWin(X));
+        assertTrue(board3.findWin(X));
     }
+
+    @Test
+    public void canScoreWinForAColumnOnAFourByFour() {
+        Board board = new Board(4, asList(
+                X, EMPTY, EMPTY, EMPTY,
+                X, EMPTY, EMPTY, EMPTY,
+                X, EMPTY, EMPTY, EMPTY,
+                X, EMPTY, EMPTY, EMPTY));
+        Board board2 = new Board(4, asList(
+                EMPTY, X, EMPTY, EMPTY,
+                EMPTY, X, EMPTY, EMPTY,
+                EMPTY, X, EMPTY, EMPTY,
+                EMPTY, X, EMPTY, EMPTY));
+        Board board3 = new Board(4, asList(
+                EMPTY, EMPTY, X, EMPTY,
+                EMPTY, EMPTY, X, EMPTY,
+                EMPTY, EMPTY, X, EMPTY,
+                EMPTY, EMPTY, X, EMPTY));
+        Board board4 = new Board(4, asList(
+                EMPTY, EMPTY, EMPTY, X,
+                EMPTY, EMPTY, EMPTY, X,
+                EMPTY, EMPTY, EMPTY, X,
+                EMPTY, EMPTY, EMPTY, X));
+
+        assertTrue(board.findWin(X));
+        assertTrue(board2.findWin(X));
+        assertTrue(board3.findWin(X));
+        assertTrue(board4.findWin(X));
+    }
+
+    @Test
+    public void canScoreVerticalWinOnAFourByFour() {
+        Board board = new Board(4, asList(O, EMPTY, EMPTY, X, O, O, EMPTY, X, EMPTY, EMPTY, EMPTY, X, EMPTY, EMPTY, EMPTY, X));
+
+        assertTrue(board.findWin(X));
+    }
+
 
     @Test
     public void canScoreFirstDiagonalWin() {
-        Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
+        Board board = new Board(3, asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
-        assertTrue(board.findWin(PLAYER_ONE));
+        assertTrue(board.findWin(X));
     }
 
     @Test
     public void canScoreSecondDiagonalWin() {
-        Board board = new Board(asList("O", "O", "X", "4", "X", "6", "X", "8", "9"));
+        Board board = new Board(3, asList(O, O, X, EMPTY, X, EMPTY, X, EMPTY, EMPTY));
 
-        assertTrue(board.findWin(PLAYER_ONE));
+        assertTrue(board.findWin(X));
     }
 
 
     @Test
     public void checkIfPlayerHasWon() {
-        Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
+        Board board = new Board(3, asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
-        assertTrue(board.playerHasWon(PLAYER_ONE));
+        assertTrue(board.playerHasWon(X));
     }
 
     @Test
     public void gameIsOverAndXWins() {
-        Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
+        Board board = new Board(3, asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
         assertTrue(board.gameIsOver());
     }
 
     @Test
     public void boardAnnouncesResultOfPlayerOneWin() {
-        Board board = new Board(asList("X", "O", "3", "O", "X", "6", "7", "8", "X"));
+        Board board = new Board(3, asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
         assertEquals("X", board.findWinner().getResult());
     }
 
     @Test
     public void scoresATie() {
-        Board board = new Board(asList("O", "X", "X", "X", "O", "O", "X", "O", "X"));
+        Board board = new Board(3, asList(O, X, X, X, O, O, X, O, X));
 
         assertEquals("Tie", board.findWinner().getResult());
     }
 
-    private Line createNewLine(String spaceOne, String spaceTwo, String spaceThree) {
+    private Line createNewLine(Mark spaceOne, Mark spaceTwo, Mark spaceThree) {
         return new Line(spaceOne, spaceTwo, spaceThree);
     }
 }

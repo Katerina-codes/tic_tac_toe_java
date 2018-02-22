@@ -5,13 +5,13 @@ import java.util.List;
 public interface UI {
     void askForGameMode();
 
-    String getGameMode();
+    String getUserChoice();
 
-    void askForMove(String playerMark);
+    void askForMove(Mark playerMark);
 
     String getValidMove(Board board);
 
-    void displayBoard(List<List<String>> rows);
+    void displayBoard(List<Mark> rows);
 
     void announceWinner(Result winner);
 }

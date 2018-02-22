@@ -13,13 +13,18 @@ public class CommandLineUI implements UI {
         this.input = new BufferedReader(new InputStreamReader(input));
     }
 
+    public void askForBoardSize() {
+        output.println("Please enter '1' for a 3x3 grid\n" +
+                "Please enter '2' for a 4x4 grid:");
+    }
+
     public void askForGameMode() {
         output.println("Enter '1' for Human vs Human\n" +
                 "Enter '2' for Human vs Computer\n" +
                 "Enter '3' for Computer vs Human");
     }
 
-    public String getGameMode() {
+    public String getUserChoice() {
         String gameMode = "";
         try {
             gameMode = input.readLine();
@@ -30,8 +35,8 @@ public class CommandLineUI implements UI {
         return gameMode;
     }
 
-    public void askForMove(String playerMark) {
-        output.format("\nPlayer %s place your mark! Pick a move from 1 - 9:\n\n", playerMark);
+    public void askForMove(Mark playerMark) {
+        output.format("Player %s place your mark! Pick a move from 1 - 9:\n\n", playerMark);
     }
 
     public String getValidMove(Board board) {
@@ -47,16 +52,31 @@ public class CommandLineUI implements UI {
         return move;
     }
 
-    public void displayBoard(List<List<String>> rows) {
+    public void displayBoard(List<Mark> grid) {
         StringBuilder sb = new StringBuilder();
         String formattedRows = null;
-        for (int index = 0; index <= rows.size() - 1; index++) {
-            List<String> row = rows.get(index);
-            sb.append(row);
-            sb.append("\n");
+        sb.append("\n");
+
+        for (int i = 0; i < grid.size(); i++) {
+            sb.append(" ");
+            if (grid.get(i) == Mark.EMPTY) {
+                sb.append(i + 1);
+            } else {
+                sb.append(grid.get(i));
+            }
+
+            if (grid.size() == 9) {
+                if ((i + 1) % 3 == 0) {
+                    sb.append("\n");
+                }
+            } else {
+                if ((i + 1) % 4 == 0) {
+                    sb.append("\n");
+                }
+            }
             formattedRows = sb.toString();
         }
-        output.println(formatBoard(formattedRows));
+        output.println(formattedRows);
     }
 
     public void announceWinner(Result result) {
@@ -72,7 +92,7 @@ public class CommandLineUI implements UI {
     }
 
     private String getValidMove() {
-        output.println("This move is taken. Place another one:");
+        output.println("\nThis move is taken. Place another one:");
         return getMove();
     }
 
@@ -84,13 +104,5 @@ public class CommandLineUI implements UI {
             output.println("Nothing was entered.");
         }
         return move;
-    }
-
-    private String formatBoard(String formattedRows) {
-        return formattedRows
-                .replace(",", "")
-                .replace("[", "")
-                .replace("]", "")
-                .trim();
     }
 }

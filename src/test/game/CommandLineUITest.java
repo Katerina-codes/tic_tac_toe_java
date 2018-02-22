@@ -2,7 +2,7 @@ package test.game;
 
 import main.game.Board;
 import main.game.CommandLineUI;
-import main.game.Marks;
+import main.game.Mark;
 import main.game.Result;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,9 +11,9 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.List;
 
 import static java.util.Arrays.asList;
+import static main.game.Mark.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
 
@@ -31,6 +31,14 @@ public class CommandLineUITest {
     }
 
     @Test
+    public void asksUserToChooseBoardSize() {
+        inputOutput.askForBoardSize();
+
+        assertTrue(output.toString().contains("Please enter '1' for a 3x3 grid\n" +
+                "Please enter '2' for a 4x4 grid:\n"));
+    }
+
+    @Test
     public void asksUserForGameMode() {
         inputOutput.askForGameMode();
 
@@ -45,23 +53,35 @@ public class CommandLineUITest {
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
-        assertEquals("1", inputOutput.getGameMode());
+        assertEquals("1", inputOutput.getUserChoice());
     }
 
     @Test
-    public void boardIsDisplayed() {
-        List<List<String>> rows = asList(asList("1", "2", "3"), asList("4", "5", "6"), asList("7", "8", "9"));
+    public void threeByThreeBoardIsDisplayed() {
+        Board board = new Board(3);
 
-        inputOutput.displayBoard(rows);
+        inputOutput.displayBoard(board.grid);
 
-        assertTrue(output.toString().contains("1 2 3\n" +
-                "4 5 6\n" +
-                "7 8 9"));
+        assertTrue(output.toString().contains(" 1 2 3\n" +
+                " 4 5 6\n" +
+                " 7 8 9\n"));
+    }
+
+    @Test
+    public void fourByFourBoardIsDisplayed() {
+        Board board = new Board(4);
+
+        inputOutput.displayBoard(board.grid);
+
+        assertTrue(output.toString().contains(" 1 2 3 4\n" +
+                " 5 6 7 8\n" +
+                " 9 10 11 12\n" +
+                " 13 14 15 16\n"));
     }
 
     @Test
     public void askPlayerForMove() {
-        inputOutput.askForMove(Marks.X.toString());
+        inputOutput.askForMove(Mark.X);
 
         assertTrue(output.toString().contains("Player X place your mark! Pick a move from 1 - 9:"));
     }
@@ -72,7 +92,7 @@ public class CommandLineUITest {
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
-        Board board = new Board(asList("1", "2", "3", "4", "5", "6", "7", "8", "9"));
+        Board board = new Board(3);
 
         assertEquals("1", inputOutput.getValidMove(board));
     }
@@ -83,7 +103,7 @@ public class CommandLineUITest {
         InputStream input = new ByteArrayInputStream("1\n2".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
-        Board board = new Board(asList("X", "2", "3", "4", "5", "6", "7", "8", "9"));
+        Board board = new Board(3, asList(Mark.X, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
 
         assertEquals("2", inputOutput.getValidMove(board));
         assertTrue(output.toString().contains("This move is taken. Place another one:"));

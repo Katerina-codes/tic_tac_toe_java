@@ -3,23 +3,24 @@ package main.game;
 public class HumanPlayer implements Player {
 
     private final UI ui;
-    private final String mark;
+    private final Mark mark;
 
-    public HumanPlayer(UI ui, String mark) {
+    public HumanPlayer(UI ui, Mark mark) {
         this.ui = ui;
         this.mark = mark;
     }
 
     public void playMove(Board board) {
-        String playerMove = getMove(board);
+        int playerMove = getMove(board);
         board.updateMove(playerMove, this.mark);
     }
 
-    public String getMark() {
+    public Mark getMark() {
         return mark;
     }
 
-    public String getMove(Board board) {
-        return ui.getValidMove(board);
+    public Integer getMove(Board board) {
+        String userMove = ui.getValidMove(board);
+        return Integer.parseInt(String.valueOf(userMove)) - 1;
     }
 }

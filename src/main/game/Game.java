@@ -15,7 +15,7 @@ public class Game {
 
     public void runGame() {
         ui.askForGameMode();
-        String gameMode = ui.getGameMode();
+        String gameMode = ui.getUserChoice();
         PlayerFactory playerTypes = new PlayerFactory(ui);
         List<Player> players = playerTypes.getPlayerTypes(gameMode);
 
@@ -48,7 +48,7 @@ public class Game {
     }
 
     private void displayBoard() {
-        List<List<String>> activeBoard = this.board.rows();
+        List<Mark> activeBoard = this.board.grid;
         ui.displayBoard(activeBoard);
     }
 

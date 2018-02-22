@@ -1,6 +1,9 @@
 package test.game;
 
-import main.game.*;
+import main.game.Computer;
+import main.game.HumanPlayer;
+import main.game.Player;
+import main.game.PlayerFactory;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,10 +17,10 @@ public class PlayerFactoryTest {
     private FakeCommandLineUI ui;
 
     @Before
-   public void setUp() {
-       ui = new FakeCommandLineUI();
-       playerTypes = new PlayerFactory(ui);
-   }
+    public void setUp() {
+        ui = new FakeCommandLineUI();
+        playerTypes = new PlayerFactory(ui);
+    }
 
     @Test
     public void createsTwoHumanPlayers() {

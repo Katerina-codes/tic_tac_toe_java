@@ -4,23 +4,23 @@ import java.util.List;
 
 public class Computer implements Player {
 
-    private final String mark;
+    private final Mark mark;
 
-    public Computer(String mark) {
+    public Computer(Mark mark) {
         this.mark = mark;
     }
 
     public void playMove(Board board) {
-        String playerMove = move(board);
+        int playerMove = move(board);
         board.updateMove(playerMove, mark);
     }
 
-    public String getMark() {
+    public Mark getMark() {
         return mark;
     }
 
-    public String move(Board board) {
-        List<String> possibleMoves = board.availableMoves();
+    public int move(Board board) {
+        List<Integer> possibleMoves = board.availableMoves();
         return possibleMoves.get(0);
     }
 }
