@@ -30,13 +30,13 @@ public class Board {
     }
 
     public List<Mark> updateMove(int position, Mark mark) {
-        this.grid.set(position - 1, mark);
+        this.grid.set(position, mark);
         return this.grid;
     }
 
     public List<Line> rowLines() {
         List<Line> rows = new ArrayList<>();
-        for (int i = 0; i < size * size; i += size) {
+        for (int i = 0; i < grid.size(); i += size) {
             if (size == 3) {
                 Line line = new Line(grid.get(i), grid.get(i + 1), grid.get(i + 2));
                 rows.add(line);
@@ -106,7 +106,7 @@ public class Board {
     public List<Integer> availableMoves() {
         List<Integer> availableMoves = new ArrayList<>();
         for (int i = 0; i < this.grid.size(); i++) {
-            if (this.grid.get(i) == EMPTY) {
+            if (this.grid.get(i).equals(EMPTY)) {
                 availableMoves.add(i);
             }
         }
