@@ -63,21 +63,6 @@ public class Board {
         return count != grid.size();
     }
 
-    public List<Line> columnLines() {
-        List<Line> columns = new ArrayList<>();
-
-        for (int i = 0; i < size; i++) {
-            if (size == 3) {
-                Line line = new Line(grid.get(i), grid.get(i + 3), grid.get(i + 6));
-                columns.add(line);
-            } else {
-                Line line = new Line(grid.get(i), grid.get(i + 4), grid.get(i + 8), grid.get(i + 12));
-                columns.add(line);
-            }
-        }
-        return columns;
-    }
-
     public boolean findWin(Mark playerMark) {
         for (Line line : lines()) {
             if (line.hasWinner(playerMark)) {
@@ -149,6 +134,21 @@ public class Board {
 
     public Mark valueAt(int position) {
         return this.grid.get(position);
+    }
+
+    private List<Line> columnLines() {
+        List<Line> columns = new ArrayList<>();
+
+        for (int i = 0; i < size; i++) {
+            if (size == 3) {
+                Line line = new Line(grid.get(i), grid.get(i + 3), grid.get(i + 6));
+                columns.add(line);
+            } else {
+                Line line = new Line(grid.get(i), grid.get(i + 4), grid.get(i + 8), grid.get(i + 12));
+                columns.add(line);
+            }
+        }
+        return columns;
     }
 
     private boolean spaceIsTaken(Mark space) {

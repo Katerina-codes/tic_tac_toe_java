@@ -5,6 +5,7 @@ import main.game.Line;
 import main.game.Mark;
 import org.junit.Test;
 
+import java.util.EmptyStackException;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -24,11 +25,13 @@ public class BoardTest {
 
     @Test
     public void canReturnRows() {
-        Board board = new Board(3);
+        Board board = new Board(3, asList(X, X, X, O, O, O, X, O, X));
+
         List<Line> rows = board.rowLines();
-        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(0));
-        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(1));
-        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(2));
+
+        assertEquals(createNewLine(X, X, X), rows.get(0));
+        assertEquals(createNewLine(O, O, O), rows.get(1));
+        assertEquals(createNewLine(X, O, X), rows.get(2));
     }
 
     @Test
@@ -40,27 +43,6 @@ public class BoardTest {
         assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(2));
         assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(3));
     }
-
-    @Test
-    public void canReturnColumns() {
-        Board board = new Board(3);
-        List<Line> rows = board.columnLines();
-
-        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(0));
-        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(1));
-        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), rows.get(2));
-    }
-
-    @Test
-    public void canReturnColumnsForAFourByFour() {
-        Board board = new Board(4);
-        List<Line> rows = board.columnLines();
-        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(0));
-        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(1));
-        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(2));
-        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(3));
-    }
-
 
     @Test
     public void canReturnDiagonals() {
@@ -118,16 +100,71 @@ public class BoardTest {
 
     @Test
     public void canScoreAHorizontalWin() {
-        Board board = new Board(3, asList(X, X, X, EMPTY, EMPTY, O, O, EMPTY, EMPTY));
+        Board board = new Board(3, asList(
+                X, X, X,
+                EMPTY, EMPTY, EMPTY,
+                EMPTY, EMPTY, EMPTY));
+        Board board2 = new Board(3, asList(
+                EMPTY, EMPTY, EMPTY,
+                X, X, X,
+                EMPTY, EMPTY, EMPTY));
+        Board board3 = new Board(3, asList(
+                EMPTY, EMPTY, EMPTY,
+                EMPTY, EMPTY, EMPTY,
+                X, X, X));
 
         assertTrue(board.findWin(X));
+        assertTrue(board2.findWin(X));
+        assertTrue(board3.findWin(X));
     }
 
     @Test
-    public void canScoreVerticalWinOnAThreeByThree() {
-        Board board = new Board(3, asList(X, O, EMPTY, X, O, X, X, O, EMPTY));
+    public void canScoreWinForAColumnOnAThreeByThree() {
+        Board board = new Board(3, asList(
+                X, EMPTY, EMPTY,
+                X, EMPTY, EMPTY,
+                X, EMPTY, EMPTY));
+        Board board2 = new Board(3, asList(
+                EMPTY, X, EMPTY,
+                EMPTY, X, EMPTY,
+                EMPTY, X, EMPTY));
+        Board board3 = new Board(3, asList(
+                EMPTY, EMPTY, X,
+                EMPTY, EMPTY, X,
+                EMPTY, EMPTY, X));
 
         assertTrue(board.findWin(X));
+        assertTrue(board2.findWin(X));
+        assertTrue(board3.findWin(X));
+    }
+
+    @Test
+    public void canScoreWinForAColumnOnAFourByFour() {
+        Board board = new Board(4, asList(
+                X, EMPTY, EMPTY, EMPTY,
+                X, EMPTY, EMPTY, EMPTY,
+                X, EMPTY, EMPTY, EMPTY,
+                X, EMPTY, EMPTY, EMPTY));
+        Board board2 = new Board(4, asList(
+                EMPTY, X, EMPTY, EMPTY,
+                EMPTY, X, EMPTY, EMPTY,
+                EMPTY, X, EMPTY, EMPTY,
+                EMPTY, X, EMPTY, EMPTY));
+        Board board3 = new Board(4, asList(
+                EMPTY, EMPTY, X, EMPTY,
+                EMPTY, EMPTY, X, EMPTY,
+                EMPTY, EMPTY, X, EMPTY,
+                EMPTY, EMPTY, X, EMPTY));
+        Board board4 = new Board(4, asList(
+                EMPTY, EMPTY, EMPTY, X,
+                EMPTY, EMPTY, EMPTY, X,
+                EMPTY, EMPTY, EMPTY, X,
+                EMPTY, EMPTY, EMPTY, X));
+
+        assertTrue(board.findWin(X));
+        assertTrue(board2.findWin(X));
+        assertTrue(board3.findWin(X));
+        assertTrue(board4.findWin(X));
     }
 
     @Test
