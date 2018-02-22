@@ -5,7 +5,6 @@ import main.game.Line;
 import main.game.Mark;
 import org.junit.Test;
 
-import java.util.EmptyStackException;
 import java.util.List;
 
 import static java.util.Arrays.asList;

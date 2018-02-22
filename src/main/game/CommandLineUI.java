@@ -14,9 +14,10 @@ public class CommandLineUI implements UI {
     }
 
     public void askForBoardSize() {
-       output.println("Please enter '1' for a 3x3 grid\n" +
-               "Please enter '2' for a 4x4 grid:\n");
+        output.println("Please enter '1' for a 3x3 grid\n" +
+                "Please enter '2' for a 4x4 grid:");
     }
+
     public void askForGameMode() {
         output.println("Enter '1' for Human vs Human\n" +
                 "Enter '2' for Human vs Computer\n" +
@@ -35,7 +36,7 @@ public class CommandLineUI implements UI {
     }
 
     public void askForMove(Mark playerMark) {
-        output.format("\nPlayer %s place your mark! Pick a move from 1 - 9:\n\n", playerMark);
+        output.format("Player %s place your mark! Pick a move from 1 - 9:\n\n", playerMark);
     }
 
     public String getValidMove(Board board) {
@@ -54,6 +55,7 @@ public class CommandLineUI implements UI {
     public void displayBoard(List<Mark> grid) {
         StringBuilder sb = new StringBuilder();
         String formattedRows = null;
+        sb.append("\n");
 
         for (int i = 0; i < grid.size(); i++) {
             sb.append(" ");
@@ -90,7 +92,7 @@ public class CommandLineUI implements UI {
     }
 
     private String getValidMove() {
-        output.println("This move is taken. Place another one:");
+        output.println("\nThis move is taken. Place another one:");
         return getMove();
     }
 
