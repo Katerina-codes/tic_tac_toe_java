@@ -39,7 +39,7 @@ public class CommandLineUI implements UI {
         output.format("Player %s place your mark! Pick a move from 1 - 9:\n\n", playerMark);
     }
 
-    public String getValidMove(Board board) {
+    public String getMove(Board board) {
         String move = getMove();
 
         int convertedMove = Integer.parseInt(move);

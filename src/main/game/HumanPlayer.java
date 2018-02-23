@@ -20,7 +20,7 @@ public class HumanPlayer implements Player {
     }
 
     public Integer getMove(Board board) {
-        String userMove = ui.getValidMove(board);
+        String userMove = ui.getMove(board);
         return Integer.parseInt(String.valueOf(userMove)) - 1;
     }
 }

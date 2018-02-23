@@ -94,7 +94,7 @@ public class CommandLineUITest {
 
         Board board = new Board(3);
 
-        assertEquals("1", inputOutput.getValidMove(board));
+        assertEquals("1", inputOutput.getMove(board));
     }
 
     @Test
@@ -105,7 +105,7 @@ public class CommandLineUITest {
 
         Board board = new Board(3, asList(Mark.X, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
 
-        assertEquals("2", inputOutput.getValidMove(board));
+        assertEquals("2", inputOutput.getMove(board));
         assertTrue(output.toString().contains("This move is taken. Place another one:"));
     }
 

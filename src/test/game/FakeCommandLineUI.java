@@ -33,7 +33,7 @@ public class FakeCommandLineUI implements UI {
     }
 
     @Override
-    public String getValidMove(Board board) {
+    public String getMove(Board board) {
         this.getPlayerMoveWasCalled = true;
         List<Integer> moves = board.availableMoves();
         return moves.get(1).toString();

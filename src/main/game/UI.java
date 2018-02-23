@@ -9,7 +9,7 @@ public interface UI {
 
     void askForMove(Mark playerMark);
 
-    String getValidMove(Board board);
+    String getMove(Board board);
 
     void displayBoard(List<Mark> rows);
 
