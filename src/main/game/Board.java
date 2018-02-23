@@ -49,15 +49,6 @@ public class Board {
         return count != grid.size();
     }
 
-    public boolean findWin(Mark playerMark) {
-        for (Line line : lines()) {
-            if (line.hasWinner(playerMark)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public List<Integer> availableMoves() {
         List<Integer> availableMoves = new ArrayList<>();
         for (int i = 0; i < this.grid.size(); i++) {
@@ -80,7 +71,12 @@ public class Board {
     }
 
     public boolean playerHasWon(Mark mark) {
-        return findWin(mark);
+        for (Line line : lines()) {
+            if (line.hasWinner(mark)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean gameIsOver() {

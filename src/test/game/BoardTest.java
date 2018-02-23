@@ -73,9 +73,9 @@ public class BoardTest {
                 EMPTY, EMPTY, EMPTY,
                 X, X, X));
 
-        assertTrue(board.findWin(X));
-        assertTrue(board2.findWin(X));
-        assertTrue(board3.findWin(X));
+        assertTrue(board.playerHasWon(X));
+        assertTrue(board2.playerHasWon(X));
+        assertTrue(board3.playerHasWon(X));
     }
 
     @Test
@@ -96,9 +96,9 @@ public class BoardTest {
                 EMPTY, EMPTY, EMPTY, EMPTY,
                 X, X, X, X));
 
-        assertTrue(board.findWin(X));
-        assertTrue(board2.findWin(X));
-        assertTrue(board3.findWin(X));
+        assertTrue(board.playerHasWon(X));
+        assertTrue(board2.playerHasWon(X));
+        assertTrue(board3.playerHasWon(X));
     }
 
     @Test
@@ -116,9 +116,9 @@ public class BoardTest {
                 EMPTY, EMPTY, X,
                 EMPTY, EMPTY, X));
 
-        assertTrue(board.findWin(X));
-        assertTrue(board2.findWin(X));
-        assertTrue(board3.findWin(X));
+        assertTrue(board.playerHasWon(X));
+        assertTrue(board2.playerHasWon(X));
+        assertTrue(board3.playerHasWon(X));
     }
 
     @Test
@@ -144,10 +144,10 @@ public class BoardTest {
                 EMPTY, EMPTY, EMPTY, X,
                 EMPTY, EMPTY, EMPTY, X));
 
-        assertTrue(board.findWin(X));
-        assertTrue(board2.findWin(X));
-        assertTrue(board3.findWin(X));
-        assertTrue(board4.findWin(X));
+        assertTrue(board.playerHasWon(X));
+        assertTrue(board2.playerHasWon(X));
+        assertTrue(board3.playerHasWon(X));
+        assertTrue(board4.playerHasWon(X));
     }
 
     @Test
@@ -161,8 +161,8 @@ public class BoardTest {
                 EMPTY, X, EMPTY,
                 X, EMPTY, EMPTY));
 
-        assertTrue(board.findWin(X));
-        assertTrue(board2.findWin(X));
+        assertTrue(board.playerHasWon(X));
+        assertTrue(board2.playerHasWon(X));
     }
 
     @Test
@@ -178,15 +178,15 @@ public class BoardTest {
                 EMPTY, X, EMPTY, EMPTY,
                 X, EMPTY, EMPTY, EMPTY));
 
-        assertTrue(board.findWin(X));
-        assertTrue(board2.findWin(X));
+        assertTrue(board.playerHasWon(X));
+        assertTrue(board2.playerHasWon(X));
     }
 
     @Test
     public void canScoreVerticalWinOnAFourByFour() {
         Board board = new Board(4, asList(O, EMPTY, EMPTY, X, O, O, EMPTY, X, EMPTY, EMPTY, EMPTY, X, EMPTY, EMPTY, EMPTY, X));
 
-        assertTrue(board.findWin(X));
+        assertTrue(board.playerHasWon(X));
     }
 
 
@@ -194,14 +194,14 @@ public class BoardTest {
     public void canScoreFirstDiagonalWin() {
         Board board = new Board(3, asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
-        assertTrue(board.findWin(X));
+        assertTrue(board.playerHasWon(X));
     }
 
     @Test
     public void canScoreSecondDiagonalWin() {
         Board board = new Board(3, asList(O, O, X, EMPTY, X, EMPTY, X, EMPTY, EMPTY));
 
-        assertTrue(board.findWin(X));
+        assertTrue(board.playerHasWon(X));
     }
 
 
