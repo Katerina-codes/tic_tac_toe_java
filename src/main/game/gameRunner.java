@@ -15,6 +15,6 @@ public class gameRunner {
         Board board = new Board(boardSize);
         Game game = new Game(inputOutput, board);
 
-        game.runGame();
+        game.run();
     }
 }

@@ -22,7 +22,7 @@ public class GameTest {
         Board board = new Board(3);
         Game game = new Game(inputOutput, board);
 
-        game.runGame();
+        game.run();
 
         assertTrue(inputOutput.askForGameModeWasCalled());
         assertTrue(inputOutput.getGameModeWasCalled());
@@ -40,7 +40,7 @@ public class GameTest {
         Board board = new Board(3);
         Game game = new Game(inputOutput, board);
 
-        game.runGame();
+        game.run();
 
         assertEquals(board.grid, asList(Mark.X, Mark.X, Mark.X, Mark.O, Mark.O, EMPTY, EMPTY, EMPTY, EMPTY));
         assertThat(output.toString(), containsString("X won!"));

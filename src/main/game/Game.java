@@ -13,7 +13,7 @@ public class Game {
         this.board = board;
     }
 
-    public void runGame() {
+    public void run() {
         ui.askForGameMode();
         String gameMode = ui.getUserChoice();
         PlayerFactory playerTypes = new PlayerFactory(ui);
