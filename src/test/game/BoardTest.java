@@ -23,27 +23,6 @@ public class BoardTest {
     }
 
     @Test
-    public void canReturnRows() {
-        Board board = new Board(3, asList(X, X, X, O, O, O, X, O, X));
-
-        List<Line> rows = board.rowLines();
-
-        assertEquals(createNewLine(X, X, X), rows.get(0));
-        assertEquals(createNewLine(O, O, O), rows.get(1));
-        assertEquals(createNewLine(X, O, X), rows.get(2));
-    }
-
-    @Test
-    public void canReturnRowsForAFourByFour() {
-        Board board = new Board(4);
-        List<Line> rows = board.rowLines();
-        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(0));
-        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(1));
-        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(2));
-        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), rows.get(3));
-    }
-
-    @Test
     public void returnsListOfNineAvailableMoves() {
         Board board = new Board(3);
 
@@ -80,7 +59,7 @@ public class BoardTest {
     }
 
     @Test
-    public void canScoreAHorizontalWin() {
+    public void canScoreARowWinOnThreeByThree() {
         Board board = new Board(3, asList(
                 X, X, X,
                 EMPTY, EMPTY, EMPTY,
@@ -93,6 +72,29 @@ public class BoardTest {
                 EMPTY, EMPTY, EMPTY,
                 EMPTY, EMPTY, EMPTY,
                 X, X, X));
+
+        assertTrue(board.findWin(X));
+        assertTrue(board2.findWin(X));
+        assertTrue(board3.findWin(X));
+    }
+
+    @Test
+    public void canScoreARowWinOnFourByFour() {
+        Board board = new Board(4, asList(
+                X, X, X, X,
+                EMPTY, EMPTY, EMPTY, EMPTY,
+                EMPTY, EMPTY, EMPTY, EMPTY,
+                EMPTY, EMPTY, EMPTY, EMPTY));
+        Board board2 = new Board(4, asList(
+                EMPTY, EMPTY, EMPTY, EMPTY,
+                X, X, X, X,
+                EMPTY, EMPTY, EMPTY, EMPTY,
+                EMPTY, EMPTY, EMPTY, EMPTY));
+        Board board3 = new Board(4, asList(
+                EMPTY, EMPTY, EMPTY, EMPTY,
+                EMPTY, EMPTY, EMPTY, EMPTY,
+                EMPTY, EMPTY, EMPTY, EMPTY,
+                X, X, X, X));
 
         assertTrue(board.findWin(X));
         assertTrue(board2.findWin(X));

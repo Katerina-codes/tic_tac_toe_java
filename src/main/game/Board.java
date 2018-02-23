@@ -34,20 +34,6 @@ public class Board {
         return this.grid;
     }
 
-    public List<Line> rowLines() {
-        List<Line> rows = new ArrayList<>();
-        for (int i = 0; i < grid.size(); i += size) {
-            if (size == 3) {
-                Line line = new Line(grid.get(i), grid.get(i + 1), grid.get(i + 2));
-                rows.add(line);
-            } else {
-                Line line = new Line(grid.get(i), grid.get(i + 1), grid.get(i + 2), grid.get(i + 3));
-                rows.add(line);
-            }
-        }
-        return rows;
-    }
-
     public boolean isMoveAvailable(int move) {
         return this.grid.get(move - 1) == EMPTY;
     }
@@ -103,6 +89,20 @@ public class Board {
 
     public Mark valueAt(int position) {
         return this.grid.get(position);
+    }
+
+    private List<Line> rowLines() {
+        List<Line> rows = new ArrayList<>();
+        for (int i = 0; i < grid.size(); i += size) {
+            if (size == 3) {
+                Line line = new Line(grid.get(i), grid.get(i + 1), grid.get(i + 2));
+                rows.add(line);
+            } else {
+                Line line = new Line(grid.get(i), grid.get(i + 1), grid.get(i + 2), grid.get(i + 3));
+                rows.add(line);
+            }
+        }
+        return rows;
     }
 
     private Line diagonalOne() {
