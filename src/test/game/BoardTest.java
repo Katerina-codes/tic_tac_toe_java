@@ -44,24 +44,6 @@ public class BoardTest {
     }
 
     @Test
-    public void canReturnDiagonals() {
-        Board board = new Board(3);
-        List<Line> diagonals = board.diagonalLines();
-
-        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), diagonals.get(0));
-        assertEquals(createNewLine(EMPTY, EMPTY, EMPTY), diagonals.get(1));
-    }
-
-    @Test
-    public void canReturnDiagonalsForAFourByFour() {
-        Board board = new Board(4);
-        List<Line> diagonals = board.diagonalLines();
-
-        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), diagonals.get(0));
-        assertEquals(new Line(EMPTY, EMPTY, EMPTY, EMPTY), diagonals.get(1));
-    }
-
-    @Test
     public void returnsListOfNineAvailableMoves() {
         Board board = new Board(3);
 
@@ -164,6 +146,38 @@ public class BoardTest {
         assertTrue(board2.findWin(X));
         assertTrue(board3.findWin(X));
         assertTrue(board4.findWin(X));
+    }
+
+    @Test
+    public void canScoreADiagonalWinOnThreeByThree() {
+        Board board = new Board(3, asList(
+                X, EMPTY, EMPTY,
+                EMPTY, X, EMPTY,
+                EMPTY, EMPTY, X));
+        Board board2 = new Board(3, asList(
+                EMPTY, EMPTY, X,
+                EMPTY, X, EMPTY,
+                X, EMPTY, EMPTY));
+
+        assertTrue(board.findWin(X));
+        assertTrue(board2.findWin(X));
+    }
+
+    @Test
+    public void canScoreADiagonalWinOnFourByFour() {
+        Board board = new Board(4, asList(
+                X, EMPTY, EMPTY, EMPTY,
+                EMPTY, X, EMPTY, EMPTY,
+                EMPTY, EMPTY, X, EMPTY,
+                EMPTY, EMPTY, EMPTY, X));
+        Board board2 = new Board(4, asList(
+                EMPTY, EMPTY, EMPTY, X,
+                EMPTY, EMPTY, X, EMPTY,
+                EMPTY, X, EMPTY, EMPTY,
+                X, EMPTY, EMPTY, EMPTY));
+
+        assertTrue(board.findWin(X));
+        assertTrue(board2.findWin(X));
     }
 
     @Test

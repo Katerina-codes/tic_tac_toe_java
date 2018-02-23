@@ -72,37 +72,6 @@ public class Board {
         return false;
     }
 
-    public Line diagonalOne() {
-        Line line = null;
-        for (int i = 0; i < size; i += 2) {
-            if (size == 3) {
-                line = new Line(grid.get(0), grid.get(4), grid.get(8));
-            } else {
-                line = new Line(grid.get(0), grid.get(5), grid.get(10), grid.get(15));
-            }
-        }
-        return line;
-    }
-
-    public Line diagonalTwo() {
-        Line line = null;
-        for (int i = size - 1; i < size; i += size - 1) {
-            if (size == 3) {
-                line = new Line(grid.get(i), grid.get(4), grid.get(6));
-            } else {
-                line = new Line(grid.get(i), grid.get(6), grid.get(9), grid.get(12));
-            }
-        }
-        return line;
-    }
-
-    public List<Line> diagonalLines() {
-        List<Line> diagonals = new ArrayList<>();
-        diagonals.add(diagonalOne());
-        diagonals.add(diagonalTwo());
-        return diagonals;
-    }
-
     public List<Integer> availableMoves() {
         List<Integer> availableMoves = new ArrayList<>();
         for (int i = 0; i < this.grid.size(); i++) {
@@ -134,6 +103,37 @@ public class Board {
 
     public Mark valueAt(int position) {
         return this.grid.get(position);
+    }
+
+    private Line diagonalOne() {
+        Line line = null;
+        for (int i = 0; i < size; i += 2) {
+            if (size == 3) {
+                line = new Line(grid.get(0), grid.get(4), grid.get(8));
+            } else {
+                line = new Line(grid.get(0), grid.get(5), grid.get(10), grid.get(15));
+            }
+        }
+        return line;
+    }
+
+    private Line diagonalTwo() {
+        Line line = null;
+        for (int i = size - 1; i < size; i += size - 1) {
+            if (size == 3) {
+                line = new Line(grid.get(i), grid.get(4), grid.get(6));
+            } else {
+                line = new Line(grid.get(i), grid.get(6), grid.get(9), grid.get(12));
+            }
+        }
+        return line;
+    }
+
+    private List<Line> diagonalLines() {
+        List<Line> diagonals = new ArrayList<>();
+        diagonals.add(diagonalOne());
+        diagonals.add(diagonalTwo());
+        return diagonals;
     }
 
     private List<Line> columnLines() {
