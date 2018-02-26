@@ -11,14 +11,18 @@ public class Board {
     private int size;
     public List<Mark> grid;
 
-    public Board(int size, List<Mark> grid) {
-        this.size = size;
-        this.grid = grid;
+    public Board() {
+        this(3);
     }
 
     public Board(int size) {
         this.size = size;
         this.grid = createGrid();
+    }
+
+    public Board(int size, List<Mark> grid) {
+        this.size = size;
+        this.grid = grid;
     }
 
     private List<Mark> createGrid() {
@@ -65,9 +69,12 @@ public class Board {
             return TIE;
         } else if (playerHasWon(X)) {
             return Result.PLAYER_ONE_WIN;
-        } else {
+        } else if (playerHasWon(O)) {
             return Result.PLAYER_TWO_WIN;
+        } else {
+            throw new RuntimeException("No winner.");
         }
+
     }
 
     public boolean playerHasWon(Mark mark) {
@@ -152,7 +159,7 @@ public class Board {
     }
 
     private boolean gameIsTied() {
-        return !playerHasWon(X) && !playerHasWon(O);
+        return !playerHasWon(X) && !playerHasWon(O) && !hasAvailableMoves();
     }
 
     private List<Line> lines() {

@@ -58,6 +58,12 @@ public class BoardTest {
         assertFalse(board.hasAvailableMoves());
     }
 
+    @Test (expected = RuntimeException.class)
+    public void throwsExceptionWhenFindWinnerCalledBeforeEndOfGame() {
+        Board board = new Board();
+        board.findWinner();
+    }
+
     @Test
     public void canScoreARowWinOnThreeByThree() {
         Board board = new Board(3, asList(
