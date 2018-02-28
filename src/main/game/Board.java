@@ -101,11 +101,8 @@ public class Board {
             ArrayList<Mark> rowElements = new ArrayList<>();
             for (int j = 0; j < size; j++) {
                 rowElements.add(grid.get(i + j));
-
-                if (j == 2) {
-                    rows.add(new Line(rowElements));
-                }
             }
+            rows.add(new Line(rowElements));
         }
          return rows;
     }
