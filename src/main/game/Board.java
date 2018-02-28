@@ -111,15 +111,12 @@ public class Board {
     }
 
     private Line diagonalOne() {
-        Line line = null;
-        for (int i = 0; i < size; i += 2) {
-            if (size == 3) {
-                line = new Line(grid.get(0), grid.get(4), grid.get(8));
-            } else {
-                line = new Line(grid.get(0), grid.get(5), grid.get(10), grid.get(15));
-            }
+        ArrayList<Mark> diagonal = new ArrayList<>();
+
+        for (int i = 0; i < grid.size(); i += (size + 1)) {
+            diagonal.add(grid.get(i));
         }
-        return line;
+            return new Line(diagonal);
     }
 
     private Line diagonalTwo() {
