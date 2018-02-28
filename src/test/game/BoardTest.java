@@ -79,9 +79,9 @@ public class BoardTest {
                 EMPTY, EMPTY, EMPTY,
                 X, X, X));
 
-        assertTrue(board.playerHasWon(X));
-        assertTrue(board2.playerHasWon(X));
-        assertTrue(board3.playerHasWon(X));
+        assertThat(board.playerHasWon(X), is(true));
+        assertThat(board2.playerHasWon(X), is(true));
+        assertThat(board3.playerHasWon(X), is(true));
     }
 
     @Test

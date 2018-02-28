@@ -16,7 +16,7 @@ public class Line {
     }
 
     public Line(List<Mark> spaces) {
-        spaces = spaces;
+        this.spaces = spaces;
     }
 
     public boolean hasWinner(Mark mark) {

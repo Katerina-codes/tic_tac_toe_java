@@ -97,15 +97,17 @@ public class Board {
     private List<Line> rowLines() {
         List<Line> rows = new ArrayList<>();
         for (int i = 0; i < grid.size(); i += size) {
-            if (size == 3) {
-                Line line = new Line(grid.get(i), grid.get(i + 1), grid.get(i + 2));
-                rows.add(line);
-            } else {
-                Line line = new Line(grid.get(i), grid.get(i + 1), grid.get(i + 2), grid.get(i + 3));
-                rows.add(line);
+
+            ArrayList<Mark> rowElements = new ArrayList<>();
+            for (int j = 0; j < size; j++) {
+                rowElements.add(grid.get(i + j));
+
+                if (j == 2) {
+                    rows.add(new Line(rowElements));
+                }
             }
         }
-        return rows;
+         return rows;
     }
 
     private Line diagonalOne() {
