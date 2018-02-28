@@ -139,13 +139,12 @@ public class Board {
         List<Line> columns = new ArrayList<>();
 
         for (int i = 0; i < size; i++) {
-            if (size == 3) {
-                Line line = new Line(grid.get(i), grid.get(i + 3), grid.get(i + 6));
-                columns.add(line);
-            } else {
-                Line line = new Line(grid.get(i), grid.get(i + 4), grid.get(i + 8), grid.get(i + 12));
-                columns.add(line);
+            List<Mark> columnElements = new ArrayList<>();
+
+            for (int j = i; j < grid.size(); j += size) {
+                columnElements.add(grid.get(j));
             }
+            columns.add(new Line(columnElements));
         }
         return columns;
     }
