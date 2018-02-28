@@ -120,15 +120,12 @@ public class Board {
     }
 
     private Line diagonalTwo() {
-        Line line = null;
-        for (int i = size - 1; i < size; i += size - 1) {
-            if (size == 3) {
-                line = new Line(grid.get(i), grid.get(4), grid.get(6));
-            } else {
-                line = new Line(grid.get(i), grid.get(6), grid.get(9), grid.get(12));
-            }
+        ArrayList<Mark> diagonal = new ArrayList<>();
+
+        for (int i = size - 1; i < grid.size() - (size - 1); i += size - 1) {
+            diagonal.add(grid.get(i));
         }
-        return line;
+        return new Line(diagonal);
     }
 
     private List<Line> diagonalLines() {
