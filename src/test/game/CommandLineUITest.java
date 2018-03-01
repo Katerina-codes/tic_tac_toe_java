@@ -81,9 +81,9 @@ public class CommandLineUITest {
 
     @Test
     public void askPlayerForMove() {
-        inputOutput.askForMove(Mark.X);
+        inputOutput.askForMove(Mark.X,asList(EMPTY, EMPTY));
 
-        assertTrue(output.toString().contains("Player X place your mark! Pick a move from 1 - 9:"));
+        assertTrue(output.toString().contains("Player X place your mark! Pick a move from 1 - 2:"));
     }
 
     @Test

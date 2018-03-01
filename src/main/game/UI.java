@@ -7,7 +7,7 @@ public interface UI {
 
     String getUserChoice();
 
-    void askForMove(Mark playerMark);
+    void askForMove(Mark playerMark, List<Mark> boardSize);
 
     String getMove(Board board);
 

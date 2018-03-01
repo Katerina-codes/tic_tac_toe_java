@@ -35,8 +35,8 @@ public class CommandLineUI implements UI {
         return gameMode;
     }
 
-    public void askForMove(Mark playerMark) {
-        output.format("Player %s place your mark! Pick a move from 1 - 9:\n\n", playerMark);
+    public void askForMove(Mark playerMark, List<Mark> grid) {
+        output.format("Player %s place your mark! Pick a move from 1 - %s:\n\n", playerMark, Integer.toString(grid.size()));
     }
 
     public String getMove(Board board) {

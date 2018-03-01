@@ -26,7 +26,7 @@ public class Game {
         displayBoard();
 
         while (gameIsNotOver()) {
-            ui.askForMove(currentPlayer.getMark());
+            ui.askForMove(currentPlayer.getMark(), this.board.grid);
             currentPlayer.playMove(board);
             displayBoard();
             switchPlayer(playerOne, playerTwo);

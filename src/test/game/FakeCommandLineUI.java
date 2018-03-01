@@ -28,7 +28,7 @@ public class FakeCommandLineUI implements UI {
     }
 
     @Override
-    public void askForMove(Mark playerMark) {
+    public void askForMove(Mark playerMark, List<Mark> boardSize) {
         this.askForMoveWasCalled = true;
     }
 
