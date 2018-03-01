@@ -1,7 +1,6 @@
 package test.game;
 
 import main.game.Board;
-import main.game.Line;
 import main.game.Mark;
 import org.junit.Test;
 
@@ -31,29 +30,29 @@ public class BoardTest {
 
     @Test
     public void returnsAListOfOneMove() {
-        Board board = new Board(3, asList(EMPTY, O, X, O, X, O, X, O, X));
-        List<Integer> possibleMoves = asList(0);
+        Board board = new Board(2, asList(EMPTY, X, X, O));
 
-        assertThat(board.availableMoves(), is(possibleMoves));
+        assertEquals(1, board.availableMoves().size());
+        assertThat(board.availableMoves().get(0), is(0));
     }
 
     @Test
     public void playersCantEnterSameMoveWhenMoveIsX() {
-        Board board = new Board(3, asList(X, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
+        Board board = new Board(2, asList(X, EMPTY, EMPTY, EMPTY));
 
         assertFalse(board.isMoveAvailable(1));
     }
 
     @Test
     public void playersCantEnterSameMoveWhenMoveIsO() {
-        Board board = new Board(3, asList(O, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY));
+        Board board = new Board(2, asList(O, EMPTY, EMPTY, EMPTY));
 
         assertFalse(board.isMoveAvailable(1));
     }
 
     @Test
     public void boardHasNoAvailableMovesLeft() {
-        Board board = new Board(3, asList(X, O, X, O, X, O, X, O, X));
+        Board board = new Board(2, asList(X, O, X, O));
 
         assertFalse(board.hasAvailableMoves());
     }
@@ -189,36 +188,6 @@ public class BoardTest {
     }
 
     @Test
-    public void canScoreVerticalWinOnAFourByFour() {
-        Board board = new Board(4, asList(O, EMPTY, EMPTY, X, O, O, EMPTY, X, EMPTY, EMPTY, EMPTY, X, EMPTY, EMPTY, EMPTY, X));
-
-        assertTrue(board.playerHasWon(X));
-    }
-
-
-    @Test
-    public void canScoreFirstDiagonalWin() {
-        Board board = new Board(3, asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
-
-        assertTrue(board.playerHasWon(X));
-    }
-
-    @Test
-    public void canScoreSecondDiagonalWin() {
-        Board board = new Board(3, asList(O, O, X, EMPTY, X, EMPTY, X, EMPTY, EMPTY));
-
-        assertTrue(board.playerHasWon(X));
-    }
-
-
-    @Test
-    public void checkIfPlayerHasWon() {
-        Board board = new Board(3, asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
-
-        assertTrue(board.playerHasWon(X));
-    }
-
-    @Test
     public void gameIsOverAndXWins() {
         Board board = new Board(3, asList(X, O, EMPTY, O, X, EMPTY, EMPTY, EMPTY, X));
 
@@ -237,10 +206,6 @@ public class BoardTest {
         Board board = new Board(3, asList(O, X, X, X, O, O, X, O, X));
 
         assertEquals("Tie", board.findWinner().getResult());
-    }
-
-    private Line createNewLine(Mark spaceOne, Mark spaceTwo, Mark spaceThree) {
-        return new Line(spaceOne, spaceTwo, spaceThree);
     }
 }
 
