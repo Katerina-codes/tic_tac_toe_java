@@ -7,14 +7,6 @@ import static java.util.Arrays.asList;
 public class Line {
     private List<Mark> spaces;
 
-    public Line(Mark spaceOne, Mark spaceTwo, Mark spaceThree) {
-        spaces = asList(spaceOne, spaceTwo, spaceThree);
-    }
-
-    public Line(Mark spaceOne, Mark spaceTwo, Mark spaceThree, Mark spaceFour) {
-        spaces = asList(spaceOne, spaceTwo, spaceThree, spaceFour);
-    }
-
     public Line(List<Mark> spaces) {
         this.spaces = spaces;
     }
@@ -23,6 +15,7 @@ public class Line {
         int markCounter = 0;
 
         for (Mark space : spaces) {
+
             if (space != Mark.EMPTY & space.equals(mark)) {
                 markCounter++;
             }
