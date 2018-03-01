@@ -8,7 +8,7 @@ import static main.game.Result.TIE;
 
 public class Board {
 
-    private int size;
+    public int size;
     public List<Mark> grid;
 
     public Board() {
@@ -104,7 +104,7 @@ public class Board {
             }
             rows.add(new Line(rowElements));
         }
-         return rows;
+        return rows;
     }
 
     private Line diagonalOne() {
@@ -113,7 +113,7 @@ public class Board {
         for (int i = 0; i < grid.size(); i += (size + 1)) {
             diagonal.add(grid.get(i));
         }
-            return new Line(diagonal);
+        return new Line(diagonal);
     }
 
     private Line diagonalTwo() {

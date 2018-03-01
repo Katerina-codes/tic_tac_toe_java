@@ -11,7 +11,7 @@ public interface UI {
 
     String getMove(Board board);
 
-    void displayBoard(List<Mark> rows);
+    void displayBoard(List<Mark> rows, int size);
 
     void announceWinner(Result winner);
 }
