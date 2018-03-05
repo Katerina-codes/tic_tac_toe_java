@@ -94,6 +94,14 @@ public class Board {
         return this.grid.get(position);
     }
 
+    private List<Line> lines() {
+        List<Line> lines = new ArrayList<>();
+        lines.addAll(diagonalLines());
+        lines.addAll(columnLines());
+        lines.addAll(rowLines());
+        return lines;
+    }
+
     private List<Line> rowLines() {
         List<Line> rows = new ArrayList<>();
         for (int i = 0; i < grid.size(); i += size) {
@@ -152,13 +160,5 @@ public class Board {
 
     private boolean gameIsTied() {
         return !playerHasWon(X) && !playerHasWon(O) && !hasAvailableMoves();
-    }
-
-    private List<Line> lines() {
-        List<Line> lines = new ArrayList<>();
-        lines.addAll(diagonalLines());
-        lines.addAll(columnLines());
-        lines.addAll(rowLines());
-        return lines;
     }
 }
