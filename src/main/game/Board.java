@@ -64,12 +64,7 @@ public class Board {
     }
 
     public boolean playerHasWon(Mark mark) {
-        for (Line line : lines()) {
-            if (line.hasWinner(mark)) {
-                return true;
-            }
-        }
-        return false;
+        return lines().stream().anyMatch(line -> line.hasWinner(mark));
     }
 
     public boolean gameIsOver() {
