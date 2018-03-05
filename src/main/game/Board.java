@@ -3,6 +3,7 @@ package main.game;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static main.game.Mark.*;
@@ -46,14 +47,7 @@ public class Board {
     }
 
     public List<Integer> availableMoves() {
-        List<Integer> availableMoves = new ArrayList<>();
-        for (int i = 0; i < this.grid.size(); i++) {
-            if (this.grid.get(i).equals(EMPTY)) {
-                availableMoves.add(i);
-            }
-        }
-
-        return availableMoves;
+        return IntStream.range(0, this.grid.size()).filter(index -> this.grid.get(index).equals(EMPTY)).boxed().collect(Collectors.toList());
     }
 
     public Result findWinner() {
