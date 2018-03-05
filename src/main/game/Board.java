@@ -42,14 +42,7 @@ public class Board {
     }
 
     public boolean hasAvailableMoves() {
-        int count = 0;
-
-        for (Mark space : this.grid) {
-            if (spaceIsTaken(space)) {
-                count++;
-            }
-        }
-        return count != grid.size();
+        return this.grid.stream().anyMatch(space -> space.equals(EMPTY));
     }
 
     public List<Integer> availableMoves() {
@@ -151,10 +144,6 @@ public class Board {
             columns.add(new Line(columnElements));
         }
         return columns;
-    }
-
-    private boolean spaceIsTaken(Mark space) {
-        return space == X || space == O;
     }
 
     private boolean gameIsTied() {
