@@ -2,6 +2,8 @@ package main.game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static main.game.Mark.*;
 import static main.game.Result.TIE;
@@ -25,12 +27,9 @@ public class Board {
         this.grid = grid;
     }
 
-    private List<Mark> createGrid() {
-        List<Mark> spaces = new ArrayList<>();
-        for (int i = 0; i < size * size; i++) {
-            spaces.add(EMPTY);
-        }
-        return spaces;
+    public List<Mark> createGrid() {
+        Stream<Mark> spaces = Stream.generate(() -> EMPTY).limit(size * size);
+        return spaces.collect(Collectors.toList());
     }
 
     public List<Mark> updateMove(int position, Mark mark) {
