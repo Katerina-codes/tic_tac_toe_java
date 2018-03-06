@@ -2,10 +2,10 @@ package main.game;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.*;
+import static java.util.stream.IntStream.range;
 import static main.game.Mark.*;
 import static main.game.Result.TIE;
 
@@ -30,7 +30,7 @@ public class Board {
 
     public List<Mark> createGrid() {
         Stream<Mark> spaces = Stream.generate(() -> EMPTY).limit(size * size);
-        return spaces.collect(Collectors.toList());
+        return spaces.collect(toList());
     }
 
     public List<Mark> updateMove(int position, Mark mark) {
@@ -47,7 +47,7 @@ public class Board {
     }
 
     public List<Integer> availableMoves() {
-        return IntStream.range(0, this.grid.size()).filter(index -> this.grid.get(index).equals(EMPTY)).boxed().collect(Collectors.toList());
+        return range(0, this.grid.size()).filter(index -> this.grid.get(index).equals(EMPTY)).boxed().collect(toList());
     }
 
     public Result findWinner() {
@@ -92,22 +92,22 @@ public class Board {
     }
 
     private void rowElements(List<Line> rows, int i) {
-       List<Integer> indicesForRow = IntStream.range(0, size).boxed().collect(Collectors.toList());
-       List<Integer> rowIndices = indicesForRow.stream().map(element -> element + i).collect(Collectors.toList());
-       List<Mark> rowMarks = rowIndices.stream().map(element -> grid.get(element)).collect(Collectors.toList());
+       List<Integer> indicesForRow = range(0, size).boxed().collect(toList());
+       List<Integer> rowIndices = indicesForRow.stream().map(element -> element + i).collect(toList());
+       List<Mark> rowMarks = rowIndices.stream().map(element -> grid.get(element)).collect(toList());
 
        rows.add(new Line(rowMarks));
     }
 
     private Line diagonalOne() {
-        List<Integer> diagonalOne = IntStream.range(0, grid.size()).filter(index -> index % (size + 1) == 0).boxed().collect(Collectors.toList());
-        List<Mark> diagonalElements = diagonalOne.stream().map(element -> this.grid.get(element)).collect(Collectors.toList());
+        List<Integer> diagonalOne = range(0, grid.size()).filter(index -> index % (size + 1) == 0).boxed().collect(toList());
+        List<Mark> diagonalElements = diagonalOne.stream().map(element -> this.grid.get(element)).collect(toList());
         return new Line(diagonalElements);
     }
 
     private Line diagonalTwo() {
-        List<Integer> diagonal = IntStream.range(size - 1, grid.size() - (size - 1)).filter(index -> index % (size - 1) == 0).boxed().collect(Collectors.toList());
-        List<Mark> diagonalElements = diagonal.stream().map(element -> this.grid.get(element)).collect(Collectors.toList());
+        List<Integer> diagonal = range(size - 1, grid.size() - (size - 1)).filter(index -> index % (size - 1) == 0).boxed().collect(toList());
+        List<Mark> diagonalElements = diagonal.stream().map(element -> this.grid.get(element)).collect(toList());
         return new Line(diagonalElements);
     }
 
@@ -124,12 +124,16 @@ public class Board {
         for (int i = 0; i < size; i++) {
             List<Mark> columnElements = new ArrayList<>();
 
-            for (int j = i; j < grid.size(); j += size) {
-                columnElements.add(grid.get(j));
-            }
+            columnElements(i, columnElements);
             columns.add(new Line(columnElements));
         }
         return columns;
+    }
+
+    private void columnElements(int i, List<Mark> columnElements) {
+        for (int j = i; j < grid.size(); j += size) {
+            columnElements.add(grid.get(j));
+        }
     }
 
     private boolean gameIsTied() {
