@@ -86,14 +86,17 @@ public class Board {
     private List<Line> rowLines() {
         List<Line> rows = new ArrayList<>();
         for (int i = 0; i < grid.size(); i += size) {
-
-            ArrayList<Mark> rowElements = new ArrayList<>();
-            for (int j = 0; j < size; j++) {
-                rowElements.add(grid.get(i + j));
-            }
-            rows.add(new Line(rowElements));
+            rowElements(rows, i);
         }
         return rows;
+    }
+
+    private void rowElements(List<Line> rows, int i) {
+       List<Integer> indicesForRow = IntStream.range(0, size).boxed().collect(Collectors.toList());
+       List<Integer> rowIndices = indicesForRow.stream().map(element -> element + i).collect(Collectors.toList());
+       List<Mark> rowMarks = rowIndices.stream().map(element -> grid.get(element)).collect(Collectors.toList());
+
+       rows.add(new Line(rowMarks));
     }
 
     private Line diagonalOne() {
