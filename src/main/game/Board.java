@@ -100,12 +100,9 @@ public class Board {
     }
 
     private Line diagonalOne() {
-        ArrayList<Mark> diagonal = new ArrayList<>();
-
-        for (int i = 0; i < grid.size(); i += (size + 1)) {
-            diagonal.add(grid.get(i));
-        }
-        return new Line(diagonal);
+        List<Integer> diagonalOne = IntStream.range(0, grid.size()).filter(index -> index % (size + 1) == 0).boxed().collect(Collectors.toList());
+        List<Mark> diagonalElements = diagonalOne.stream().map(element -> this.grid.get(element)).collect(Collectors.toList());
+        return new Line(diagonalElements);
     }
 
     private Line diagonalTwo() {
