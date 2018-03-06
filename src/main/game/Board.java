@@ -106,12 +106,9 @@ public class Board {
     }
 
     private Line diagonalTwo() {
-        ArrayList<Mark> diagonal = new ArrayList<>();
-
-        for (int i = size - 1; i < grid.size() - (size - 1); i += size - 1) {
-            diagonal.add(grid.get(i));
-        }
-        return new Line(diagonal);
+        List<Integer> diagonal = IntStream.range(size - 1, grid.size() - (size - 1)).filter(index -> index % (size - 1) == 0).boxed().collect(Collectors.toList());
+        List<Mark> diagonalElements = diagonal.stream().map(element -> this.grid.get(element)).collect(Collectors.toList());
+        return new Line(diagonalElements);
     }
 
     private List<Line> diagonalLines() {
