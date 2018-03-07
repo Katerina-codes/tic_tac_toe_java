@@ -2,6 +2,7 @@ package main.game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.*;
@@ -122,18 +123,15 @@ public class Board {
         List<Line> columns = new ArrayList<>();
 
         for (int i = 0; i < size; i++) {
-            List<Mark> columnElements = new ArrayList<>();
-
-            columnElements(i, columnElements);
-            columns.add(new Line(columnElements));
+            columnElements(i, columns);
         }
         return columns;
     }
 
-    private void columnElements(int i, List<Mark> columnElements) {
-        for (int j = i; j < grid.size(); j += size) {
-            columnElements.add(grid.get(j));
-        }
+    private void columnElements(int i, List<Line> columnElements) {
+        List<Integer> indicesForElements = IntStream.range(i, grid.size()).filter(index -> (index - i) % size == 0).boxed().collect(toList());
+        List<Mark> marks = indicesForElements.stream().map(index -> this.grid.get(index)).collect(toList());
+        columnElements.add(new Line(marks));
     }
 
     private boolean gameIsTied() {
