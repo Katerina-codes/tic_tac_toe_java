@@ -25,7 +25,7 @@ public class CommandLineUI implements UI {
     public void askForGameMode() {
         output.println("Enter " + OPTION_ONE + " for Human vs Human\n" +
                 "Enter " + OPTION_TWO + " for Human vs Computer\n" +
-                "Enter " + OPTION_THREE + " for Computer vs Human" +
+                "Enter " + OPTION_THREE + " for Computer vs Human\n" +
                 "Enter " + OPTION_FOUR + " for Computer vs Computer");
     }
 
