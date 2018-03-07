@@ -8,6 +8,7 @@ public class CommandLineUI implements UI {
     public static final String OPTION_ONE = "1";
     public static final String OPTION_TWO = "2";
     public static final String OPTION_THREE = "3";
+    public static final String OPTION_FOUR = "4";
     private final PrintStream output;
     private final BufferedReader input;
 
@@ -24,7 +25,8 @@ public class CommandLineUI implements UI {
     public void askForGameMode() {
         output.println("Enter " + OPTION_ONE + " for Human vs Human\n" +
                 "Enter " + OPTION_TWO + " for Human vs Computer\n" +
-                "Enter " + OPTION_THREE + " for Computer vs Human");
+                "Enter " + OPTION_THREE + " for Computer vs Human" +
+                "Enter " + OPTION_FOUR + " for Computer vs Computer");
     }
 
     public String getUserChoice() {

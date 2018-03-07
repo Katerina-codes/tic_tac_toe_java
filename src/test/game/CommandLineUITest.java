@@ -13,9 +13,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 import static java.util.Arrays.asList;
-import static main.game.CommandLineUI.OPTION_ONE;
-import static main.game.CommandLineUI.OPTION_THREE;
-import static main.game.CommandLineUI.OPTION_TWO;
+import static main.game.CommandLineUI.*;
 import static main.game.Mark.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
@@ -47,7 +45,8 @@ public class CommandLineUITest {
 
         assertTrue(output.toString().contains("Enter " + OPTION_ONE + " for Human vs Human\n" +
                 "Enter " + OPTION_TWO + " for Human vs Computer\n" +
-                "Enter " + OPTION_THREE + " for Computer vs Human"));
+                "Enter " + OPTION_THREE + " for Computer vs Human" +
+                "Enter " + OPTION_FOUR + " for Computer vs Computer"));
     }
 
     @Test
@@ -84,7 +83,7 @@ public class CommandLineUITest {
 
     @Test
     public void askPlayerForMove() {
-        inputOutput.askForMove(Mark.X,asList(EMPTY, EMPTY));
+        inputOutput.askForMove(Mark.X, asList(EMPTY, EMPTY));
 
         assertTrue(output.toString().contains("Player X place your mark! Pick a move from 1 - 2:"));
     }

@@ -3,9 +3,7 @@ package main.game;
 import java.util.Arrays;
 import java.util.List;
 
-import static main.game.CommandLineUI.OPTION_ONE;
-import static main.game.CommandLineUI.OPTION_THREE;
-import static main.game.CommandLineUI.OPTION_TWO;
+import static main.game.CommandLineUI.*;
 import static main.game.Mark.O;
 import static main.game.Mark.X;
 
@@ -25,6 +23,7 @@ public class PlayerFactory {
         Player[] humanVsHuman = {new HumanPlayer(ui, playerOne), new HumanPlayer(ui, playerTwo)};
         Player[] humanVsComputer = {new HumanPlayer(ui, playerOne), new Computer(playerTwo)};
         Player[] computerVsHuman = {new Computer(playerOne), new HumanPlayer(ui, playerTwo)};
+        Player[] computerVsComputer = {new Computer(playerOne), new Computer(playerTwo)};
 
         switch (players) {
             case OPTION_ONE:
@@ -33,6 +32,8 @@ public class PlayerFactory {
                 return Arrays.asList(humanVsComputer);
             case OPTION_THREE:
                 return Arrays.asList(computerVsHuman);
+            case OPTION_FOUR:
+                return Arrays.asList(computerVsComputer);
             default:
                 throw new RuntimeException("Unsupported player type");
         }
