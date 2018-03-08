@@ -1,6 +1,7 @@
 package main.game;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
 
@@ -12,15 +13,7 @@ public class Line {
     }
 
     public boolean hasWinner(Mark mark) {
-        int markCounter = 0;
-
-        for (Mark space : spaces) {
-
-            if (space != Mark.EMPTY & space.equals(mark)) {
-                markCounter++;
-            }
-        }
-        return markCounter == spaces.size();
+        return spaces.stream().filter(space -> space != Mark.EMPTY && space == mark).count() == spaces.size();
     }
 
     @Override

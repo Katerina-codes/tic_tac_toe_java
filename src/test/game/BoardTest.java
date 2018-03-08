@@ -14,6 +14,12 @@ import static org.junit.Assert.*;
 public class BoardTest {
 
     @Test
+    public void createsADynamicListOfEmptySpacesForTheSizeOfTheBoard() {
+        Board board = new Board(2);
+    assertThat(board.createGrid(), is(asList(EMPTY, EMPTY, EMPTY, EMPTY)));
+    }
+
+    @Test
     public void canMakeMoveOnABoard() {
         Board board = new Board(3);
         List<Mark> grid = board.updateMove(0, X);

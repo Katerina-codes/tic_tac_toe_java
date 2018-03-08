@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 import static java.util.Arrays.asList;
+import static main.game.CommandLineUI.*;
 import static main.game.Mark.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.*;
@@ -34,17 +35,18 @@ public class CommandLineUITest {
     public void asksUserToChooseBoardSize() {
         inputOutput.askForBoardSize();
 
-        assertTrue(output.toString().contains("Please enter '1' for a 3x3 grid\n" +
-                "Please enter '2' for a 4x4 grid:\n"));
+        assertTrue(output.toString().contains("Please enter " + OPTION_ONE + " for a 3x3 grid\n" +
+                "Please enter " + OPTION_TWO + " for a 4x4 grid:\n"));
     }
 
     @Test
     public void asksUserForGameMode() {
         inputOutput.askForGameMode();
 
-        assertTrue(output.toString().contains("Enter '1' for Human vs Human\n" +
-                "Enter '2' for Human vs Computer\n" +
-                "Enter '3' for Computer vs Human"));
+        assertTrue(output.toString().contains("Enter " + OPTION_ONE + " for Human vs Human\n" +
+                "Enter " + OPTION_TWO + " for Human vs Computer\n" +
+                "Enter " + OPTION_THREE + " for Computer vs Human\n" +
+                "Enter " + OPTION_FOUR + " for Computer vs Computer"));
     }
 
     @Test
@@ -81,7 +83,7 @@ public class CommandLineUITest {
 
     @Test
     public void askPlayerForMove() {
-        inputOutput.askForMove(Mark.X,asList(EMPTY, EMPTY));
+        inputOutput.askForMove(Mark.X, asList(EMPTY, EMPTY));
 
         assertTrue(output.toString().contains("Player X place your mark! Pick a move from 1 - 2:"));
     }

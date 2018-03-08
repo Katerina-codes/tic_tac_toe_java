@@ -45,4 +45,12 @@ public class PlayerFactoryTest {
         assertTrue(players.get(0) instanceof Computer);
         assertTrue(players.get(1) instanceof HumanPlayer);
     }
+
+    @Test
+    public void createsTwoComputerPlayers() {
+        List<Player> players = playerTypes.getPlayerTypes("4");
+
+        assertTrue(players.get(0) instanceof Computer);
+        assertTrue(players.get(1) instanceof Computer);
+    }
 }

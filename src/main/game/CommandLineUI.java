@@ -5,6 +5,10 @@ import java.util.List;
 
 public class CommandLineUI implements UI {
 
+    public static final String OPTION_ONE = "1";
+    public static final String OPTION_TWO = "2";
+    public static final String OPTION_THREE = "3";
+    public static final String OPTION_FOUR = "4";
     private final PrintStream output;
     private final BufferedReader input;
 
@@ -14,14 +18,15 @@ public class CommandLineUI implements UI {
     }
 
     public void askForBoardSize() {
-        output.println("Please enter '1' for a 3x3 grid\n" +
-                "Please enter '2' for a 4x4 grid:");
+        output.println("Please enter " + OPTION_ONE + " for a 3x3 grid\n" +
+                "Please enter " + OPTION_TWO + " for a 4x4 grid:");
     }
 
     public void askForGameMode() {
-        output.println("Enter '1' for Human vs Human\n" +
-                "Enter '2' for Human vs Computer\n" +
-                "Enter '3' for Computer vs Human");
+        output.println("Enter " + OPTION_ONE + " for Human vs Human\n" +
+                "Enter " + OPTION_TWO + " for Human vs Computer\n" +
+                "Enter " + OPTION_THREE + " for Computer vs Human\n" +
+                "Enter " + OPTION_FOUR + " for Computer vs Computer");
     }
 
     public String getUserChoice() {
