@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
 import static main.game.Mark.*;
 import static main.game.Result.TIE;
@@ -91,11 +91,11 @@ public class Board {
     }
 
     private void rowElements(List<Line> rows, int i) {
-       List<Integer> indicesForRow = range(0, size).boxed().collect(toList());
-       List<Integer> rowIndices = indicesForRow.stream().map(element -> element + i).collect(toList());
-       List<Mark> rowMarks = rowIndices.stream().map(element -> grid.get(element)).collect(toList());
+        List<Integer> indicesForRow = range(0, size).boxed().collect(toList());
+        List<Integer> rowIndices = indicesForRow.stream().map(element -> element + i).collect(toList());
+        List<Mark> rowMarks = rowIndices.stream().map(element -> grid.get(element)).collect(toList());
 
-       rows.add(new Line(rowMarks));
+        rows.add(new Line(rowMarks));
     }
 
     private Line diagonalOne() {

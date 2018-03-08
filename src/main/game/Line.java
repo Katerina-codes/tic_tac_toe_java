@@ -1,9 +1,6 @@
 package main.game;
 
 import java.util.List;
-import java.util.stream.Stream;
-
-import static java.util.Arrays.asList;
 
 public class Line {
     private List<Mark> spaces;

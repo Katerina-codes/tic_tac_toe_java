@@ -16,7 +16,7 @@ public class BoardTest {
     @Test
     public void createsADynamicListOfEmptySpacesForTheSizeOfTheBoard() {
         Board board = new Board(2);
-    assertThat(board.createGrid(), is(asList(EMPTY, EMPTY, EMPTY, EMPTY)));
+        assertThat(board.createGrid(), is(asList(EMPTY, EMPTY, EMPTY, EMPTY)));
     }
 
     @Test
