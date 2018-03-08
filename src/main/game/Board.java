@@ -86,9 +86,7 @@ public class Board {
 
     private List<Line> rowLines() {
         List<Line> rows = new ArrayList<>();
-        for (int i = 0; i < grid.size(); i += size) {
-            rowElements(rows, i);
-        }
+        IntStream.iterate(0, i -> i < grid.size(), i -> i + size).forEach(i -> rowElements(rows, i));
         return rows;
     }
 
@@ -122,9 +120,7 @@ public class Board {
     private List<Line> columnLines() {
         List<Line> columns = new ArrayList<>();
 
-        for (int i = 0; i < size; i++) {
-            columnElements(i, columns);
-        }
+        IntStream.range(0, size).forEach(i -> columnElements(i, columns));
         return columns;
     }
 
