@@ -30,13 +30,12 @@ public class Board {
     }
 
     public List<Mark> createGrid() {
-        Stream<Mark> spaces = Stream.generate(() -> EMPTY).limit(size * size);
-        return spaces.collect(toList());
+        return Stream.generate(() -> EMPTY).limit(size * size).collect(toList());
     }
 
-    public List<Mark> updateMove(int position, Mark mark) {
+    public Board updateMove(int position, Mark mark) {
         this.grid.set(position, mark);
-        return this.grid;
+        return new Board(size, this.grid);
     }
 
     public boolean isMoveAvailable(int move) {
@@ -132,5 +131,9 @@ public class Board {
 
     private boolean gameIsTied() {
         return !playerHasWon(X) && !playerHasWon(O) && !hasAvailableMoves();
+    }
+
+    public Mark getValueOfMove(int move) {
+        return this.grid.get(move);
     }
 }

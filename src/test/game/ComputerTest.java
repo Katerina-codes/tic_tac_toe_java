@@ -22,6 +22,4 @@ public class ComputerTest {
 
         assertTrue(possibleMoves.contains(move));
     }
-
-
 }

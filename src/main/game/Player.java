@@ -1,7 +1,7 @@
 package main.game;
 
 public interface Player {
-    void playMove(Board board);
+    Board playMove(Board board);
 
     Mark getMark();
 }

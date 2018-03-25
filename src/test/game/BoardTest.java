@@ -22,9 +22,9 @@ public class BoardTest {
     @Test
     public void canMakeMoveOnABoard() {
         Board board = new Board(3);
-        List<Mark> grid = board.updateMove(0, X);
+        Board newBoard = board.updateMove(0, X);
 
-        assertEquals(X, grid.get(0));
+        assertEquals(X, newBoard.getValueOfMove(0));
     }
 
     @Test
