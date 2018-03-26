@@ -30,5 +30,14 @@ public class UnbeatableComputerTest {
                 EMPTY, X, O));
         assertThat(unbeatableComputer.findBestMove(board, false, -1), is(2));
     }
-}
 
+    @Test
+    public void computerBlocksFork() {
+        UnbeatableComputer unbeatableComputer = new UnbeatableComputer(O);
+        Board board = new Board(3, asList(
+                X, EMPTY, EMPTY,
+                EMPTY, O, EMPTY,
+                EMPTY, EMPTY, X));
+        assertThat(unbeatableComputer.findBestMove(board, false, -1), is(5));
+    }
+}

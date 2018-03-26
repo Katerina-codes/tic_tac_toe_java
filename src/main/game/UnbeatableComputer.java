@@ -16,6 +16,8 @@ public class UnbeatableComputer implements Player {
 
     @Override
     public Board playMove(Board board) {
+        int move = findBestMove(board, false, -1);
+        board.updateMove(move, mark);
         return board;
     }
 
@@ -31,6 +33,7 @@ public class UnbeatableComputer implements Player {
                 board = board.updateMove(move, mark);
                 int currentScore = findBestMove(board, false, move);
                 bestValue = bestValue > currentScore ? bestValue : currentScore;
+                board = board.updateMove(move, Mark.EMPTY);
             }
             return bestValue;
         } else {
@@ -40,6 +43,7 @@ public class UnbeatableComputer implements Player {
                 board = board.updateMove(move, playerMark);
                 int currentScore = findBestMove(board, true, move);
                 bestValue = bestValue < currentScore ? bestValue : currentScore;
+                board = board.updateMove(move, Mark.EMPTY);
             }
             return bestValue;
         }
