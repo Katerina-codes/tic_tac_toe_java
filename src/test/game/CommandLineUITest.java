@@ -46,7 +46,8 @@ public class CommandLineUITest {
         assertTrue(output.toString().contains("Enter " + OPTION_ONE + " for Human vs Human\n" +
                 "Enter " + OPTION_TWO + " for Human vs Computer\n" +
                 "Enter " + OPTION_THREE + " for Computer vs Human\n" +
-                "Enter " + OPTION_FOUR + " for Computer vs Computer"));
+                "Enter " + OPTION_FOUR + " for Computer vs Computer\n" +
+                "Enter " + OPTION_FIVE + " for Computer vs Computer"));
     }
 
     @Test

@@ -9,6 +9,7 @@ public class CommandLineUI implements UI {
     public static final String OPTION_TWO = "2";
     public static final String OPTION_THREE = "3";
     public static final String OPTION_FOUR = "4";
+    public static final String OPTION_FIVE = "5";
     private final PrintStream output;
     private final BufferedReader input;
 
@@ -26,7 +27,8 @@ public class CommandLineUI implements UI {
         output.println("Enter " + OPTION_ONE + " for Human vs Human\n" +
                 "Enter " + OPTION_TWO + " for Human vs Computer\n" +
                 "Enter " + OPTION_THREE + " for Computer vs Human\n" +
-                "Enter " + OPTION_FOUR + " for Computer vs Computer");
+                "Enter " + OPTION_FOUR + " for Computer vs Computer\n" +
+                "Enter " + OPTION_FIVE + " for Computer vs Computer");
     }
 
     public String getUserChoice() {
