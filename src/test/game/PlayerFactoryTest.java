@@ -1,9 +1,6 @@
 package test.game;
 
-import main.game.Computer;
-import main.game.HumanPlayer;
-import main.game.Player;
-import main.game.PlayerFactory;
+import main.game.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,11 +11,10 @@ import static junit.framework.TestCase.assertTrue;
 public class PlayerFactoryTest {
 
     private PlayerFactory playerTypes;
-    private FakeCommandLineUI ui;
 
     @Before
     public void setUp() {
-        ui = new FakeCommandLineUI();
+        FakeCommandLineUI ui = new FakeCommandLineUI();
         playerTypes = new PlayerFactory(ui);
     }
 
@@ -52,5 +48,13 @@ public class PlayerFactoryTest {
 
         assertTrue(players.get(0) instanceof Computer);
         assertTrue(players.get(1) instanceof Computer);
+    }
+
+    @Test
+    public void createsOneHumanAndOneUnbeatable() {
+        List<Player> players = playerTypes.getPlayerTypes("5");
+
+        assertTrue(players.get(0) instanceof HumanPlayer);
+        assertTrue(players.get(1) instanceof UnbeatableComputer);
     }
 }
