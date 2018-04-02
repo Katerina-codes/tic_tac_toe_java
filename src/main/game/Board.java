@@ -129,7 +129,7 @@ public class Board {
         columnElements.add(new Line(marks));
     }
 
-    private boolean gameIsTied() {
+    public boolean gameIsTied() {
         return !playerHasWon(X) && !playerHasWon(O) && !hasAvailableMoves();
     }
 

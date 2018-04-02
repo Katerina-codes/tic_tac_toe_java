@@ -4,7 +4,10 @@ import main.game.Board;
 import main.game.UnbeatableComputer;
 import org.junit.Test;
 
+import java.util.List;
+
 import static java.util.Arrays.asList;
+import static junit.framework.TestCase.assertTrue;
 import static main.game.Mark.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,7 +21,8 @@ public class UnbeatableComputerTest {
                 EMPTY, X, O,
                 O, X, X,
                 EMPTY, EMPTY, O));
-        assertThat(unbeatableComputer.findBestMove(board, true, -1), is(7));
+
+        assertThat(unbeatableComputer.playMove(board).grid.get(7), is(X));
     }
 
     @Test
@@ -28,16 +32,42 @@ public class UnbeatableComputerTest {
                 X, X, EMPTY,
                 O, O, X,
                 EMPTY, X, O));
-        assertThat(unbeatableComputer.findBestMove(board, false, -1), is(2));
+        assertThat(unbeatableComputer.playMove(board).grid.get(2), is(O));
     }
 
     @Test
     public void computerBlocksFork() {
         UnbeatableComputer unbeatableComputer = new UnbeatableComputer(O);
+        List<Integer> possibleMoves = asList(1, 3, 5, 7);
         Board board = new Board(3, asList(
                 X, EMPTY, EMPTY,
                 EMPTY, O, EMPTY,
                 EMPTY, EMPTY, X));
-        assertThat(unbeatableComputer.findBestMove(board, false, -1), is(5));
+        int move = unbeatableComputer.findBestMove(board, true);
+
+        assertTrue(possibleMoves.contains(move));
+    }
+
+    @Test
+    public void blocksADifferentWin() {
+        UnbeatableComputer unbeatableComputer = new UnbeatableComputer(O);
+        Board board = new Board(3, asList(
+                EMPTY, EMPTY, O,
+                EMPTY, X, X,
+                EMPTY, EMPTY, EMPTY));
+        unbeatableComputer.findBestMove(board, true);
+
+        assertThat(unbeatableComputer.playMove(board).grid.get(3), is(O));
+    }
+
+    @Test
+    public void findBestScore() {
+        UnbeatableComputer unbeatableComputer = new UnbeatableComputer(O);
+        UnbeatableComputer.BestScore score1 = new UnbeatableComputer.BestScore(5, 1);
+        UnbeatableComputer.BestScore score2 = new UnbeatableComputer.BestScore(6, 0);
+        List<UnbeatableComputer.BestScore> scores = asList(score1, score2);
+
+
+        assertThat(unbeatableComputer.maxMove(scores).getMove(), is(5));
     }
 }
