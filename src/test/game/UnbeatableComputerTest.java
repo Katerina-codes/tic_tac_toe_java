@@ -26,16 +26,6 @@ public class UnbeatableComputerTest {
     }
 
     @Test
-    public void computerBlocksMove() {
-        UnbeatableComputer unbeatableComputer = new UnbeatableComputer(O);
-        Board board = new Board(3, asList(
-                X, X, EMPTY,
-                O, O, X,
-                EMPTY, X, O));
-        assertThat(unbeatableComputer.playMove(board).grid.get(2), is(O));
-    }
-
-    @Test
     public void computerBlocksFork() {
         UnbeatableComputer unbeatableComputer = new UnbeatableComputer(O);
         List<Integer> possibleMoves = asList(1, 3, 5, 7);
@@ -43,9 +33,19 @@ public class UnbeatableComputerTest {
                 X, EMPTY, EMPTY,
                 EMPTY, O, EMPTY,
                 EMPTY, EMPTY, X));
-        int move = unbeatableComputer.findBestMove(board, true);
+        int move = unbeatableComputer.findBestMove(board, true).get(0);
 
         assertTrue(possibleMoves.contains(move));
+    }
+
+    @Test
+    public void computerBlocksMove() {
+        UnbeatableComputer unbeatableComputer = new UnbeatableComputer(O);
+        Board board = new Board(3, asList(
+                X, X, EMPTY,
+                O, O, X,
+                EMPTY, X, O));
+        assertThat(unbeatableComputer.playMove(board).grid.get(2), is(O));
     }
 
     @Test
@@ -58,16 +58,5 @@ public class UnbeatableComputerTest {
         unbeatableComputer.findBestMove(board, true);
 
         assertThat(unbeatableComputer.playMove(board).grid.get(3), is(O));
-    }
-
-    @Test
-    public void findBestScore() {
-        UnbeatableComputer unbeatableComputer = new UnbeatableComputer(O);
-        UnbeatableComputer.BestScore score1 = new UnbeatableComputer.BestScore(5, 1);
-        UnbeatableComputer.BestScore score2 = new UnbeatableComputer.BestScore(6, 0);
-        List<UnbeatableComputer.BestScore> scores = asList(score1, score2);
-
-
-        assertThat(unbeatableComputer.maxMove(scores).getMove(), is(5));
     }
 }
