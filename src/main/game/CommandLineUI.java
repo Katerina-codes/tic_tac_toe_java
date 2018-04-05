@@ -10,6 +10,7 @@ public class CommandLineUI implements UI {
     public static final String OPTION_THREE = "3";
     public static final String OPTION_FOUR = "4";
     public static final String OPTION_FIVE = "5";
+    public static final String OPTION_SIX = "6";
     private final PrintStream output;
     private final BufferedReader input;
 
