@@ -10,16 +10,16 @@ public class HumanPlayer implements Player {
         this.mark = mark;
     }
 
-    public void playMove(Board board) {
+    public Board playMove(Board board) {
         int playerMove = getMove(board);
-        board.updateMove(playerMove, this.mark);
+        return board.updateMove(playerMove, this.mark);
     }
 
     public Mark getMark() {
         return mark;
     }
 
-    public Integer getMove(Board board) {
+    private Integer getMove(Board board) {
         String userMove = ui.getMove(board);
         return Integer.parseInt(String.valueOf(userMove)) - 1;
     }

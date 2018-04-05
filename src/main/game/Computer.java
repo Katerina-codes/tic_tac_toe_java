@@ -10,9 +10,9 @@ public class Computer implements Player {
         this.mark = mark;
     }
 
-    public void playMove(Board board) {
+    public Board playMove(Board board) {
         int playerMove = move(board);
-        board.updateMove(playerMove, mark);
+        return board.updateMove(playerMove, mark);
     }
 
     public Mark getMark() {

@@ -5,7 +5,7 @@ import java.util.List;
 public class Game {
 
     private final UI ui;
-    private final Board board;
+    private Board board;
     private Player currentPlayer;
 
     public Game(UI ui, Board board) {
@@ -27,7 +27,7 @@ public class Game {
 
         while (gameIsNotOver()) {
             ui.askForMove(currentPlayer.getMark(), this.board.grid);
-            currentPlayer.playMove(board);
+            board = currentPlayer.playMove(board);
             displayBoard();
             switchPlayer(playerOne, playerTwo);
         }
