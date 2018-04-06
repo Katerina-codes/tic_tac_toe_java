@@ -26,6 +26,7 @@ public class PlayerFactory {
         Player[] computerVsComputer = {new Computer(playerOne), new Computer(playerTwo)};
         Player[] humanVsUnbeatablePlayer = {new HumanPlayer(ui,playerOne), new UnbeatableComputer(playerTwo)};
         Player[] unbeatablePlayerVsHuman = {new UnbeatableComputer(playerTwo), new HumanPlayer(ui,playerOne)};
+        Player[] unbeatableVsUnbeatable = {new UnbeatableComputer(playerOne), new UnbeatableComputer(playerTwo)};
 
         switch (players) {
             case OPTION_ONE:
@@ -40,6 +41,8 @@ public class PlayerFactory {
                 return Arrays.asList(humanVsUnbeatablePlayer);
             case OPTION_SIX:
                 return Arrays.asList(unbeatablePlayerVsHuman);
+            case OPTION_SEVEN:
+                return Arrays.asList(unbeatableVsUnbeatable);
             default:
                 throw new RuntimeException("Unsupported player type");
         }
