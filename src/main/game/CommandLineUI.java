@@ -31,7 +31,8 @@ public class CommandLineUI implements UI {
                 "Enter " + OPTION_THREE + " for Computer vs Human\n" +
                 "Enter " + OPTION_FOUR + " for Computer vs Computer\n" +
                 "Enter " + OPTION_FIVE + " for Human vs Unbeatable Computer\n" +
-                "Enter " + OPTION_SIX + " for Unbeatable Computer vs Human");
+                "Enter " + OPTION_SIX + " for Unbeatable Computer vs Human\n" +
+                "Enter " + OPTION_SEVEN + " for Unbeatable Computer vs Unbeatable Computer");
     }
 
     public String getUserChoice() {
