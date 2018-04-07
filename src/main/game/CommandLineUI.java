@@ -26,7 +26,7 @@ public class CommandLineUI implements UI {
     }
 
     public void askForGameMode() {
-        output.println("Enter " + OPTION_ONE + " for Human vs Human\n" +
+        output.println("\n\nEnter " + OPTION_ONE + " for Human vs Human\n" +
                 "Enter " + OPTION_TWO + " for Human vs Computer\n" +
                 "Enter " + OPTION_THREE + " for Computer vs Human\n" +
                 "Enter " + OPTION_FOUR + " for Computer vs Computer\n" +
@@ -109,5 +109,11 @@ public class CommandLineUI implements UI {
             output.println("Nothing was entered.");
         }
         return move;
+    }
+
+    public void playAgain() {
+     output.println("Would you like to play again?\n" +
+                "Enter 1 for yes\n" +
+                "Enter 2 for no.");
     }
 }

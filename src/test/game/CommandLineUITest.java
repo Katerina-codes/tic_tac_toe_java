@@ -43,18 +43,17 @@ public class CommandLineUITest {
     public void asksUserForGameMode() {
         inputOutput.askForGameMode();
 
-        assertTrue(output.toString().contains("Enter " + OPTION_ONE + " for Human vs Human\n" +
+        assertTrue(output.toString().contains("\n\nEnter " + OPTION_ONE + " for Human vs Human\n" +
                 "Enter " + OPTION_TWO + " for Human vs Computer\n" +
                 "Enter " + OPTION_THREE + " for Computer vs Human\n" +
                 "Enter " + OPTION_FOUR + " for Computer vs Computer\n" +
                 "Enter " + OPTION_FIVE + " for Human vs Unbeatable Computer\n" +
                 "Enter " + OPTION_SIX + " for Unbeatable Computer vs Human\n" +
-               "Enter " + OPTION_SEVEN + " for Unbeatable Computer vs Unbeatable Computer\n"));
+                "Enter " + OPTION_SEVEN + " for Unbeatable Computer vs Unbeatable Computer\n"));
     }
 
     @Test
     public void getsGameModeChoiceFromPlayer() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
@@ -93,7 +92,6 @@ public class CommandLineUITest {
 
     @Test
     public void getPlayerMove() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
@@ -104,7 +102,6 @@ public class CommandLineUITest {
 
     @Test
     public void playerIsPromptedForAMoveUntilItIsUnique() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
         InputStream input = new ByteArrayInputStream("1\n2".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
@@ -126,5 +123,14 @@ public class CommandLineUITest {
         inputOutput.announceWinner(Result.TIE);
 
         assertThat(output.toString(), containsString("It's a tie!"));
+    }
+
+    @Test
+    public void asksIfUserWantsToPlayAgain() {
+        inputOutput.playAgain();
+
+        assertTrue(output.toString().contains("Would you like to play again?\n" +
+                "Enter 1 for yes\n" +
+                "Enter 2 for no."));
     }
 }
