@@ -24,8 +24,8 @@ public class PlayerFactory {
         Player[] humanVsComputer = {new HumanPlayer(ui, playerOne), new Computer(playerTwo)};
         Player[] computerVsHuman = {new Computer(playerOne), new HumanPlayer(ui, playerTwo)};
         Player[] computerVsComputer = {new Computer(playerOne), new Computer(playerTwo)};
-        Player[] humanVsUnbeatablePlayer = {new HumanPlayer(ui,playerOne), new UnbeatableComputer(playerTwo)};
-        Player[] unbeatablePlayerVsHuman = {new UnbeatableComputer(playerTwo), new HumanPlayer(ui,playerOne)};
+        Player[] humanVsUnbeatablePlayer = {new HumanPlayer(ui, playerOne), new UnbeatableComputer(playerTwo)};
+        Player[] unbeatablePlayerVsHuman = {new UnbeatableComputer(playerOne), new HumanPlayer(ui, playerTwo)};
         Player[] unbeatableVsUnbeatable = {new UnbeatableComputer(playerOne), new UnbeatableComputer(playerTwo)};
 
         switch (players) {
