@@ -1,10 +1,7 @@
 package test.game;
 
 import main.game.Board;
-import main.game.Mark;
 import org.junit.Test;
-
-import java.util.List;
 
 import static java.util.Arrays.asList;
 import static main.game.Mark.*;
@@ -212,6 +209,15 @@ public class BoardTest {
         Board board = new Board(3, asList(O, X, X, X, O, O, X, O, X));
 
         assertEquals("Tie", board.findWinner().getResult());
+    }
+
+    @Test
+    public void resetBoard() {
+        Board board = new Board(2, asList(O, X, X, X));
+
+        board.resetBoard();
+
+        assertThat(board.grid, is(asList(EMPTY, EMPTY, EMPTY, EMPTY)));
     }
 }
 

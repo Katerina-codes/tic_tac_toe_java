@@ -35,7 +35,7 @@ public class GameTest {
     @Test
     public void playsTheGame() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
-        ByteArrayInputStream input = new ByteArrayInputStream("1\n1\n4\n2\n5\n3".getBytes());
+        ByteArrayInputStream input = new ByteArrayInputStream("1\n1\n4\n2\n5\n3\n2".getBytes());
         UI inputOutput = new CommandLineUI(new PrintStream(output), input);
         Board board = new Board(3);
         Game game = new Game(inputOutput, board);
@@ -46,4 +46,16 @@ public class GameTest {
         assertThat(output.toString(), containsString("X won!"));
     }
 
+    @Test
+    public void playerCanPlayAgain() {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        ByteArrayInputStream input = new ByteArrayInputStream("1\n1\n4\n2\n5\n3\n1\n1\n1\n2\n3\n5\n4\n8\n2".getBytes());
+        UI inputOutput = new CommandLineUI(new PrintStream(output), input);
+        Board board = new Board(3);
+        Game game = new Game(inputOutput, board);
+
+        game.run();
+
+        assertThat(output.toString(), containsString("O won!"));
+    }
 }
