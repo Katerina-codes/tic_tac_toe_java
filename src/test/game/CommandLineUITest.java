@@ -16,6 +16,7 @@ import static java.util.Arrays.asList;
 import static main.game.CommandLineUI.*;
 import static main.game.Mark.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class CommandLineUITest {
@@ -127,10 +128,18 @@ public class CommandLineUITest {
 
     @Test
     public void asksIfUserWantsToPlayAgain() {
-        inputOutput.playAgain();
+        inputOutput.replay();
 
         assertTrue(output.toString().contains("Would you like to play again?\n" +
                 "Enter 1 for yes\n" +
                 "Enter 2 for no."));
+    }
+
+    @Test
+    public void getUserChoiceForPlayingAgain() {
+        InputStream input = new ByteArrayInputStream("1".getBytes());
+        CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
+
+        assertThat(inputOutput.replay(), is(true));
     }
 }

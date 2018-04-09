@@ -36,14 +36,14 @@ public class CommandLineUI implements UI {
     }
 
     public String getUserChoice() {
-        String gameMode = "";
+        String choice = "";
         try {
-            gameMode = input.readLine();
+            choice = input.readLine();
         } catch (IOException e) {
             e.printStackTrace();
             output.println("Nothing was entered.");
         }
-        return gameMode;
+        return choice;
     }
 
     public void askForMove(Mark playerMark, List<Mark> grid) {
@@ -92,6 +92,18 @@ public class CommandLineUI implements UI {
         }
     }
 
+    public boolean replay() {
+        askUserIfTheyWantToPlayAgain();
+        String choice = getUserChoice();
+        return choice.equals("1");
+    }
+
+    private void askUserIfTheyWantToPlayAgain() {
+        output.println("Would you like to play again?\n" +
+                "Enter 1 for yes\n" +
+                "Enter 2 for no.");
+    }
+
     private boolean moveIsNotAvailable(Board board, int convertedMove) {
         return !board.isMoveAvailable(convertedMove);
     }
@@ -109,11 +121,5 @@ public class CommandLineUI implements UI {
             output.println("Nothing was entered.");
         }
         return move;
-    }
-
-    public void playAgain() {
-     output.println("Would you like to play again?\n" +
-                "Enter 1 for yes\n" +
-                "Enter 2 for no.");
     }
 }
