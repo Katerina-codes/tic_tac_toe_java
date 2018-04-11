@@ -128,9 +128,11 @@ public class CommandLineUITest {
 
     @Test
     public void asksIfUserWantsToPlayAgain() {
+        InputStream input = new ByteArrayInputStream("2".getBytes());
+        CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
         inputOutput.replay();
 
-        assertTrue(output.toString().contains("Would you like to play again?\n" +
+        assertTrue(output.toString().contains("\nWould you like to play again?\n" +
                 "Enter 1 for yes\n" +
                 "Enter 2 for no."));
     }

@@ -98,12 +98,6 @@ public class CommandLineUI implements UI {
         return choice.equals("1");
     }
 
-    private void askUserIfTheyWantToPlayAgain() {
-        output.println("Would you like to play again?\n" +
-                "Enter 1 for yes\n" +
-                "Enter 2 for no.");
-    }
-
     private boolean moveIsNotAvailable(Board board, int convertedMove) {
         return !board.isMoveAvailable(convertedMove);
     }
@@ -122,4 +116,11 @@ public class CommandLineUI implements UI {
         }
         return move;
     }
+
+    private void askUserIfTheyWantToPlayAgain() {
+        output.println("\nWould you like to play again?\n" +
+                "Enter 1 for yes\n" +
+                "Enter 2 for no.");
+    }
+
 }
