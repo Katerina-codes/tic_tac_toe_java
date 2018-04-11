@@ -66,4 +66,12 @@ public class PlayerFactoryTest {
         assertTrue(players.get(0) instanceof UnbeatableComputer);
         assertTrue(players.get(1) instanceof HumanPlayer);
     }
+
+    @Test
+    public void createsTwoUnbeatableComputerPlayers() {
+        List<Player> players = playerTypes.getPlayerTypes(OPTION_SEVEN);
+
+        assertTrue(players.get(0) instanceof UnbeatableComputer);
+        assertTrue(players.get(1) instanceof UnbeatableComputer);
+    }
 }

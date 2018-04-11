@@ -16,6 +16,7 @@ import static java.util.Arrays.asList;
 import static main.game.CommandLineUI.*;
 import static main.game.Mark.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class CommandLineUITest {
@@ -43,17 +44,17 @@ public class CommandLineUITest {
     public void asksUserForGameMode() {
         inputOutput.askForGameMode();
 
-        assertTrue(output.toString().contains("Enter " + OPTION_ONE + " for Human vs Human\n" +
+        assertTrue(output.toString().contains("\n\nEnter " + OPTION_ONE + " for Human vs Human\n" +
                 "Enter " + OPTION_TWO + " for Human vs Computer\n" +
                 "Enter " + OPTION_THREE + " for Computer vs Human\n" +
                 "Enter " + OPTION_FOUR + " for Computer vs Computer\n" +
                 "Enter " + OPTION_FIVE + " for Human vs Unbeatable Computer\n" +
-                "Enter " + OPTION_SIX + " for Unbeatable Computer vs Human"));
+                "Enter " + OPTION_SIX + " for Unbeatable Computer vs Human\n" +
+                "Enter " + OPTION_SEVEN + " for Unbeatable Computer vs Unbeatable Computer\n"));
     }
 
     @Test
     public void getsGameModeChoiceFromPlayer() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
@@ -92,7 +93,6 @@ public class CommandLineUITest {
 
     @Test
     public void getPlayerMove() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
         InputStream input = new ByteArrayInputStream("1".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
@@ -103,7 +103,6 @@ public class CommandLineUITest {
 
     @Test
     public void playerIsPromptedForAMoveUntilItIsUnique() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
         InputStream input = new ByteArrayInputStream("1\n2".getBytes());
         CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
 
@@ -125,5 +124,24 @@ public class CommandLineUITest {
         inputOutput.announceWinner(Result.TIE);
 
         assertThat(output.toString(), containsString("It's a tie!"));
+    }
+
+    @Test
+    public void asksIfUserWantsToPlayAgain() {
+        InputStream input = new ByteArrayInputStream("2".getBytes());
+        CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
+        inputOutput.replay();
+
+        assertTrue(output.toString().contains("\nWould you like to play again?\n" +
+                "Enter 1 for yes\n" +
+                "Enter 2 for no."));
+    }
+
+    @Test
+    public void getUserChoiceForPlayingAgain() {
+        InputStream input = new ByteArrayInputStream("1".getBytes());
+        CommandLineUI inputOutput = new CommandLineUI(new PrintStream(output), input);
+
+        assertThat(inputOutput.replay(), is(true));
     }
 }

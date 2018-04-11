@@ -11,6 +11,7 @@ public class CommandLineUI implements UI {
     public static final String OPTION_FOUR = "4";
     public static final String OPTION_FIVE = "5";
     public static final String OPTION_SIX = "6";
+    public static final String OPTION_SEVEN = "7";
     private final PrintStream output;
     private final BufferedReader input;
 
@@ -25,23 +26,24 @@ public class CommandLineUI implements UI {
     }
 
     public void askForGameMode() {
-        output.println("Enter " + OPTION_ONE + " for Human vs Human\n" +
+        output.println("\n\nEnter " + OPTION_ONE + " for Human vs Human\n" +
                 "Enter " + OPTION_TWO + " for Human vs Computer\n" +
                 "Enter " + OPTION_THREE + " for Computer vs Human\n" +
                 "Enter " + OPTION_FOUR + " for Computer vs Computer\n" +
                 "Enter " + OPTION_FIVE + " for Human vs Unbeatable Computer\n" +
-                "Enter " + OPTION_SIX + " for Unbeatable Computer vs Human");
+                "Enter " + OPTION_SIX + " for Unbeatable Computer vs Human\n" +
+                "Enter " + OPTION_SEVEN + " for Unbeatable Computer vs Unbeatable Computer");
     }
 
     public String getUserChoice() {
-        String gameMode = "";
+        String choice = "";
         try {
-            gameMode = input.readLine();
+            choice = input.readLine();
         } catch (IOException e) {
             e.printStackTrace();
             output.println("Nothing was entered.");
         }
-        return gameMode;
+        return choice;
     }
 
     public void askForMove(Mark playerMark, List<Mark> grid) {
@@ -90,6 +92,12 @@ public class CommandLineUI implements UI {
         }
     }
 
+    public boolean replay() {
+        askUserIfTheyWantToPlayAgain();
+        String choice = getUserChoice();
+        return choice.equals("1");
+    }
+
     private boolean moveIsNotAvailable(Board board, int convertedMove) {
         return !board.isMoveAvailable(convertedMove);
     }
@@ -108,4 +116,11 @@ public class CommandLineUI implements UI {
         }
         return move;
     }
+
+    private void askUserIfTheyWantToPlayAgain() {
+        output.println("\nWould you like to play again?\n" +
+                "Enter 1 for yes\n" +
+                "Enter 2 for no.");
+    }
+
 }

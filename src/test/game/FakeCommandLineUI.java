@@ -53,6 +53,11 @@ public class FakeCommandLineUI implements UI {
         this.announceWinnerWasCalled = true;
     }
 
+    @Override
+    public boolean replay() {
+        return false;
+    }
+
     public boolean askForGameModeWasCalled() {
         return askForGameModeWasCalled;
     }

@@ -33,6 +33,11 @@ public class Game {
         }
         Result result = board.findWinner();
         ui.announceWinner(result);
+
+        if (ui.replay()) {
+            board.resetBoard();
+            playAgain();
+        }
     }
 
     private void switchPlayer(Player playerOne, Player playerTwo) {
@@ -51,4 +56,7 @@ public class Game {
         ui.displayBoard(this.board.grid, this.board.size);
     }
 
+    public void playAgain() {
+        run();
+    }
 }

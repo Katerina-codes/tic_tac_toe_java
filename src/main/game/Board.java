@@ -135,4 +135,8 @@ public class Board {
     public Mark getValueOfMove(int move) {
         return this.grid.get(move);
     }
+
+    public void resetBoard() {
+        this.grid = createGrid();
+    }
 }
