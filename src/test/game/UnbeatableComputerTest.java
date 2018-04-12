@@ -60,15 +60,27 @@ public class UnbeatableComputerTest {
         assertThat(unbeatableComputer.playMove(board).grid.get(3), is(O));
     }
 
-   @Test
+    @Test
     public void computerTakesAWinOn4By4() {
         UnbeatableComputer unbeatableComputer = new UnbeatableComputer(X);
-       Board board = new Board(4, asList(
-               X, X, X, EMPTY,
-               O, EMPTY, EMPTY, EMPTY,
-               EMPTY, O, O, EMPTY,
-               EMPTY, EMPTY, EMPTY, EMPTY));
+        Board board = new Board(4, asList(
+                X, X, X, EMPTY,
+                O, EMPTY, EMPTY, EMPTY,
+                EMPTY, O, O, EMPTY,
+                EMPTY, EMPTY, EMPTY, EMPTY));
 
         assertThat(unbeatableComputer.playMove(board).grid.get(3), is(X));
+    }
+
+    @Test
+    public void blocksAWinOn4By4() {
+        UnbeatableComputer unbeatableComputer = new UnbeatableComputer(O);
+        Board board = new Board(4, asList(
+                X, X, X, EMPTY,
+                O, EMPTY, EMPTY, EMPTY,
+                EMPTY, O, O, EMPTY,
+                EMPTY, EMPTY, EMPTY, EMPTY));
+
+        assertThat(unbeatableComputer.playMove(board).grid.get(3), is(O));
     }
 }
