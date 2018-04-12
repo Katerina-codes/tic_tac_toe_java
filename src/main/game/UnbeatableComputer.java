@@ -32,53 +32,53 @@ public class UnbeatableComputer implements Player {
         }
 
         if (maximisingPlayer) {
-            int currentValue = -10;
+            int currentMoveScore = -10;
             List<Integer> possibleMoves = board.availableMoves();
             for (int move : possibleMoves) {
                 board = board.updateMove(move, mark);
-                int bestValue = findBestMove(board, depth - 1, alpha, beta,false).get(1);
+                int bestMoveScore = findBestMove(board, depth - 1, alpha, beta,false).get(1);
 
-                if (bestValue > currentValue) {
-                    currentValue = bestValue;
+                if (bestMoveScore > currentMoveScore) {
+                    currentMoveScore = bestMoveScore;
                     bestMove = move;
                 }
                 board = board.updateMove(move, Mark.EMPTY);
 
-                if (currentValue > alpha) {
-                    alpha = currentValue;
+                if (currentMoveScore > alpha) {
+                    alpha = currentMoveScore;
                 }
 
-                if (beta <= alpha) {
-                    break;
-                }
+                if (optimumMoveHasBeenFound(alpha, beta)) break;
 
             }
-            return asList(bestMove, currentValue);
+            return asList(bestMove, currentMoveScore);
         } else {
-            int currentValue = +10;
+            int currentMoveScore = +10;
             List<Integer> bestValue = board.availableMoves();
             for (int move : bestValue) {
                 board = board.updateMove(move, opponentMark);
 
-                int possibleMoveValue = findBestMove(board, depth - 1, alpha, beta,true).get(1);
+                int bestMoveScore = findBestMove(board, depth - 1, alpha, beta,true).get(1);
 
-                if (possibleMoveValue < currentValue) {
-                    currentValue = possibleMoveValue;
+                if (bestMoveScore < currentMoveScore) {
+                    currentMoveScore = bestMoveScore;
                     bestMove = move;
                 }
                 board = board.updateMove(move, Mark.EMPTY);
 
-                if (currentValue < beta) {
-                    beta = currentValue;
+                if (currentMoveScore < beta) {
+                    beta = currentMoveScore;
                 }
 
-                if (beta <= alpha) {
-                    break;
-                }
+                if (optimumMoveHasBeenFound(alpha, beta)) break;
 
             }
-            return asList(bestMove, currentValue);
+            return asList(bestMove, currentMoveScore);
         }
+    }
+
+    private boolean optimumMoveHasBeenFound(int alpha, int beta) {
+        return beta <= alpha;
     }
 
     private int gameScore(Board board, Mark opponentMark) {
