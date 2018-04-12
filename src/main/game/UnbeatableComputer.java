@@ -43,13 +43,8 @@ public class UnbeatableComputer implements Player {
                     currentMoveScore = bestMoveScore;
                     bestMove = move;
                 }
-
-                if (currentMoveScore > alpha) {
-                    alpha = currentMoveScore;
-                }
-
+                alpha = bestScoreForAlpha(alpha, currentMoveScore);
                 if (optimumMoveHasBeenFound(alpha, beta)) break;
-
             }
             return asList(bestMove, currentMoveScore);
         } else {
@@ -65,16 +60,25 @@ public class UnbeatableComputer implements Player {
                     currentMoveScore = bestMoveScore;
                     bestMove = move;
                 }
-
-                if (currentMoveScore < beta) {
-                    beta = currentMoveScore;
-                }
-
+                beta = bestScoreForBeta(beta, currentMoveScore);
                 if (optimumMoveHasBeenFound(alpha, beta)) break;
-
             }
             return asList(bestMove, currentMoveScore);
         }
+    }
+
+    private int bestScoreForBeta(int beta, int currentMoveScore) {
+        if (currentMoveScore < beta) {
+            beta = currentMoveScore;
+        }
+        return beta;
+    }
+
+    private int bestScoreForAlpha(int alpha, int currentMoveScore) {
+        if (currentMoveScore > alpha) {
+            alpha = currentMoveScore;
+        }
+        return alpha;
     }
 
     private boolean optimumMoveHasBeenFound(int alpha, int beta) {
