@@ -36,13 +36,13 @@ public class UnbeatableComputer implements Player {
             List<Integer> possibleMoves = board.availableMoves();
             for (int move : possibleMoves) {
                 board = board.updateMove(move, mark);
-                int bestMoveScore = findBestMove(board, depth - 1, alpha, beta,false).get(1);
+                int bestMoveScore = findBestMove(board, depth - 1, alpha, beta, false).get(1);
+                board = board.updateMove(move, Mark.EMPTY);
 
                 if (bestMoveScore > currentMoveScore) {
                     currentMoveScore = bestMoveScore;
                     bestMove = move;
                 }
-                board = board.updateMove(move, Mark.EMPTY);
 
                 if (currentMoveScore > alpha) {
                     alpha = currentMoveScore;
@@ -58,13 +58,13 @@ public class UnbeatableComputer implements Player {
             for (int move : bestValue) {
                 board = board.updateMove(move, opponentMark);
 
-                int bestMoveScore = findBestMove(board, depth - 1, alpha, beta,true).get(1);
+                int bestMoveScore = findBestMove(board, depth - 1, alpha, beta, true).get(1);
+                board = board.updateMove(move, Mark.EMPTY);
 
                 if (bestMoveScore < currentMoveScore) {
                     currentMoveScore = bestMoveScore;
                     bestMove = move;
                 }
-                board = board.updateMove(move, Mark.EMPTY);
 
                 if (currentMoveScore < beta) {
                     beta = currentMoveScore;
