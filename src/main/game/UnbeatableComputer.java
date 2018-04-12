@@ -22,7 +22,7 @@ public class UnbeatableComputer implements Player {
         return board.updateMove(move, mark);
     }
 
-    public List<Integer> findBestMove(Board board, int depth, int al, int be, Boolean maximisingPlayer) {
+    public List<Integer> findBestMove(Board board, int depth, int alpha, int beta, Boolean maximisingPlayer) {
         Mark opponentMark = mark == Mark.O ? Mark.X : Mark.O;
         int bestMove = -50;
 
@@ -32,52 +32,52 @@ public class UnbeatableComputer implements Player {
         }
 
         if (maximisingPlayer) {
-            int v = -10;
+            int currentValue = -10;
             List<Integer> possibleMoves = board.availableMoves();
             for (int move : possibleMoves) {
                 board = board.updateMove(move, mark);
-                int possibleMoveValue = findBestMove(board, depth - 1, al, be,false).get(1);
+                int bestValue = findBestMove(board, depth - 1, alpha, beta,false).get(1);
 
-                if (possibleMoveValue > v) {
-                    v = possibleMoveValue;
+                if (bestValue > currentValue) {
+                    currentValue = bestValue;
                     bestMove = move;
                 }
                 board = board.updateMove(move, Mark.EMPTY);
 
-                if (v > al) {
-                    al = v;
+                if (currentValue > alpha) {
+                    alpha = currentValue;
                 }
 
-                if (be <= al) {
+                if (beta <= alpha) {
                     break;
                 }
 
             }
-            return asList(bestMove, v);
+            return asList(bestMove, currentValue);
         } else {
-            int v = +10;
-            List<Integer> possibleMoves = board.availableMoves();
-            for (int move : possibleMoves) {
+            int currentValue = +10;
+            List<Integer> bestValue = board.availableMoves();
+            for (int move : bestValue) {
                 board = board.updateMove(move, opponentMark);
 
-                int possibleMoveValue = findBestMove(board, depth - 1, al, be,true).get(1);
+                int possibleMoveValue = findBestMove(board, depth - 1, alpha, beta,true).get(1);
 
-                if (possibleMoveValue < v) {
-                    v = possibleMoveValue;
+                if (possibleMoveValue < currentValue) {
+                    currentValue = possibleMoveValue;
                     bestMove = move;
                 }
                 board = board.updateMove(move, Mark.EMPTY);
 
-                if (v < be) {
-                    be = v;
+                if (currentValue < beta) {
+                    beta = currentValue;
                 }
 
-                if (be <= al) {
+                if (beta <= alpha) {
                     break;
                 }
 
             }
-            return asList(bestMove, v);
+            return asList(bestMove, currentValue);
         }
     }
 
