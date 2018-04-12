@@ -28,7 +28,7 @@ public class UnbeatableComputer implements Player {
 
         if (board.gameIsOver()) {
             int gameScore = gameScore(board, opponentMark);
-            return asList(1, gameScore);
+            return asList(bestMove, gameScore);
         }
 
         if (maximisingPlayer) {
