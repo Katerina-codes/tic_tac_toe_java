@@ -68,12 +68,7 @@ public class CommandLineUI implements UI {
         String formattedRows = null;
         sb.append("\n");
 
-
-        if (size == 3) {
-            sb.append(" --- --- ---\n");
-        } else {
-            sb.append(" --- --- --- ---\n");
-        }
+        formatRowLines(size, sb);
 
         for (int i = 0; i < grid.size(); i++) {
             sb.append("| ");
@@ -86,15 +81,7 @@ public class CommandLineUI implements UI {
                 sb.append(grid.get(i));
                 sb.append(" ");
             }
-
-            if ((i + 1) % size == 0) {
-                sb.append("|\n");
-                if (size == 3) {
-                    sb.append(" --- --- ---\n");
-                } else {
-                    sb.append(" --- --- --- ---\n");
-                }
-            }
+            formatEndOfRow(size, sb, i);
             formattedRows = sb.toString();
         }
         output.println(formattedRows);
@@ -137,6 +124,21 @@ public class CommandLineUI implements UI {
         output.println("\nWould you like to play again?\n" +
                 "Enter 1 for yes\n" +
                 "Enter 2 for no.");
+    }
+
+    private void formatEndOfRow(int size, StringBuilder sb, int i) {
+        if ((i + 1) % size == 0) {
+            sb.append("|\n");
+            formatRowLines(size, sb);
+        }
+    }
+
+    private void formatRowLines(int size, StringBuilder sb) {
+        if (size == 3) {
+            sb.append(" --- --- ---\n");
+        } else {
+            sb.append(" --- --- --- ---\n");
+        }
     }
 
 }
