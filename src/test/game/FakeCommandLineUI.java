@@ -7,6 +7,8 @@ import main.game.UI;
 
 import java.util.List;
 
+import static main.game.CommandLineUI.THREE_BY_THREE;
+
 public class FakeCommandLineUI implements UI {
 
     private boolean askForMoveWasCalled = false;
@@ -39,8 +41,13 @@ public class FakeCommandLineUI implements UI {
         return moves.get(1).toString();
     }
 
-    public boolean getGameModeWasCalled() {
-        return getGameModeWasCalled;
+    @Override
+    public int getBoardSize() {
+        return THREE_BY_THREE;
+    }
+
+    @Override
+    public void askForBoardSize() {
     }
 
     @Override
@@ -51,6 +58,10 @@ public class FakeCommandLineUI implements UI {
     @Override
     public void announceWinner(Result winner) {
         this.announceWinnerWasCalled = true;
+    }
+
+    public boolean getGameModeWasCalled() {
+        return getGameModeWasCalled;
     }
 
     @Override

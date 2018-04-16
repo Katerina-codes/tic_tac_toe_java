@@ -12,6 +12,9 @@ public class CommandLineUI implements UI {
     public static final String OPTION_FIVE = "5";
     public static final String OPTION_SIX = "6";
     public static final String OPTION_SEVEN = "7";
+    public static final int THREE_BY_THREE = 3;
+    private static final int FOUR_BY_FOUR = 4;
+    private static final int FIRST_CHOICE = 1;
     private final PrintStream output;
     private final BufferedReader input;
 
@@ -24,6 +27,16 @@ public class CommandLineUI implements UI {
         output.println("Please enter " + OPTION_ONE + " for a 3x3 grid\n" +
                 "Please enter " + OPTION_TWO + " for a 4x4 grid:");
     }
+
+    public int getBoardSize() {
+        int boardSize = Integer.parseInt(getUserChoice());
+        if (boardSize == FIRST_CHOICE) {
+            return THREE_BY_THREE;
+        } else {
+            return FOUR_BY_FOUR;
+        }
+    }
+
 
     public void askForGameMode() {
         output.println("\n\nEnter " + OPTION_ONE + " for Human vs Human\n" +
