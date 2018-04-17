@@ -35,7 +35,9 @@ public class Game {
         ui.announceWinner(result);
 
         if (ui.replay()) {
-            board.resetBoard();
+            ui.askForBoardSize();
+            int size = ui.getBoardSize();
+            this.board = new Board(size);
             playAgain();
         }
     }
@@ -56,7 +58,7 @@ public class Game {
         ui.displayBoard(this.board.grid, this.board.size);
     }
 
-    public void playAgain() {
+    private void playAgain() {
         run();
     }
 }

@@ -33,7 +33,7 @@ public class UnbeatableComputerTest {
                 X, EMPTY, EMPTY,
                 EMPTY, O, EMPTY,
                 EMPTY, EMPTY, X));
-        int move = unbeatableComputer.findBestMove(board, true).get(0);
+        int move = unbeatableComputer.findBestMove(board, 7, -10, +10, true).get(0);
 
         assertTrue(possibleMoves.contains(move));
     }
@@ -55,7 +55,31 @@ public class UnbeatableComputerTest {
                 EMPTY, EMPTY, O,
                 EMPTY, X, X,
                 EMPTY, EMPTY, EMPTY));
-        unbeatableComputer.findBestMove(board, true);
+        unbeatableComputer.findBestMove(board, 7, -10, +10, true);
+
+        assertThat(unbeatableComputer.playMove(board).grid.get(3), is(O));
+    }
+
+    @Test
+    public void computerTakesAWinOn4By4() {
+        UnbeatableComputer unbeatableComputer = new UnbeatableComputer(X);
+        Board board = new Board(4, asList(
+                X, X, X, EMPTY,
+                O, EMPTY, EMPTY, EMPTY,
+                EMPTY, O, O, EMPTY,
+                EMPTY, EMPTY, EMPTY, EMPTY));
+
+        assertThat(unbeatableComputer.playMove(board).grid.get(3), is(X));
+    }
+
+    @Test
+    public void blocksAWinOn4By4() {
+        UnbeatableComputer unbeatableComputer = new UnbeatableComputer(O);
+        Board board = new Board(4, asList(
+                X, X, X, EMPTY,
+                O, EMPTY, EMPTY, EMPTY,
+                EMPTY, O, O, EMPTY,
+                EMPTY, EMPTY, EMPTY, EMPTY));
 
         assertThat(unbeatableComputer.playMove(board).grid.get(3), is(O));
     }

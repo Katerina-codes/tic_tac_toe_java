@@ -12,6 +12,9 @@ public class CommandLineUI implements UI {
     public static final String OPTION_FIVE = "5";
     public static final String OPTION_SIX = "6";
     public static final String OPTION_SEVEN = "7";
+    public static final int THREE_BY_THREE = 3;
+    private static final int FOUR_BY_FOUR = 4;
+    private static final int FIRST_CHOICE = 1;
     private final PrintStream output;
     private final BufferedReader input;
 
@@ -24,6 +27,16 @@ public class CommandLineUI implements UI {
         output.println("Please enter " + OPTION_ONE + " for a 3x3 grid\n" +
                 "Please enter " + OPTION_TWO + " for a 4x4 grid:");
     }
+
+    public int getBoardSize() {
+        int boardSize = Integer.parseInt(getUserChoice());
+        if (boardSize == FIRST_CHOICE) {
+            return THREE_BY_THREE;
+        } else {
+            return FOUR_BY_FOUR;
+        }
+    }
+
 
     public void askForGameMode() {
         output.println("\n\nEnter " + OPTION_ONE + " for Human vs Human\n" +
@@ -68,17 +81,20 @@ public class CommandLineUI implements UI {
         String formattedRows = null;
         sb.append("\n");
 
+        formatRowLines(size, sb);
+
         for (int i = 0; i < grid.size(); i++) {
-            sb.append(" ");
+            sb.append("| ");
             if (grid.get(i) == Mark.EMPTY) {
                 sb.append(i + 1);
+                if (i + 1 <= 9) {
+                    sb.append(" ");
+                }
             } else {
                 sb.append(grid.get(i));
+                sb.append(" ");
             }
-
-            if ((i + 1) % size == 0) {
-                sb.append("\n");
-            }
+            formatEndOfRow(size, sb, i);
             formattedRows = sb.toString();
         }
         output.println(formattedRows);
@@ -121,6 +137,21 @@ public class CommandLineUI implements UI {
         output.println("\nWould you like to play again?\n" +
                 "Enter 1 for yes\n" +
                 "Enter 2 for no.");
+    }
+
+    private void formatEndOfRow(int size, StringBuilder sb, int i) {
+        if ((i + 1) % size == 0) {
+            sb.append("|\n");
+            formatRowLines(size, sb);
+        }
+    }
+
+    private void formatRowLines(int size, StringBuilder sb) {
+        if (size == 3) {
+            sb.append(" --- --- ---\n");
+        } else {
+            sb.append(" --- --- --- ---\n");
+        }
     }
 
 }

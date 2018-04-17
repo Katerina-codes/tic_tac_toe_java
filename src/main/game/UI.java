@@ -16,4 +16,8 @@ public interface UI {
     void announceWinner(Result winner);
 
     boolean replay();
+
+    int getBoardSize();
+
+    void askForBoardSize();
 }

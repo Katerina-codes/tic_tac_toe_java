@@ -67,9 +67,14 @@ public class CommandLineUITest {
 
         inputOutput.displayBoard(board.grid, 3);
 
-        assertTrue(output.toString().contains(" 1 2 3\n" +
-                " 4 5 6\n" +
-                " 7 8 9\n"));
+        assertThat(output.toString(), is(
+                "\n --- --- ---\n" +
+                "| 1 | 2 | 3 |\n" +
+                " --- --- ---\n" +
+                "| 4 | 5 | 6 |\n" +
+                " --- --- ---\n" +
+                "| 7 | 8 | 9 |\n" +
+                " --- --- ---\n\n"));
     }
 
     @Test
@@ -78,10 +83,16 @@ public class CommandLineUITest {
 
         inputOutput.displayBoard(board.grid, 4);
 
-        assertTrue(output.toString().contains(" 1 2 3 4\n" +
-                " 5 6 7 8\n" +
-                " 9 10 11 12\n" +
-                " 13 14 15 16\n"));
+        assertThat(output.toString(), is(
+                "\n --- --- --- ---\n" +
+                "| 1 | 2 | 3 | 4 |\n" +
+                " --- --- --- ---\n" +
+                "| 5 | 6 | 7 | 8 |\n" +
+                " --- --- --- ---\n" +
+                "| 9 | 10| 11| 12|\n" +
+                " --- --- --- ---\n" +
+                "| 13| 14| 15| 16|\n" +
+                " --- --- --- ---\n\n"));
     }
 
     @Test
