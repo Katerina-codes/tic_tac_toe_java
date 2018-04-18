@@ -60,6 +60,7 @@ public class GameTest {
 
         game.run();
 
+        assertThat(output.toString(), containsString("X won!"));
         assertThat(output.toString(), containsString("O won!"));
     }
 }
