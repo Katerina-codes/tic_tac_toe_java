@@ -22,13 +22,12 @@ import static org.junit.Assert.*;
 public class CommandLineUITest {
 
     private ByteArrayOutputStream output;
-    private ByteArrayInputStream input;
     private CommandLineUI inputOutput;
 
     @Before
     public void setUp() {
         output = new ByteArrayOutputStream();
-        input = new ByteArrayInputStream("".getBytes());
+        ByteArrayInputStream input = new ByteArrayInputStream("".getBytes());
         inputOutput = new CommandLineUI(new PrintStream(output), input);
     }
 
@@ -36,21 +35,21 @@ public class CommandLineUITest {
     public void asksUserToChooseBoardSize() {
         inputOutput.askForBoardSize();
 
-        assertTrue(output.toString().contains("Please enter " + OPTION_ONE + " for a 3x3 grid\n" +
-                "Please enter " + OPTION_TWO + " for a 4x4 grid:\n"));
+        assertTrue(output.toString().contains("Please enter " + HUMAN_VS_HUMAN + " for a 3x3 grid\n" +
+                "Please enter " + HUMAN_VS_COMPUTER + " for a 4x4 grid:\n"));
     }
 
     @Test
     public void asksUserForGameMode() {
         inputOutput.askForGameMode();
 
-        assertTrue(output.toString().contains("\n\nEnter " + OPTION_ONE + " for Human vs Human\n" +
-                "Enter " + OPTION_TWO + " for Human vs Computer\n" +
-                "Enter " + OPTION_THREE + " for Computer vs Human\n" +
-                "Enter " + OPTION_FOUR + " for Computer vs Computer\n" +
-                "Enter " + OPTION_FIVE + " for Human vs Unbeatable Computer\n" +
-                "Enter " + OPTION_SIX + " for Unbeatable Computer vs Human\n" +
-                "Enter " + OPTION_SEVEN + " for Unbeatable Computer vs Unbeatable Computer\n"));
+        assertTrue(output.toString().contains("\n\nEnter " + HUMAN_VS_HUMAN + " for Human vs Human\n" +
+                "Enter " + HUMAN_VS_COMPUTER + " for Human vs Computer\n" +
+                "Enter " + COMPUTER_VS_HUMAN + " for Computer vs Human\n" +
+                "Enter " + COMPUTER_VS_COMPUTER + " for Computer vs Computer\n" +
+                "Enter " + HUMAN_VS_UNBEATABLE_PLAYER + " for Human vs Unbeatable Computer\n" +
+                "Enter " + UNBEATABLE_PLAYER_VS_HUMAN + " for Unbeatable Computer vs Human\n" +
+                "Enter " + UNBEATABLE_PLAYER_VS_UNBEATABLE_PLAYER + " for Unbeatable Computer vs Unbeatable Computer\n"));
     }
 
     @Test

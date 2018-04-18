@@ -5,6 +5,9 @@ import java.util.List;
 import static java.util.Arrays.asList;
 
 public class UnbeatableComputer implements Player {
+    private static final int WIN = 1;
+    private static final int LOSS = -1;
+    private static final int DRAW = 0;
     private Mark mark;
 
     public UnbeatableComputer(Mark mark) {
@@ -44,7 +47,9 @@ public class UnbeatableComputer implements Player {
                     bestMove = move;
                 }
                 alpha = bestScoreForAlpha(alpha, currentMoveScore);
-                if (optimumMoveHasBeenFound(alpha, beta)) break;
+                if (optimumMoveHasBeenFound(alpha, beta)) {
+                    break;
+                }
             }
             return asList(bestMove, currentMoveScore);
         } else {
@@ -61,7 +66,9 @@ public class UnbeatableComputer implements Player {
                     bestMove = move;
                 }
                 beta = bestScoreForBeta(beta, currentMoveScore);
-                if (optimumMoveHasBeenFound(alpha, beta)) break;
+                if (optimumMoveHasBeenFound(alpha, beta)) {
+                    break;
+                }
             }
             return asList(bestMove, currentMoveScore);
         }
@@ -87,11 +94,11 @@ public class UnbeatableComputer implements Player {
 
     private int gameScore(Board board, Mark opponentMark) {
         if (board.playerHasWon(mark)) {
-            return 1;
+            return WIN;
         } else if (board.playerHasWon(opponentMark)) {
-            return -1;
+            return LOSS;
         } else {
-            return 0;
+            return DRAW;
         }
     }
 }

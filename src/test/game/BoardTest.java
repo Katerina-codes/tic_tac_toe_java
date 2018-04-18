@@ -21,7 +21,7 @@ public class BoardTest {
         Board board = new Board(3);
         Board newBoard = board.updateMove(0, X);
 
-        assertEquals(X, newBoard.getValueOfMove(0));
+        assertEquals(X, newBoard.valueAt(0));
     }
 
     @Test
@@ -209,15 +209,6 @@ public class BoardTest {
         Board board = new Board(3, asList(O, X, X, X, O, O, X, O, X));
 
         assertEquals("Tie", board.findWinner().getResult());
-    }
-
-    @Test
-    public void resetBoard() {
-        Board board = new Board(2, asList(O, X, X, X));
-
-        board.resetBoard();
-
-        assertThat(board.grid, is(asList(EMPTY, EMPTY, EMPTY, EMPTY)));
     }
 }
 

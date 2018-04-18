@@ -5,16 +5,19 @@ import java.util.List;
 
 public class CommandLineUI implements UI {
 
-    public static final String OPTION_ONE = "1";
-    public static final String OPTION_TWO = "2";
-    public static final String OPTION_THREE = "3";
-    public static final String OPTION_FOUR = "4";
-    public static final String OPTION_FIVE = "5";
-    public static final String OPTION_SIX = "6";
-    public static final String OPTION_SEVEN = "7";
+    public static final String HUMAN_VS_HUMAN = "1";
+    public static final String HUMAN_VS_COMPUTER = "2";
+    public static final String COMPUTER_VS_HUMAN = "3";
+    public static final String COMPUTER_VS_COMPUTER = "4";
+    public static final String HUMAN_VS_UNBEATABLE_PLAYER = "5";
+    public static final String UNBEATABLE_PLAYER_VS_HUMAN = "6";
+    public static final String UNBEATABLE_PLAYER_VS_UNBEATABLE_PLAYER = "7";
     public static final int THREE_BY_THREE = 3;
     private static final int FOUR_BY_FOUR = 4;
     private static final int FIRST_CHOICE = 1;
+    public static final String REPLAY = "1";
+    private static final String ONE = "1";
+    private static final String TWO = "2";
     private final PrintStream output;
     private final BufferedReader input;
 
@@ -24,13 +27,13 @@ public class CommandLineUI implements UI {
     }
 
     public void askForBoardSize() {
-        output.println("Please enter " + OPTION_ONE + " for a 3x3 grid\n" +
-                "Please enter " + OPTION_TWO + " for a 4x4 grid:");
+        output.println("Please enter " + ONE + " for a 3x3 grid\n" +
+                "Please enter " + TWO + " for a 4x4 grid:");
     }
 
     public int getBoardSize() {
-        int boardSize = Integer.parseInt(getUserChoice());
-        if (boardSize == FIRST_CHOICE) {
+        int userChoice = Integer.parseInt(getUserChoice());
+        if (userChoice == FIRST_CHOICE) {
             return THREE_BY_THREE;
         } else {
             return FOUR_BY_FOUR;
@@ -39,13 +42,13 @@ public class CommandLineUI implements UI {
 
 
     public void askForGameMode() {
-        output.println("\n\nEnter " + OPTION_ONE + " for Human vs Human\n" +
-                "Enter " + OPTION_TWO + " for Human vs Computer\n" +
-                "Enter " + OPTION_THREE + " for Computer vs Human\n" +
-                "Enter " + OPTION_FOUR + " for Computer vs Computer\n" +
-                "Enter " + OPTION_FIVE + " for Human vs Unbeatable Computer\n" +
-                "Enter " + OPTION_SIX + " for Unbeatable Computer vs Human\n" +
-                "Enter " + OPTION_SEVEN + " for Unbeatable Computer vs Unbeatable Computer");
+        output.println("\n\nEnter " + HUMAN_VS_HUMAN + " for Human vs Human\n" +
+                "Enter " + HUMAN_VS_COMPUTER + " for Human vs Computer\n" +
+                "Enter " + COMPUTER_VS_HUMAN + " for Computer vs Human\n" +
+                "Enter " + COMPUTER_VS_COMPUTER + " for Computer vs Computer\n" +
+                "Enter " + HUMAN_VS_UNBEATABLE_PLAYER + " for Human vs Unbeatable Computer\n" +
+                "Enter " + UNBEATABLE_PLAYER_VS_HUMAN + " for Unbeatable Computer vs Human\n" +
+                "Enter " + UNBEATABLE_PLAYER_VS_UNBEATABLE_PLAYER + " for Unbeatable Computer vs Unbeatable Computer");
     }
 
     public String getUserChoice() {
@@ -111,7 +114,7 @@ public class CommandLineUI implements UI {
     public boolean replay() {
         askUserIfTheyWantToPlayAgain();
         String choice = getUserChoice();
-        return choice.equals("1");
+        return choice.equals(REPLAY);
     }
 
     private boolean moveIsNotAvailable(Board board, int convertedMove) {

@@ -21,7 +21,7 @@ public class PlayerFactoryTest {
 
     @Test
     public void createsTwoHumanPlayers() {
-        List<Player> players = playerTypes.getPlayerTypes(OPTION_ONE);
+        List<Player> players = playerTypes.getPlayerTypes(HUMAN_VS_HUMAN);
 
         assertTrue(players.get(0) instanceof HumanPlayer);
         assertTrue(players.get(1) instanceof HumanPlayer);
@@ -29,7 +29,7 @@ public class PlayerFactoryTest {
 
     @Test
     public void createsOneHumanAndOneComputerPlayer() {
-        List<Player> players = playerTypes.getPlayerTypes(OPTION_TWO);
+        List<Player> players = playerTypes.getPlayerTypes(HUMAN_VS_COMPUTER);
 
         assertTrue(players.get(0) instanceof HumanPlayer);
         assertTrue(players.get(1) instanceof Computer);
@@ -37,7 +37,7 @@ public class PlayerFactoryTest {
 
     @Test
     public void createsComputerPlayerAsPlayerOne() {
-        List<Player> players = playerTypes.getPlayerTypes(OPTION_THREE);
+        List<Player> players = playerTypes.getPlayerTypes(COMPUTER_VS_HUMAN);
 
         assertTrue(players.get(0) instanceof Computer);
         assertTrue(players.get(1) instanceof HumanPlayer);
@@ -45,7 +45,7 @@ public class PlayerFactoryTest {
 
     @Test
     public void createsTwoComputerPlayers() {
-        List<Player> players = playerTypes.getPlayerTypes(OPTION_FOUR);
+        List<Player> players = playerTypes.getPlayerTypes(COMPUTER_VS_COMPUTER);
 
         assertTrue(players.get(0) instanceof Computer);
         assertTrue(players.get(1) instanceof Computer);
@@ -53,7 +53,7 @@ public class PlayerFactoryTest {
 
     @Test
     public void createsOneHumanAndOneUnbeatable() {
-        List<Player> players = playerTypes.getPlayerTypes(OPTION_FIVE);
+        List<Player> players = playerTypes.getPlayerTypes(HUMAN_VS_UNBEATABLE_PLAYER);
 
         assertTrue(players.get(0) instanceof HumanPlayer);
         assertTrue(players.get(1) instanceof UnbeatableComputer);
@@ -61,7 +61,7 @@ public class PlayerFactoryTest {
 
     @Test
     public void unbeatableComputerAsPlayerOne() {
-        List<Player> players = playerTypes.getPlayerTypes(OPTION_SIX);
+        List<Player> players = playerTypes.getPlayerTypes(UNBEATABLE_PLAYER_VS_HUMAN);
 
         assertTrue(players.get(0) instanceof UnbeatableComputer);
         assertTrue(players.get(1) instanceof HumanPlayer);
@@ -69,7 +69,7 @@ public class PlayerFactoryTest {
 
     @Test
     public void createsTwoUnbeatableComputerPlayers() {
-        List<Player> players = playerTypes.getPlayerTypes(OPTION_SEVEN);
+        List<Player> players = playerTypes.getPlayerTypes(UNBEATABLE_PLAYER_VS_UNBEATABLE_PLAYER);
 
         assertTrue(players.get(0) instanceof UnbeatableComputer);
         assertTrue(players.get(1) instanceof UnbeatableComputer);

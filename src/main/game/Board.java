@@ -128,15 +128,7 @@ public class Board {
         columnElements.add(new Line(marks));
     }
 
-    public boolean gameIsTied() {
+    private boolean gameIsTied() {
         return !playerHasWon(X) && !playerHasWon(O) && !hasAvailableMoves();
-    }
-
-    public Mark getValueOfMove(int move) {
-        return this.grid.get(move);
-    }
-
-    public void resetBoard() {
-        this.grid = createGrid();
     }
 }
