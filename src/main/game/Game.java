@@ -38,7 +38,7 @@ public class Game {
             ui.askForBoardSize();
             int size = ui.getBoardSize();
             this.board = new Board(size);
-            playAgain();
+            run();
         }
     }
 
@@ -56,9 +56,5 @@ public class Game {
 
     private void displayBoard() {
         ui.displayBoard(this.board.grid, this.board.size);
-    }
-
-    private void playAgain() {
-        run();
     }
 }
