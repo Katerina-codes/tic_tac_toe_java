@@ -17,6 +17,7 @@ public class FakeCommandLineUI implements UI {
     private boolean announceWinnerWasCalled = false;
     private boolean getGameModeWasCalled = false;
     private boolean askForGameModeWasCalled = false;
+    private boolean replayWasCalled = false;
 
     @Override
     public void askForGameMode() {
@@ -66,6 +67,7 @@ public class FakeCommandLineUI implements UI {
 
     @Override
     public boolean replay() {
+        this.replayWasCalled = true;
         return false;
     }
 
@@ -87,5 +89,9 @@ public class FakeCommandLineUI implements UI {
 
     public boolean announceWinnerWasCalled() {
         return announceWinnerWasCalled;
+    }
+
+    public boolean replayWasCalled() {
+        return replayWasCalled;
     }
 }

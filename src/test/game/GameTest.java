@@ -33,6 +33,7 @@ public class GameTest {
         assertTrue(inputOutput.askForMoveWasCalled());
         assertTrue(inputOutput.getPlayerMoveWasCalled());
         assertTrue(inputOutput.announceWinnerWasCalled());
+        assertTrue(inputOutput.replayWasCalled());
     }
 
     @Test
