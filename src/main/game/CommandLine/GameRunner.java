@@ -1,6 +1,10 @@
-package main.game;
+package main.game.CommandLine;
 
-public class gameRunner {
+import main.game.Board;
+import main.game.CommandLine.CommandLineUI;
+import main.game.Game;
+
+public class GameRunner {
 
     public static void main(String[] args) {
         CommandLineUI inputOutput = new CommandLineUI(System.out, System.in);

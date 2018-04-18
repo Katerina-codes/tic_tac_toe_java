@@ -1,7 +1,9 @@
 package test.game;
 
 import main.game.*;
+import main.game.CommandLine.CommandLineUI;
 import org.junit.Test;
+import test.game.CommandLine.FakeCommandLineUI;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

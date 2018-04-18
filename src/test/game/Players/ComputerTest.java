@@ -1,7 +1,7 @@
-package test.game;
+package test.game.Players;
 
 import main.game.Board;
-import main.game.Computer;
+import main.game.Players.Computer;
 import org.junit.Test;
 
 import java.util.List;

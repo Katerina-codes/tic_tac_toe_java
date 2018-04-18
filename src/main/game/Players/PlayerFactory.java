@@ -1,9 +1,12 @@
-package main.game;
+package main.game.Players;
+
+import main.game.Mark;
+import main.game.UI;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static main.game.CommandLineUI.*;
+import static main.game.CommandLine.CommandLineUI.*;
 import static main.game.Mark.O;
 import static main.game.Mark.X;
 

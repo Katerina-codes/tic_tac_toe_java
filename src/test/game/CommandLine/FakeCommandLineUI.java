@@ -1,4 +1,4 @@
-package test.game;
+package test.game.CommandLine;
 
 import main.game.Board;
 import main.game.Mark;
@@ -7,7 +7,7 @@ import main.game.UI;
 
 import java.util.List;
 
-import static main.game.CommandLineUI.THREE_BY_THREE;
+import static main.game.CommandLine.CommandLineUI.THREE_BY_THREE;
 
 public class FakeCommandLineUI implements UI {
 

@@ -1,5 +1,8 @@
 package main.game;
 
+import main.game.Players.Player;
+import main.game.Players.PlayerFactory;
+
 import java.util.List;
 
 public class Game {

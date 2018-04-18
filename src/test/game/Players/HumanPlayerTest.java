@@ -1,8 +1,8 @@
-package test.game;
+package test.game.Players;
 
 import main.game.Board;
-import main.game.CommandLineUI;
-import main.game.HumanPlayer;
+import main.game.CommandLine.CommandLineUI;
+import main.game.Players.HumanPlayer;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
