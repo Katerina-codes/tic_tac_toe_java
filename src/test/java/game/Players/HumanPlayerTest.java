@@ -1,8 +1,8 @@
-package test.game.Players;
+package game.Players;
 
-import main.game.Board;
-import main.game.CommandLine.CommandLineUI;
-import main.game.Players.HumanPlayer;
+import game.Board;
+import game.CommandLine.CommandLineUI;
+import game.Players.HumanPlayer;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
@@ -10,7 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-import static main.game.Mark.X;
+import static game.Mark.X;
 import static org.junit.Assert.assertEquals;
 
 public class HumanPlayerTest {

@@ -1,4 +1,4 @@
-package main.game;
+package game;
 
 public enum Mark {
     X,

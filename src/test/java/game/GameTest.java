@@ -1,16 +1,16 @@
-package test.game;
+package game;
 
-import main.game.*;
-import main.game.CommandLine.CommandLineUI;
+import game.*;
+import game.CommandLine.CommandLineUI;
 import org.junit.Test;
-import test.game.CommandLine.FakeCommandLineUI;
+import game.CommandLine.FakeCommandLineUI;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static java.util.Arrays.asList;
-import static main.game.Mark.EMPTY;
+import static game.Mark.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;

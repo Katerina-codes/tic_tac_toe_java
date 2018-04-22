@@ -1,14 +1,14 @@
-package main.game.Players;
+package game.Players;
 
-import main.game.Mark;
-import main.game.UI;
+import game.Mark;
+import game.UI;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static main.game.CommandLine.CommandLineUI.*;
-import static main.game.Mark.O;
-import static main.game.Mark.X;
+import static game.CommandLine.CommandLineUI.*;
+import static game.Mark.O;
+import static game.Mark.X;
 
 public class PlayerFactory {
 

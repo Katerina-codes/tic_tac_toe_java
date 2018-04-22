@@ -1,13 +1,13 @@
-package test.game.CommandLine;
+package game.CommandLine;
 
-import main.game.Board;
-import main.game.Mark;
-import main.game.Result;
-import main.game.UI;
+import game.Board;
+import game.Mark;
+import game.Result;
+import game.UI;
 
 import java.util.List;
 
-import static main.game.CommandLine.CommandLineUI.THREE_BY_THREE;
+import static game.CommandLine.CommandLineUI.THREE_BY_THREE;
 
 public class FakeCommandLineUI implements UI {
 

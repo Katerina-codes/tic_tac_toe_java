@@ -1,14 +1,14 @@
-package test.game.Players;
+package game.Players;
 
-import main.game.Board;
-import main.game.Players.UnbeatableComputer;
+import game.Board;
+import game.Players.UnbeatableComputer;
 import org.junit.Test;
 
 import java.util.List;
 
 import static java.util.Arrays.asList;
 import static junit.framework.TestCase.assertTrue;
-import static main.game.Mark.*;
+import static game.Mark.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 

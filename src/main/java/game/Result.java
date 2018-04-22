@@ -1,4 +1,4 @@
-package main.game;
+package game;
 
 public enum Result {
     PLAYER_ONE_WIN("X"),

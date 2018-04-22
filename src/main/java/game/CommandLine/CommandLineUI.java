@@ -1,9 +1,9 @@
-package main.game.CommandLine;
+package game.CommandLine;
 
-import main.game.Board;
-import main.game.Mark;
-import main.game.Result;
-import main.game.UI;
+import game.Board;
+import game.Mark;
+import game.Result;
+import game.UI;
 
 import java.io.*;
 import java.util.List;
@@ -20,7 +20,7 @@ public class CommandLineUI implements UI {
     public static final int THREE_BY_THREE = 3;
     private static final int FOUR_BY_FOUR = 4;
     private static final int FIRST_CHOICE = 1;
-    public static final String REPLAY = "1";
+    private static final String REPLAY = "1";
     private static final String ONE = "1";
     private static final String TWO = "2";
     private final PrintStream output;

@@ -1,7 +1,7 @@
-package main.game.Players;
+package game.Players;
 
-import main.game.Board;
-import main.game.Mark;
+import game.Board;
+import game.Mark;
 
 public interface Player {
     Board playMove(Board board);

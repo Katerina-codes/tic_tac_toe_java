@@ -1,8 +1,7 @@
-package main.game.CommandLine;
+package game.CommandLine;
 
-import main.game.Board;
-import main.game.CommandLine.CommandLineUI;
-import main.game.Game;
+import game.Board;
+import game.Game;
 
 public class GameRunner {
 

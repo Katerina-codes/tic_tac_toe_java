@@ -1,9 +1,9 @@
-package test.game.CommandLine;
+package game.CommandLine;
 
-import main.game.Board;
-import main.game.CommandLine.CommandLineUI;
-import main.game.Mark;
-import main.game.Result;
+import game.Board;
+import game.CommandLine.CommandLineUI;
+import game.Mark;
+import game.Result;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,8 +13,8 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 import static java.util.Arrays.asList;
-import static main.game.CommandLine.CommandLineUI.*;
-import static main.game.Mark.EMPTY;
+import static game.CommandLine.CommandLineUI.*;
+import static game.Mark.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;

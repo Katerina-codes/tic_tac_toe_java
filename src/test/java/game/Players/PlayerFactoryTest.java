@@ -1,14 +1,14 @@
-package test.game.Players;
+package game.Players;
 
-import main.game.Players.*;
+import game.Players.*;
 import org.junit.Before;
 import org.junit.Test;
-import test.game.CommandLine.FakeCommandLineUI;
+import game.CommandLine.FakeCommandLineUI;
 
 import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
-import static main.game.CommandLine.CommandLineUI.*;
+import static game.CommandLine.CommandLineUI.*;
 
 public class PlayerFactoryTest {
 
