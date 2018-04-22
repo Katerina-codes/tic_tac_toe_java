@@ -13,8 +13,9 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-mainClassName = "main.game.CommandLine.GameRunner";
+mainClassName = "game.CommandLine.GameRunner";
 
-// run {
-//  standardinput = System.in
-//}
+
+run {
+    standardInput = System.in
+}
