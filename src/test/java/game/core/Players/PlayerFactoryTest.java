@@ -1,6 +1,5 @@
-package game.Players;
+package game.core.Players;
 
-import game.Players.*;
 import org.junit.Before;
 import org.junit.Test;
 import game.CommandLine.FakeCommandLineUI;

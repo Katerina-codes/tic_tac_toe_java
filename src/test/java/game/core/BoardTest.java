@@ -1,10 +1,10 @@
-package game;
+package game.core;
 
-import game.Board;
+import game.core.Board;
 import org.junit.Test;
 
 import static java.util.Arrays.asList;
-import static game.Mark.*;
+import static game.core.Mark.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 

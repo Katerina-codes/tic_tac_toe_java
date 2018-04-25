@@ -1,9 +1,9 @@
 package game.CommandLine;
 
-import game.Board;
-import game.Mark;
-import game.Result;
-import game.UI;
+import game.core.Board;
+import game.core.Mark;
+import game.core.Result;
+import game.core.UI;
 
 import java.io.*;
 import java.util.List;

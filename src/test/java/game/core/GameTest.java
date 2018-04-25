@@ -1,7 +1,10 @@
-package game;
+package game.core;
 
-import game.*;
 import game.CommandLine.CommandLineUI;
+import game.core.Board;
+import game.core.Game;
+import game.core.Mark;
+import game.core.UI;
 import org.junit.Test;
 import game.CommandLine.FakeCommandLineUI;
 
@@ -10,7 +13,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static java.util.Arrays.asList;
-import static game.Mark.EMPTY;
+import static game.core.Mark.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;

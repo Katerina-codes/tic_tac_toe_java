@@ -1,7 +1,7 @@
 package game.CommandLine;
 
-import game.Board;
-import game.Game;
+import game.core.Board;
+import game.core.Game;
 
 public class GameRunner {
 
