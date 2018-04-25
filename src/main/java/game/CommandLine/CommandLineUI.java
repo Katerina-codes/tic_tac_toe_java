@@ -10,13 +10,6 @@ import java.util.List;
 
 public class CommandLineUI implements UI {
 
-    public static final String HUMAN_VS_HUMAN = "1";
-    public static final String HUMAN_VS_COMPUTER = "2";
-    public static final String COMPUTER_VS_HUMAN = "3";
-    public static final String COMPUTER_VS_COMPUTER = "4";
-    public static final String HUMAN_VS_UNBEATABLE_PLAYER = "5";
-    public static final String UNBEATABLE_PLAYER_VS_HUMAN = "6";
-    public static final String UNBEATABLE_PLAYER_VS_UNBEATABLE_PLAYER = "7";
     public static final int THREE_BY_THREE = 3;
     private static final int FOUR_BY_FOUR = 4;
     private static final int FIRST_CHOICE = 1;
