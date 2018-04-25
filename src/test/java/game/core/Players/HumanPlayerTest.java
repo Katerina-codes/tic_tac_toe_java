@@ -1,7 +1,7 @@
 package game.core.Players;
 
-import game.core.Board;
 import game.CommandLine.CommandLineUI;
+import game.core.Board;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;

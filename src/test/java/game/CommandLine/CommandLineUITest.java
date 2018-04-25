@@ -11,9 +11,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-import static java.util.Arrays.asList;
 import static game.CommandLine.CommandLineUI.*;
 import static game.core.Mark.EMPTY;
+import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
@@ -67,12 +67,12 @@ public class CommandLineUITest {
 
         assertThat(output.toString(), is(
                 "\n --- --- ---\n" +
-                "| 1 | 2 | 3 |\n" +
-                " --- --- ---\n" +
-                "| 4 | 5 | 6 |\n" +
-                " --- --- ---\n" +
-                "| 7 | 8 | 9 |\n" +
-                " --- --- ---\n\n"));
+                        "| 1 | 2 | 3 |\n" +
+                        " --- --- ---\n" +
+                        "| 4 | 5 | 6 |\n" +
+                        " --- --- ---\n" +
+                        "| 7 | 8 | 9 |\n" +
+                        " --- --- ---\n\n"));
     }
 
     @Test
@@ -83,14 +83,14 @@ public class CommandLineUITest {
 
         assertThat(output.toString(), is(
                 "\n --- --- --- ---\n" +
-                "| 1 | 2 | 3 | 4 |\n" +
-                " --- --- --- ---\n" +
-                "| 5 | 6 | 7 | 8 |\n" +
-                " --- --- --- ---\n" +
-                "| 9 | 10| 11| 12|\n" +
-                " --- --- --- ---\n" +
-                "| 13| 14| 15| 16|\n" +
-                " --- --- --- ---\n\n"));
+                        "| 1 | 2 | 3 | 4 |\n" +
+                        " --- --- --- ---\n" +
+                        "| 5 | 6 | 7 | 8 |\n" +
+                        " --- --- --- ---\n" +
+                        "| 9 | 10| 11| 12|\n" +
+                        " --- --- --- ---\n" +
+                        "| 13| 14| 15| 16|\n" +
+                        " --- --- --- ---\n\n"));
     }
 
     @Test

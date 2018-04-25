@@ -1,23 +1,18 @@
 package game.core;
 
 import game.CommandLine.CommandLineUI;
-import game.core.Board;
-import game.core.Game;
-import game.core.Mark;
-import game.core.UI;
-import org.junit.Test;
 import game.CommandLine.FakeCommandLineUI;
+import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static java.util.Arrays.asList;
 import static game.core.Mark.EMPTY;
+import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class GameTest {

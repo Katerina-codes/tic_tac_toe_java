@@ -5,9 +5,9 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static game.core.Mark.*;
 import static java.util.Arrays.asList;
 import static junit.framework.TestCase.assertTrue;
-import static game.core.Mark.*;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
