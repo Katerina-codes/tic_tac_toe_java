@@ -7,8 +7,6 @@ import game.core.UI;
 
 import java.util.List;
 
-import static game.CommandLine.CommandLineUI.THREE_BY_THREE;
-
 public class FakeCommandLineUI implements UI {
 
     private boolean askForMoveWasCalled = false;

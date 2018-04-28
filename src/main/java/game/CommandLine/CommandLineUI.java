@@ -10,7 +10,6 @@ import java.util.List;
 
 public class CommandLineUI implements UI {
 
-    public static final int THREE_BY_THREE = 3;
     private static final int FOUR_BY_FOUR = 4;
     private static final int FIRST_CHOICE = 1;
     private static final String REPLAY = "1";
