@@ -28,6 +28,10 @@ public class FakeCommandLineUI implements UI {
         this.userChoices = new ArrayList(userChoices);
     }
 
+    public FakeCommandLineUI(List moves) {
+        this.moves = new ArrayList(moves);
+    }
+
     @Override
     public void askForGameMode() {
         this.askForGameModeWasCalled = true;
