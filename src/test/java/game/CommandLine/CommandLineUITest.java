@@ -1,9 +1,9 @@
 package game.CommandLine;
 
-import game.Board;
-import game.CommandLine.CommandLineUI;
-import game.Mark;
-import game.Result;
+import game.core.Board;
+import game.core.Mark;
+import game.core.Result;
+import game.core.UI;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,9 +12,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
 
+import static game.core.Mark.EMPTY;
 import static java.util.Arrays.asList;
-import static game.CommandLine.CommandLineUI.*;
-import static game.Mark.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
@@ -35,21 +34,21 @@ public class CommandLineUITest {
     public void asksUserToChooseBoardSize() {
         inputOutput.askForBoardSize();
 
-        assertTrue(output.toString().contains("Please enter " + HUMAN_VS_HUMAN + " for a 3x3 grid\n" +
-                "Please enter " + HUMAN_VS_COMPUTER + " for a 4x4 grid:\n"));
+        assertTrue(output.toString().contains("Please enter " + UI.HUMAN_VS_HUMAN + " for a 3x3 grid\n" +
+                "Please enter " + UI.HUMAN_VS_COMPUTER + " for a 4x4 grid:\n"));
     }
 
     @Test
     public void asksUserForGameMode() {
         inputOutput.askForGameMode();
 
-        assertTrue(output.toString().contains("\n\nEnter " + HUMAN_VS_HUMAN + " for Human vs Human\n" +
-                "Enter " + HUMAN_VS_COMPUTER + " for Human vs Computer\n" +
-                "Enter " + COMPUTER_VS_HUMAN + " for Computer vs Human\n" +
-                "Enter " + COMPUTER_VS_COMPUTER + " for Computer vs Computer\n" +
-                "Enter " + HUMAN_VS_UNBEATABLE_PLAYER + " for Human vs Unbeatable Computer\n" +
-                "Enter " + UNBEATABLE_PLAYER_VS_HUMAN + " for Unbeatable Computer vs Human\n" +
-                "Enter " + UNBEATABLE_PLAYER_VS_UNBEATABLE_PLAYER + " for Unbeatable Computer vs Unbeatable Computer\n"));
+        assertTrue(output.toString().contains("\n\nEnter " + UI.HUMAN_VS_HUMAN + " for Human vs Human\n" +
+                "Enter " + UI.HUMAN_VS_COMPUTER + " for Human vs Computer\n" +
+                "Enter " + UI.COMPUTER_VS_HUMAN + " for Computer vs Human\n" +
+                "Enter " + UI.COMPUTER_VS_COMPUTER + " for Computer vs Computer\n" +
+                "Enter " + UI.HUMAN_VS_UNBEATABLE_PLAYER + " for Human vs Unbeatable Computer\n" +
+                "Enter " + UI.UNBEATABLE_PLAYER_VS_HUMAN + " for Unbeatable Computer vs Human\n" +
+                "Enter " + UI.UNBEATABLE_PLAYER_VS_UNBEATABLE_PLAYER + " for Unbeatable Computer vs Unbeatable Computer\n"));
     }
 
     @Test
@@ -68,12 +67,12 @@ public class CommandLineUITest {
 
         assertThat(output.toString(), is(
                 "\n --- --- ---\n" +
-                "| 1 | 2 | 3 |\n" +
-                " --- --- ---\n" +
-                "| 4 | 5 | 6 |\n" +
-                " --- --- ---\n" +
-                "| 7 | 8 | 9 |\n" +
-                " --- --- ---\n\n"));
+                        "| 1 | 2 | 3 |\n" +
+                        " --- --- ---\n" +
+                        "| 4 | 5 | 6 |\n" +
+                        " --- --- ---\n" +
+                        "| 7 | 8 | 9 |\n" +
+                        " --- --- ---\n\n"));
     }
 
     @Test
@@ -84,14 +83,14 @@ public class CommandLineUITest {
 
         assertThat(output.toString(), is(
                 "\n --- --- --- ---\n" +
-                "| 1 | 2 | 3 | 4 |\n" +
-                " --- --- --- ---\n" +
-                "| 5 | 6 | 7 | 8 |\n" +
-                " --- --- --- ---\n" +
-                "| 9 | 10| 11| 12|\n" +
-                " --- --- --- ---\n" +
-                "| 13| 14| 15| 16|\n" +
-                " --- --- --- ---\n\n"));
+                        "| 1 | 2 | 3 | 4 |\n" +
+                        " --- --- --- ---\n" +
+                        "| 5 | 6 | 7 | 8 |\n" +
+                        " --- --- --- ---\n" +
+                        "| 9 | 10| 11| 12|\n" +
+                        " --- --- --- ---\n" +
+                        "| 13| 14| 15| 16|\n" +
+                        " --- --- --- ---\n\n"));
     }
 
     @Test

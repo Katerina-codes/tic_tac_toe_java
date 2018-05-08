@@ -1,7 +1,7 @@
-package game;
+package game.core;
 
-import game.Players.Player;
-import game.Players.PlayerFactory;
+import game.core.Players.Player;
+import game.core.Players.PlayerFactory;
 
 import java.util.List;
 

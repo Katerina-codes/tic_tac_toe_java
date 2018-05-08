@@ -1,14 +1,13 @@
-package game.Players;
+package game.core.Players;
 
-import game.Mark;
-import game.UI;
+import game.core.Mark;
+import game.core.UI;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static game.CommandLine.CommandLineUI.*;
-import static game.Mark.O;
-import static game.Mark.X;
+import static game.core.Mark.O;
+import static game.core.Mark.X;
 
 public class PlayerFactory {
 
@@ -32,19 +31,19 @@ public class PlayerFactory {
         Player[] unbeatableVsUnbeatable = {new UnbeatableComputer(playerOne), new UnbeatableComputer(playerTwo)};
 
         switch (players) {
-            case HUMAN_VS_HUMAN:
+            case UI.HUMAN_VS_HUMAN:
                 return Arrays.asList(humanVsHuman);
-            case HUMAN_VS_COMPUTER:
+            case UI.HUMAN_VS_COMPUTER:
                 return Arrays.asList(humanVsComputer);
-            case COMPUTER_VS_HUMAN:
+            case UI.COMPUTER_VS_HUMAN:
                 return Arrays.asList(computerVsHuman);
-            case COMPUTER_VS_COMPUTER:
+            case UI.COMPUTER_VS_COMPUTER:
                 return Arrays.asList(computerVsComputer);
-            case HUMAN_VS_UNBEATABLE_PLAYER:
+            case UI.HUMAN_VS_UNBEATABLE_PLAYER:
                 return Arrays.asList(humanVsUnbeatablePlayer);
-            case UNBEATABLE_PLAYER_VS_HUMAN:
+            case UI.UNBEATABLE_PLAYER_VS_HUMAN:
                 return Arrays.asList(unbeatablePlayerVsHuman);
-            case UNBEATABLE_PLAYER_VS_UNBEATABLE_PLAYER:
+            case UI.UNBEATABLE_PLAYER_VS_UNBEATABLE_PLAYER:
                 return Arrays.asList(unbeatableVsUnbeatable);
             default:
                 throw new RuntimeException("Unsupported player type");

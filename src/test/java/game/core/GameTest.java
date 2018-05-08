@@ -1,27 +1,28 @@
-package game;
+package game.core;
 
-import game.*;
 import game.CommandLine.CommandLineUI;
-import org.junit.Test;
 import game.CommandLine.FakeCommandLineUI;
+import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.List;
 
+import static game.core.Mark.EMPTY;
 import static java.util.Arrays.asList;
-import static game.Mark.EMPTY;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class GameTest {
 
     @Test
     public void runsTheGame() {
-        FakeCommandLineUI inputOutput = new FakeCommandLineUI();
+        List moves = asList(1, 4, 2, 5, 3);
+        List userChoices = asList(false);
+        FakeCommandLineUI inputOutput = new FakeCommandLineUI(moves, userChoices);
         Board board = new Board(3);
         Game game = new Game(inputOutput, board);
 
@@ -38,16 +39,15 @@ public class GameTest {
 
     @Test
     public void playsTheGame() {
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        ByteArrayInputStream input = new ByteArrayInputStream("1\n1\n4\n2\n5\n3\n2".getBytes());
-        UI inputOutput = new CommandLineUI(new PrintStream(output), input);
+        List moves = asList(1, 4, 2, 5, 3);
+        List userChoices = asList(false);
+        UI inputOutput = new FakeCommandLineUI(moves, userChoices);
         Board board = new Board(3);
         Game game = new Game(inputOutput, board);
 
         game.run();
 
-        assertEquals(board.grid, asList(Mark.X, Mark.X, Mark.X, Mark.O, Mark.O, EMPTY, EMPTY, EMPTY, EMPTY));
-        assertThat(output.toString(), containsString("X won!"));
+        assertEquals(asList(Mark.X, Mark.X, Mark.X, Mark.O, Mark.O, EMPTY, EMPTY, EMPTY, EMPTY), board.grid);
     }
 
     @Test

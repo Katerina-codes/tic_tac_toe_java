@@ -1,8 +1,8 @@
-package game.Players;
+package game.core.Players;
 
-import game.Board;
-import game.Mark;
-import game.UI;
+import game.core.Board;
+import game.core.Mark;
+import game.core.UI;
 
 public class HumanPlayer implements Player {
 

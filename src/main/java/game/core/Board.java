@@ -1,14 +1,14 @@
-package game;
+package game.core;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+import static game.core.Mark.*;
+import static game.core.Result.TIE;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
-import static game.Mark.*;
-import static game.Result.TIE;
 
 public class Board {
 

@@ -1,13 +1,12 @@
-package game.Players;
+package game.core.Players;
 
-import game.Board;
-import game.Players.Computer;
+import game.core.Board;
 import org.junit.Test;
 
 import java.util.List;
 
+import static game.core.Mark.O;
 import static java.util.Arrays.asList;
-import static game.Mark.O;
 import static org.junit.Assert.assertTrue;
 
 public class ComputerTest {

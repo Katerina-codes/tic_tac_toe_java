@@ -1,8 +1,7 @@
-package game.Players;
+package game.core.Players;
 
-import game.Board;
-import game.Mark;
-import game.Players.Player;
+import game.core.Board;
+import game.core.Mark;
 
 import java.util.List;
 

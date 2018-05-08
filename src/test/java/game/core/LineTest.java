@@ -1,10 +1,9 @@
-package game;
+package game.core;
 
-import game.Line;
 import org.junit.Test;
 
+import static game.core.Mark.X;
 import static java.util.Arrays.asList;
-import static game.Mark.X;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
