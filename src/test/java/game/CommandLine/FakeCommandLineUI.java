@@ -5,10 +5,13 @@ import game.core.Mark;
 import game.core.Result;
 import game.core.UI;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FakeCommandLineUI implements UI {
 
+    private List<Boolean> userChoices;
+    private List<Integer> moves;
     private boolean askForMoveWasCalled = false;
     private boolean getPlayerMoveWasCalled = false;
     private boolean displayBoardWasCalled = false;
@@ -16,6 +19,14 @@ public class FakeCommandLineUI implements UI {
     private boolean getGameModeWasCalled = false;
     private boolean askForGameModeWasCalled = false;
     private boolean replayWasCalled = false;
+
+   public FakeCommandLineUI() {
+   }
+
+    public FakeCommandLineUI(List moves, List userChoices) {
+        this.moves = new ArrayList(moves);
+        this.userChoices = new ArrayList(userChoices);
+    }
 
     @Override
     public void askForGameMode() {
@@ -36,8 +47,7 @@ public class FakeCommandLineUI implements UI {
     @Override
     public String getMove(Board board) {
         this.getPlayerMoveWasCalled = true;
-        List<Integer> moves = board.availableMoves();
-        return moves.get(1).toString();
+        return moves.remove(0).toString();
     }
 
     @Override
@@ -66,7 +76,7 @@ public class FakeCommandLineUI implements UI {
     @Override
     public boolean replay() {
         this.replayWasCalled = true;
-        return false;
+        return userChoices.remove(0);
     }
 
     public boolean askForGameModeWasCalled() {
